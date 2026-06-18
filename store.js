@@ -10,8 +10,11 @@ class ShoppingCart {
             btn.addEventListener('click', (e) => this.addToCart(e));
         });
 
-        document.getElementById('checkoutBtn').addEventListener('click', () => this.checkout());
-        document.getElementById('newsletterForm').addEventListener('submit', (e) => this.subscribeNewsletter(e));
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        if (checkoutBtn) checkoutBtn.addEventListener('click', () => this.checkout());
+
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) newsletterForm.addEventListener('submit', (e) => this.subscribeNewsletter(e));
 
         this.updateCart();
     }
@@ -46,6 +49,7 @@ class ShoppingCart {
 
     updateCart() {
         const cartItemsDiv = document.getElementById('cartItems');
+        if (!cartItemsDiv) return;
         
         if (this.items.length === 0) {
             cartItemsDiv.innerHTML = '<p class="empty-cart">Your cart is empty. Add items to get started!</p>';
@@ -77,9 +81,12 @@ class ShoppingCart {
         const tax = subtotal * 0.08; // 8% tax
         const total = subtotal + tax;
 
-        document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-        document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
-        document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        const subtotalEl = document.getElementById('subtotal');
+        const taxEl = document.getElementById('tax');
+        const totalEl = document.getElementById('total');
+        if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+        if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
+        if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
     }
 
     getTotal() {
@@ -117,13 +124,13 @@ class ShoppingCart {
 }
 
 // Product Filtering
-function filterProducts(category) {
+function filterProducts(category, event) {
     const products = document.querySelectorAll('.product-card');
     const buttons = document.querySelectorAll('.tab-btn');
 
     // Update active button
     buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    if (event && event.target) event.target.classList.add('active');
 
     // Filter products
     products.forEach(product => {

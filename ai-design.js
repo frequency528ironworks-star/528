@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const sendBtn = document.getElementById('sendBtn');
     const chatMessages = document.getElementById('chatMessages');
 
+    if (!userInput || !sendBtn || !chatMessages) return;
+
     // Sample AI responses for demonstration
     const aiResponses = [
         "That sounds like a beautiful project! Tell me more about the style you're envisioning.",
