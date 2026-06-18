@@ -256,9 +256,9 @@
       <p class="section-sub">Design guides, eBooks, and digital art for iron &amp; metalwork enthusiasts.</p>
 
       <div class="tab-bar">
-        <button class="tab-btn active" onclick="filterProducts('all', this)">All Products</button>
-        <button class="tab-btn" onclick="filterProducts('ebook', this)">eBooks</button>
-        <button class="tab-btn" onclick="filterProducts('digital-art', this)">Digital Art</button>
+        <button class="tab-btn active" data-filter="all">All Products</button>
+        <button class="tab-btn" data-filter="ebook">eBooks</button>
+        <button class="tab-btn" data-filter="digital-art">Digital Art</button>
       </div>
 
       <div class="products-grid">
@@ -380,6 +380,7 @@
       <h2 class="section-title">Get a Free <span>Estimate</span></h2>
       <p class="section-sub">Tell us about your project and we'll be in touch within one business day.</p>
       <div class="estimate-grid">
+        <!-- NOTE: Replace YOUR_FORM_ID with your actual Formspree ID — see SETUP_GUIDE.md for instructions -->
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <label for="name">Full Name</label>
           <input id="name" name="name" type="text" placeholder="Jane Smith" required />

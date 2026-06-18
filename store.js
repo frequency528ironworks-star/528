@@ -129,7 +129,7 @@ function filterProducts(category, btn) {
     const buttons = document.querySelectorAll('.tab-btn');
 
     // Update active button
-    buttons.forEach(b => b.classList.remove('active'));
+    buttons.forEach(button => button.classList.remove('active'));
     if (btn) btn.classList.add('active');
 
     // Filter products
@@ -149,4 +149,9 @@ function filterProducts(category, btn) {
 // Initialize cart when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.cart = new ShoppingCart();
+
+    // Tab filter buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => filterProducts(btn.dataset.filter, btn));
+    });
 });
