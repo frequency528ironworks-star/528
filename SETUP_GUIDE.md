@@ -103,7 +103,7 @@ The Free Estimate form is configured to submit to:
 ### Activation steps
 
 1. Submit the estimate form once from the live site.
-2. Open the confirmation email sent by Formsubmit to `frequency528ironworks@gmail.com`.
+2. Open the confirmation email sent by FormSubmit to `frequency528ironworks@gmail.com`.
 3. Click the activation link in that email.
 
 After activation, all new submissions will be delivered to `frequency528ironworks@gmail.com`.

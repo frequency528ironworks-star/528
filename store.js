@@ -124,13 +124,13 @@ class ShoppingCart {
 }
 
 // Product Filtering
-function filterProducts(category, btn) {
+function filterProducts(category, clickedButton) {
     const products = document.querySelectorAll('.product-card');
     const buttons = document.querySelectorAll('.tab-btn');
 
     // Update active button
     buttons.forEach(button => button.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+    if (clickedButton) clickedButton.classList.add('active');
 
     // Filter products
     products.forEach(product => {
