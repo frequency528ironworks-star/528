@@ -94,21 +94,19 @@ After everything is set up:
 
 ## Email Integration for Forms
 
-To make the Free Estimate form work, add to your code:
+The Free Estimate form is configured to submit to:
 
-**Using Formspree (Recommended):**
-
-1. Go to https://formspree.io
-2. Sign up with your email
-3. Add a new project for `frequency528ironworks.com`
-4. It will give you a Form ID (e.g., `f_abc123xyz`)
-
-Then update `estimate.html` form:
 ```html
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+<form action="https://formsubmit.co/frequency528ironworks@gmail.com" method="POST">
 ```
 
-Replace `YOUR_FORM_ID` with your actual ID.
+### Activation steps
+
+1. Submit the estimate form once from the live site.
+2. Open the confirmation email sent by Formsubmit to `frequency528ironworks@gmail.com`.
+3. Click the activation link in that email.
+
+After activation, all new submissions will be delivered to `frequency528ironworks@gmail.com`.
 
 ---
 
@@ -127,6 +125,6 @@ Replace `YOUR_FORM_ID` with your actual ID.
 
 - GitHub Pages Help: https://docs.github.com/en/pages
 - Namecheap DNS Help: https://www.namecheap.com/support/knowledgebase/
-- Formspree Help: https://formspree.io/help
+- Formsubmit Help: https://formsubmit.co/
 
 **You're all set! Your website will be live at frequency528ironworks.com soon! 🎉**
