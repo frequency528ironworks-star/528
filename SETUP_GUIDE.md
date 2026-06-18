@@ -125,6 +125,6 @@ After activation, all new submissions will be delivered to `frequency528ironwork
 
 - GitHub Pages Help: https://docs.github.com/en/pages
 - Namecheap DNS Help: https://www.namecheap.com/support/knowledgebase/
-- Formsubmit Help: https://formsubmit.co/
+- FormSubmit Help: https://formsubmit.co/
 
 **You're all set! Your website will be live at frequency528ironworks.com soon! 🎉**
