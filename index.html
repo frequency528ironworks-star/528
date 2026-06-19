@@ -206,39 +206,50 @@
             display: none;
         }
 
-        /* Gallery Structure */
+        /* Responsive Photo Gallery Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
         }
 
         .gallery-item {
             background: #111;
             border: 1px solid #222;
-            border-radius: 4px;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 6px;
+            height: 240px;
             position: relative;
             overflow: hidden;
             transition: border-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .gallery-item:hover {
             border-color: #cca450;
-            transform: scale(1.01);
+            transform: scale(1.02);
         }
 
-        .gallery-placeholder {
-            color: #555;
-            font-size: 0.85rem;
+        .gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: bold;
+            color: #cca450;
             text-align: center;
-            padding: 1rem;
+            border-top: 1px solid rgba(204, 164, 80, 0.2);
         }
 
         /* Testimonials Styles */
@@ -302,7 +313,7 @@
             .subtext { font-size: 1.3rem; letter-spacing: 5px; margin-bottom: 4rem; }
             .section-box { padding: 2.5rem; h2 { font-size: 1.8rem; } p { font-size: 0.95rem; } }
             .gallery-grid { gap: 1.5rem; }
-            .gallery-item { height: 200px; }
+            .gallery-item { height: 260px; }
             footer { padding: 2rem; font-size: 0.8rem; margin-top: 4rem; }
         }
     </style>
@@ -334,13 +345,28 @@
             <h2>Craftsmanship Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">Custom Gates<br><span style="color:#333; font-size:0.75rem;">[Photo Slot 1]</span></div>
+                    <img src="enntrance.png" alt="Custom Iron Entrance">
+                    <div class="gallery-label">Premium Entrance</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">Industrial Railings<br><span style="color:#333; font-size:0.75rem;">[Photo Slot 2]</span></div>
+                    <img src="mailbox.png" alt="Custom Iron Mailbox">
+                    <div class="gallery-label">Custom Mailbox</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">Architectural Iron<br><span style="color:#333; font-size:0.75rem;">[Photo Slot 3]</span></div>
+                    <img src="yard candy.jfif" alt="Custom Architectural Yard Work">
+                    <div class="gallery-label">Yard Architectural</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="greenhouse.jfif" alt="Custom Iron Greenhouse Frame">
+                    <div class="gallery-label">Greenhouse Fabrication</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="bcard.jpg" alt="Frequency 528 Identity">
+                    <div class="gallery-label">Forge Certification</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="greenhouse.gif" alt="Iron Details">
+                    <div class="gallery-label">Precision Metalwork</div>
                 </div>
             </div>
         </div>
