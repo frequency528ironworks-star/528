@@ -6,37 +6,38 @@
     <title>Frequency 528 Iron Works</title>
     <style>
         :root {
-            --bg-tan: #d2b48c; /* Rugged Tan Background */
-            --blood-red: #660000; /* Dark Blood Red Text */
-            --charcoal-black: #111111; /* Deep Black Shadow */
+            --bg-black: #050505; 
+            --shadow-gray: #222222; 
+            --sub-gray: #888888;
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-tan);
-            color: var(--blood-red);
+            background-color: var(--bg-black);
+            color: #ffffff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
         header {
             padding: 2rem;
             text-align: left;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #111111;
         }
 
         .logo {
             font-family: 'Impact', Arial, sans-serif;
             font-size: 1.5rem;
             letter-spacing: 2px;
-            color: var(--blood-red);
+            color: #ffffff;
         }
 
         .logo span {
-            color: #000;
+            color: #888;
         }
 
         .container {
@@ -49,36 +50,43 @@
             text-align: center;
         }
 
-        /* Business Card Oval Stamp Layout */
-        .stamp-card {
-            border: 4px solid var(--blood-red);
-            border-radius: 50%; /* Keeps the custom oval stamp shape */
-            padding: 4rem 5rem;
-            max-width: 750px;
-            background: transparent;
-            display: inline-block;
+        @keyframes frequencyWave {
+            0% {
+                transform: scale(0.96) skewX(-4deg);
+                filter: drop-shadow(2px 2px 3px var(--shadow-gray)) blur(0.5px);
+                opacity: 0.85;
+            }
+            50% {
+                transform: scale(1.03) skewX(4deg);
+                filter: drop-shadow(6px 6px 15px rgba(255, 255, 255, 0.4)) drop-shadow(4px 4px 5px var(--shadow-gray));
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.96) skewX(-4deg);
+                filter: drop-shadow(2px 2px 3px var(--shadow-gray)) blur(0.5px);
+                opacity: 0.85;
+            }
         }
 
         h1 {
             font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: 2.8rem; /* Slightly smaller to guarantee perfect centering */
+            font-size: 2.8rem; 
             line-height: 1.2;
-            letter-spacing: 2px;
-            margin: 0 0 1.5rem 0;
-            color: var(--blood-red);
+            letter-spacing: 3px;
+            margin: 0 0 2rem 0;
             text-transform: uppercase;
-        }
-
-        /* Dark Black Shadow Effect on the Bold Font */
-        .highlight {
-            text-shadow: 2px 2px 4px var(--charcoal-black), -1px -1px 0 var(--charcoal-black), 1px -1px 0 var(--charcoal-black), -1px 1px 0 var(--charcoal-black), 1px 1px 0 var(--charcoal-black);
+            background: linear-gradient(to bottom, #ffffff 0%, #e1e1e1 40%, #a1a1a1 50%, #f1f1f1 60%, #bcbcbc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            animation: frequencyWave 4s ease-in-out infinite;
         }
 
         .subtext {
             font-size: 1.1rem;
             font-weight: bold;
-            color: #111111;
-            letter-spacing: 3px;
+            color: var(--sub-gray);
+            letter-spacing: 4px;
             text-transform: uppercase;
             margin: 0;
         }
@@ -86,8 +94,8 @@
         footer {
             text-align: center;
             padding: 2rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            color: #333333;
+            border-top: 1px solid #111111;
+            color: #444444;
             font-size: 0.8rem;
             letter-spacing: 1px;
         }
@@ -100,10 +108,8 @@
     </header>
 
     <div class="container">
-        <div class="stamp-card">
-            <h1>ITS NOT JUST IRON ...<br>ITS <span class="highlight">"FREQUENCY 528"</span> IRON</h1>
-            <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
-        </div>
+        <h1>ITS NOT JUST IRON ...<br>ITS "FREQUENCY 528" IRON</h1>
+        <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
     </div>
 
     <footer>
