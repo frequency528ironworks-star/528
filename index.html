@@ -6,12 +6,10 @@
     <title>Frequency 528 Iron Works</title>
     <style>
         :root {
-            --bg-color: #0d0d0d;
-            --text-color: #ffffff;
-            --accent-orange: #ff5500;
-            --muted-text: #888888;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --bg-color: #ffffff; /* White background */
+            --text-color: #000000; /* Bold Black text */
+            --ice-blue: #a3e5ff; /* Icy Water Blue */
+            --border-color: #111111;
         }
 
         body {
@@ -28,18 +26,18 @@
         header {
             padding: 2rem;
             text-align: left;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid #eeeeee;
         }
 
         .logo {
             font-family: 'Impact', Arial, sans-serif;
             font-size: 1.5rem;
             letter-spacing: 2px;
-            color: #fff;
+            color: #000;
         }
 
         .logo span {
-            color: var(--accent-orange);
+            color: #333;
         }
 
         .container {
@@ -50,38 +48,48 @@
             justify-content: center;
             padding: 2rem;
             text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
+        }
+
+        /* Business Card Oval Stamp Layout */
+        .stamp-card {
+            border: 4px solid var(--border-color);
+            border-radius: 50%; /* Makes it a perfect oval stamp */
+            padding: 4rem 6rem;
+            max-width: 700px;
+            background: #ffffff;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+            display: inline-block;
         }
 
         h1 {
             font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             line-height: 1.2;
-            letter-spacing: 3px;
-            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            margin: 0 0 1.5rem 0;
+            color: var(--text-color);
             text-transform: uppercase;
         }
 
+        /* Icy Water Blue Shadow Effect */
         .highlight {
-            color: var(--accent-orange);
-            text-shadow: 0px 0px 25px rgba(255, 85, 0, 0.7);
+            text-shadow: 0px 0px 15px var(--ice-blue), 3px 3px 0px var(--ice-blue);
         }
 
         .subtext {
-            font-size: 1.2rem;
-            color: var(--muted-text);
-            letter-spacing: 2px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333333;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            max-width: 600px;
-            line-height: 1.6;
+            margin: 0;
         }
 
         footer {
             text-align: center;
             padding: 2rem;
-            border-top: 1px solid var(--glass-border);
-            color: var(--muted-text);
+            border-top: 1px solid #eeeeee;
+            color: #666666;
             font-size: 0.8rem;
             letter-spacing: 1px;
         }
@@ -94,8 +102,10 @@
     </header>
 
     <div class="container">
-        <h1>ITS NOT JUST IRON ...<br>ITS <span class="highlight">"FREQUENCY 528"</span> IRON</h1>
-        <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
+        <div class="stamp-card">
+            <h1>ITS NOT JUST IRON ...<br>ITS <span class="highlight">"FREQUENCY 528"</span> IRON</h1>
+            <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
+        </div>
     </div>
 
     <footer>
