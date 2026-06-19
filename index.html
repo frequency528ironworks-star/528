@@ -58,7 +58,7 @@
             }
             50% {
                 transform: scale(1.03) skewX(4deg);
-                filter: drop-shadow(6px 6px 15px rgba(255, 255, 255, 0.4)) drop-shadow(4px 4px 5px var(--shadow-gray));
+                filter: drop-shadow(6px 6px 25px rgba(255, 255, 255, 0.4)) drop-shadow(4px 4px 5px var(--shadow-gray));
                 opacity: 1;
             }
             100% {
@@ -70,23 +70,24 @@
 
         h1 {
             font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: 2.8rem; 
-            line-height: 1.2;
+            font-size: 4.8rem; /* Significant size boost */
+            line-height: 1.1;
             letter-spacing: 3px;
-            margin: 0 0 2rem 0;
+            margin: 0 0 2.5rem 0;
             text-transform: uppercase;
             background: linear-gradient(to bottom, #ffffff 0%, #e1e1e1 40%, #a1a1a1 50%, #f1f1f1 60%, #bcbcbc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
+            white-space: nowrap; /* Forces text to stay locked on its two distinct lines */
             animation: frequencyWave 4s ease-in-out infinite;
         }
 
         .subtext {
-            font-size: 1.1rem;
+            font-size: 1.3rem; 
             font-weight: bold;
             color: var(--sub-gray);
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             margin: 0;
         }
