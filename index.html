@@ -7,8 +7,9 @@
     <style>
         :root {
             --bg-black: #050505; 
-            --shadow-gray: #222222; 
-            --sub-gray: #888888;
+            --shadow-gray: #1a1a1a; 
+            --sub-gray: #a39073; 
+            --glow-color: rgba(224, 169, 74, 0.35); 
         }
 
         body {
@@ -25,20 +26,23 @@
         }
 
         header {
-            padding: 2rem;
+            padding: 1.5rem 1rem;
             text-align: left;
-            border-bottom: 1px solid #111111;
+            border-bottom: 1px solid #161616;
         }
 
         .logo {
             font-family: 'Impact', Arial, sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
             color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .logo span {
-            color: #888;
+            color: #bfa16f; 
         }
 
         .container {
@@ -47,59 +51,261 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 2.5rem 1rem;
             text-align: center;
+            box-sizing: border-box;
+            width: 100%;
         }
 
         @keyframes frequencyWave {
             0% {
-                transform: scale(0.96) skewX(-4deg);
-                filter: drop-shadow(2px 2px 3px var(--shadow-gray)) blur(0.5px);
-                opacity: 0.85;
+                transform: scale(0.96) skewX(-2deg);
+                filter: drop-shadow(0 0 15px var(--glow-color)) drop-shadow(2px 2px 3px var(--shadow-gray));
+                opacity: 0.9;
             }
             50% {
-                transform: scale(1.03) skewX(4deg);
-                filter: drop-shadow(6px 6px 25px rgba(255, 255, 255, 0.4)) drop-shadow(4px 4px 5px var(--shadow-gray));
+                transform: scale(1.01) skewX(2deg);
+                filter: drop-shadow(0 0 25px rgba(240, 192, 108, 0.6)) drop-shadow(4px 4px 10px #000000);
                 opacity: 1;
             }
             100% {
-                transform: scale(0.96) skewX(-4deg);
-                filter: drop-shadow(2px 2px 3px var(--shadow-gray)) blur(0.5px);
-                opacity: 0.85;
+                transform: scale(0.96) skewX(-2deg);
+                filter: drop-shadow(0 0 15px var(--glow-color)) drop-shadow(2px 2px 3px var(--shadow-gray));
+                opacity: 0.9;
             }
         }
 
         h1 {
             font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: 4.8rem; 
-            line-height: 1.1;
-            letter-spacing: 3px;
-            margin: 0 0 2.5rem 0;
+            font-size: calc(2.2rem + 2vw); /* Scale smoothly on all phones */
+            line-height: 1.2;
+            letter-spacing: 1px;
+            margin: 0 0 1.5rem 0;
             text-transform: uppercase;
-            background: linear-gradient(to bottom, #ffffff 0%, #e1e1e1 40%, #a1a1a1 50%, #f1f1f1 60%, #bcbcbc 100%);
+            background: linear-gradient(to bottom, #ffffff 0%, #f3dfa2 30%, #cca450 55%, #ae802b 75%, #ecc670 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            white-space: nowrap; 
+            width: 100%;
+            word-wrap: break-word;
             animation: frequencyWave 4s ease-in-out infinite;
         }
 
         .subtext {
-            font-size: 1.3rem; 
+            font-size: 1rem; 
             font-weight: bold;
             color: var(--sub-gray);
-            letter-spacing: 5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin: 0;
+            margin: 0 0 3rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            line-height: 1.4;
+        }
+
+        .grid-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 900px;
+            text-align: left;
+            box-sizing: border-box;
+            margin-bottom: 2rem;
+        }
+
+        .panel-box {
+            width: 100%;
+            background: rgba(12, 12, 12, 0.85);
+            border: 1px solid #262118; 
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-sizing: border-box;
+        }
+
+        .panel-box h2 {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin: 0 0 1rem 0;
+            color: #f3dfa2; 
+            text-transform: uppercase;
+            border-bottom: 1px solid #262118;
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-name {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #8c816f;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .contact-phone a {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .contact-phone a:hover {
+            color: #cca450;
+        }
+
+        .panel-box p {
+            color: #a8a090;
+            font-size: 0.9rem;
+            margin: 0 0 1.25rem 0;
+            line-height: 1.4;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            background: #0f0f0d;
+            border: 1px solid #3a3326;
+            border-radius: 4px;
+            color: #fff;
+            padding: 0.75rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: none;
+            height: 70px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #cca450;
+        }
+
+        .ai-btn {
+            background: linear-gradient(to bottom, #f3dfa2, #cca450);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            padding: 0.75rem;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .ai-btn:hover {
+            opacity: 0.9;
+        }
+
+        .ai-response {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #3a3326;
+            color: #ddd;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            display: none;
+        }
+
+        .gallery-container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(12, 12, 12, 0.85);
+            border: 1px solid #262118;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .gallery-container h2 {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin: 0 0 1.25rem 0;
+            color: #f3dfa2;
+            text-transform: uppercase;
+            border-bottom: 1px solid #262118;
+            padding-bottom: 0.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 4px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            border-color: #cca450;
+            transform: scale(1.01);
+        }
+
+        .gallery-placeholder {
+            color: #555;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            border-top: 1px solid #111111;
+            padding: 1.5rem 1rem;
+            border-top: 1px solid #161616;
             color: #444444;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 1px;
+            margin-top: 3rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Desktop Layout Refinement */
+        @media (min-width: 769px) {
+            header { padding: 2rem; .logo { font-size: 1.5rem; } }
+            .container { padding: 4rem 2rem; }
+            h1 { font-size: 4.8rem; letter-spacing: 3px; line-height: 1.1; white-space: nowrap; width: auto; }
+            .subtext { font-size: 1.3rem; letter-spacing: 5px; margin-bottom: 4rem; }
+            .grid-layout { flex-direction: row; gap: 2rem; }
+            .panel-box { padding: 2.5rem; h2 { font-size: 1.8rem; } p { font-size: 0.95rem; } }
+            .gallery-container { padding: 2.5rem; h2 { font-size: 1.8rem; } }
+            .gallery-grid { gap: 1.5rem; }
+            .gallery-item { height: 200px; }
+            footer { padding: 2rem; font-size: 0.8rem; margin-top: 4rem; }
         }
     </style>
 </head>
@@ -112,6 +318,47 @@
     <div class="container">
         <h1>ITS NOT JUST IRON ...<br>ITS "FREQUENCY 528" IRON</h1>
         <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
+
+        <div class="grid-layout">
+            <div class="panel-box">
+                <h2>Direct Line</h2>
+                <div class="contact-item">
+                    <div class="contact-name">Shane Cavender</div>
+                    <div class="contact-phone"><a href="tel:404-807-5409">404-807-5409</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-name">Heylee</div>
+                    <div class="contact-phone"><a href="tel:478-331-8547">478-331-8547</a></div>
+                </div>
+            </div>
+
+            <div class="panel-box">
+                <h2>AI Design Assistant</h2>
+                <p>Describe your vision (e.g., "A modern geometric gate with heavy industrial steel lines") to bring your project configuration to life.</p>
+                
+                <div class="input-group">
+                    <textarea id="aiInput" placeholder="Describe the ironwork structure you want..."></textarea>
+                    <button class="ai-btn" onclick="generateConcept()">Visualize</button>
+                </div>
+
+                <div class="ai-response" id="aiResponse"></div>
+            </div>
+        </div>
+
+        <div class="gallery-container">
+            <h2>Craftsmanship Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">Custom Gates<br><span style="color:#333; font-size:0.75rem;">[Photo Slot 1]</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">Industrial Railings<br><span style="color:#333; font-size:0.75rem;">[Photo Slot 2]</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">Architectural Iron<br><span style="color:#333; font-size:0.75rem;">[Photo Slot 3]</span></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -131,7 +378,6 @@
             oscillator.type = 'sine';
             oscillator.frequency.setValueAtTime(528, audioCtx.currentTime);
 
-            // Audio strikes immediately and dissolves completely over 3 seconds
             gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3); 
 
@@ -139,11 +385,25 @@
             gainNode.connect(audioCtx.destination);
             
             oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 3); // Cuts the feed entirely at 3 seconds
+            oscillator.stop(audioCtx.currentTime + 3); 
         }
 
         window.addEventListener('click', startFrequency);
         window.addEventListener('touchstart', startFrequency);
+
+        function generateConcept() {
+            const input = document.getElementById('aiInput').value;
+            const responseBox = document.getElementById('aiResponse');
+            
+            if(!input.trim()) return;
+
+            responseBox.style.display = "block";
+            responseBox.innerHTML = "<em>Analyzing design frequency & blueprinting metal layout...</em>";
+            
+            setTimeout(() => {
+                responseBox.innerHTML = `<strong>Fabrication Concept:</strong><br>Your idea for "${input}" integrates flawlessly with heavy structural iron styling. For this custom 528 project, we recommend thick gauge industrial steel borders paired with sleek geometric layout lines to preserve structural frequency and ultimate premium curb appeal. Give Shane or Heylee a call above to review this blueprint layout!`;
+            }, 1500);
+        }
     </script>
 
 </body>
