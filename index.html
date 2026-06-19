@@ -7,9 +7,8 @@
     <style>
         :root {
             --bg-black: #050505; 
-            --shadow-gray: #1a1a1a; 
-            --sub-gray: #a39073; /* Muted brass for accents */
-            --glow-color: rgba(224, 169, 74, 0.35); /* Hot brass forge glow */
+            --shadow-gray: #222222; 
+            --sub-gray: #888888;
         }
 
         body {
@@ -28,7 +27,7 @@
         header {
             padding: 2rem;
             text-align: left;
-            border-bottom: 1px solid #161616;
+            border-bottom: 1px solid #111111;
         }
 
         .logo {
@@ -39,7 +38,7 @@
         }
 
         .logo span {
-            color: #bfa16f; /* Brass logo accent */
+            color: #888;
         }
 
         .container {
@@ -48,25 +47,25 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 4rem 2rem;
+            padding: 2rem;
             text-align: center;
         }
 
         @keyframes frequencyWave {
             0% {
                 transform: scale(0.96) skewX(-4deg);
-                filter: drop-shadow(0 0 15px var(--glow-color)) drop-shadow(2px 2px 3px var(--shadow-gray));
-                opacity: 0.9;
+                filter: drop-shadow(2px 2px 3px var(--shadow-gray)) blur(0.5px);
+                opacity: 0.85;
             }
             50% {
                 transform: scale(1.03) skewX(4deg);
-                filter: drop-shadow(0 0 35px rgba(240, 192, 108, 0.6)) drop-shadow(4px 4px 10px #000000);
+                filter: drop-shadow(6px 6px 25px rgba(255, 255, 255, 0.4)) drop-shadow(4px 4px 5px var(--shadow-gray));
                 opacity: 1;
             }
             100% {
                 transform: scale(0.96) skewX(-4deg);
-                filter: drop-shadow(0 0 15px var(--glow-color)) drop-shadow(2px 2px 3px var(--shadow-gray));
-                opacity: 0.9;
+                filter: drop-shadow(2px 2px 3px var(--shadow-gray)) blur(0.5px);
+                opacity: 0.85;
             }
         }
 
@@ -77,8 +76,7 @@
             letter-spacing: 3px;
             margin: 0 0 2.5rem 0;
             text-transform: uppercase;
-            /* Industrial Metallic Brass Gradient */
-            background: linear-gradient(to bottom, #ffffff 0%, #f3dfa2 30%, #cca450 55%, #ae802b 75%, #ecc670 100%);
+            background: linear-gradient(to bottom, #ffffff 0%, #e1e1e1 40%, #a1a1a1 50%, #f1f1f1 60%, #bcbcbc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
@@ -92,143 +90,16 @@
             color: var(--sub-gray);
             letter-spacing: 5px;
             text-transform: uppercase;
-            margin: 0 0 4rem 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        /* Two Column Layout */
-        .grid-layout {
-            display: flex;
-            gap: 2rem;
-            width: 100%;
-            max-width: 900px;
-            text-align: left;
-            box-sizing: border-box;
-        }
-
-        .panel-box {
-            flex: 1;
-            background: rgba(12, 12, 12, 0.85);
-            border: 1px solid #262118; /* Dark brass tint border */
-            border-radius: 8px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            box-sizing: border-box;
-        }
-
-        .panel-box h2 {
-            font-family: 'Impact', sans-serif;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
-            margin: 0 0 1rem 0;
-            color: #f3dfa2; /* Brass section title */
-            text-transform: uppercase;
-            border-bottom: 1px solid #262118;
-            padding-bottom: 0.5rem;
-        }
-
-        /* Contact Details Info */
-        .contact-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #8c816f;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0 0 0.25rem 0;
-        }
-
-        .contact-phone a {
-            color: #ffffff;
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: color 0.2s;
-        }
-
-        .contact-phone a:hover {
-            color: #cca450;
-        }
-
-        /* AI Interactive Section */
-        .panel-box p {
-            color: #a8a090;
-            font-size: 0.95rem;
-            margin: 0 0 1.5rem 0;
-            line-height: 1.4;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        textarea {
-            width: 100%;
-            background: #0f0f0d;
-            border: 1px solid #3a3326;
-            border-radius: 4px;
-            color: #fff;
-            padding: 1rem;
-            font-family: inherit;
-            font-size: 1rem;
-            resize: none;
-            height: 60px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #cca450;
-        }
-
-        .ai-btn {
-            background: linear-gradient(to bottom, #f3dfa2, #cca450);
-            color: #000;
-            border: none;
-            border-radius: 4px;
-            padding: 0.8rem;
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .ai-btn:hover {
-            opacity: 0.9;
-        }
-
-        .ai-response {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #3a3326;
-            color: #ddd;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            display: none;
+            margin: 0;
         }
 
         footer {
             text-align: center;
             padding: 2rem;
-            border-top: 1px solid #161616;
+            border-top: 1px solid #111111;
             color: #444444;
             font-size: 0.8rem;
             letter-spacing: 1px;
-        }
-
-        @media (max-width: 768px) {
-            .grid-layout {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
@@ -241,34 +112,6 @@
     <div class="container">
         <h1>ITS NOT JUST IRON ...<br>ITS "FREQUENCY 528" IRON</h1>
         <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
-
-        <div class="grid-layout">
-            
-            <div class="panel-box">
-                <h2>Direct Line</h2>
-                <div class="contact-item">
-                    <div class="contact-name">Shane Cavender</div>
-                    <div class="contact-phone"><a href="tel:404-807-5409">404-807-5409</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-name">Heylee</div>
-                    <div class="contact-phone"><a href="tel:478-331-8547">478-331-8547</a></div>
-                </div>
-            </div>
-
-            <div class="panel-box">
-                <h2>AI Design Assistant</h2>
-                <p>Describe your vision (e.g., "A modern geometric gate with heavy industrial steel lines") to bring your project configuration to life.</p>
-                
-                <div class="input-group">
-                    <textarea id="aiInput" placeholder="Describe the ironwork structure you want..."></textarea>
-                    <button class="ai-btn" onclick="generateConcept()">Visualize</button>
-                </div>
-
-                <div class="ai-response" id="aiResponse"></div>
-            </div>
-
-        </div>
     </div>
 
     <footer>
@@ -276,7 +119,6 @@
     </footer>
 
     <script>
-        // Audio Engine
         let audioCtx = null;
 
         function startFrequency() {
@@ -289,6 +131,7 @@
             oscillator.type = 'sine';
             oscillator.frequency.setValueAtTime(528, audioCtx.currentTime);
 
+            // Audio strikes immediately and dissolves completely over 3 seconds
             gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3); 
 
@@ -296,26 +139,11 @@
             gainNode.connect(audioCtx.destination);
             
             oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 3); 
+            oscillator.stop(audioCtx.currentTime + 3); // Cuts the feed entirely at 3 seconds
         }
 
         window.addEventListener('click', startFrequency);
         window.addEventListener('touchstart', startFrequency);
-
-        // Interactive Response Simulation
-        function generateConcept() {
-            const input = document.getElementById('aiInput').value;
-            const responseBox = document.getElementById('aiResponse');
-            
-            if(!input.trim()) return;
-
-            responseBox.style.display = "block";
-            responseBox.innerHTML = "<em>Analyzing design frequency & blueprinting metal layout...</em>";
-            
-            setTimeout(() => {
-                responseBox.innerHTML = `<strong>Fabrication Concept:</strong><br>Your idea for "${input}" integrates flawlessly with heavy structural iron styling. For this custom 528 project, we recommend thick gauge industrial steel borders paired with sleek geometric layout lines to preserve structural frequency and ultimate premium curb appeal. Give Shane or Heylee a call above to review this blueprint layout!`;
-            }, 1500);
-        }
     </script>
 
 </body>
