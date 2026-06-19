@@ -6,18 +6,17 @@
     <title>Frequency 528 Iron Works</title>
     <style>
         :root {
-            --bg-color: #ffffff; /* White background */
-            --text-color: #000000; /* Bold Black text */
-            --ice-blue: #a3e5ff; /* Icy Water Blue */
-            --border-color: #111111;
+            --bg-tan: #d2b48c; /* Rugged Tan Background */
+            --blood-red: #660000; /* Dark Blood Red Text */
+            --charcoal-black: #111111; /* Deep Black Shadow */
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-tan);
+            color: var(--blood-red);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -26,18 +25,18 @@
         header {
             padding: 2rem;
             text-align: left;
-            border-bottom: 1px solid #eeeeee;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .logo {
             font-family: 'Impact', Arial, sans-serif;
             font-size: 1.5rem;
             letter-spacing: 2px;
-            color: #000;
+            color: var(--blood-red);
         }
 
         .logo span {
-            color: #333;
+            color: #000;
         }
 
         .container {
@@ -52,34 +51,33 @@
 
         /* Business Card Oval Stamp Layout */
         .stamp-card {
-            border: 4px solid var(--border-color);
-            border-radius: 50%; /* Makes it a perfect oval stamp */
-            padding: 4rem 6rem;
-            max-width: 700px;
-            background: #ffffff;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+            border: 4px solid var(--blood-red);
+            border-radius: 50%; /* Keeps the custom oval stamp shape */
+            padding: 4rem 5rem;
+            max-width: 750px;
+            background: transparent;
             display: inline-block;
         }
 
         h1 {
             font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: 3.5rem;
+            font-size: 2.8rem; /* Slightly smaller to guarantee perfect centering */
             line-height: 1.2;
             letter-spacing: 2px;
             margin: 0 0 1.5rem 0;
-            color: var(--text-color);
+            color: var(--blood-red);
             text-transform: uppercase;
         }
 
-        /* Icy Water Blue Shadow Effect */
+        /* Dark Black Shadow Effect on the Bold Font */
         .highlight {
-            text-shadow: 0px 0px 15px var(--ice-blue), 3px 3px 0px var(--ice-blue);
+            text-shadow: 2px 2px 4px var(--charcoal-black), -1px -1px 0 var(--charcoal-black), 1px -1px 0 var(--charcoal-black), -1px 1px 0 var(--charcoal-black), 1px 1px 0 var(--charcoal-black);
         }
 
         .subtext {
             font-size: 1.1rem;
             font-weight: bold;
-            color: #333333;
+            color: #111111;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin: 0;
@@ -88,8 +86,8 @@
         footer {
             text-align: center;
             padding: 2rem;
-            border-top: 1px solid #eeeeee;
-            color: #666666;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: #333333;
             font-size: 0.8rem;
             letter-spacing: 1px;
         }
