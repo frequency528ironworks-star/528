@@ -120,26 +120,26 @@
 
     <script>
         let audioCtx = null;
-        let oscillator = null;
-        let gainNode = null;
 
         function startFrequency() {
             if (audioCtx) return; 
 
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            oscillator = audioCtx.createOscillator();
-            gainNode = audioCtx.createGain();
+            let oscillator = audioCtx.createOscillator();
+            let gainNode = audioCtx.createGain();
 
             oscillator.type = 'sine';
             oscillator.frequency.setValueAtTime(528, audioCtx.currentTime);
 
-            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 2); 
+            // Volume hits immediately, then dissolves exponentially over 3 seconds
+            gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3); 
 
             oscillator.connect(gainNode);
             gainNode.connect(audioCtx.destination);
             
             oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 3); // Cuts the feed completely at 3 seconds
         }
 
         window.addEventListener('click', startFrequency);
