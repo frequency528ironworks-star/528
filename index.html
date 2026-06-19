@@ -4,43 +4,279 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Frequency-528 Iron Works</title>
-  <meta name="description" content="Frequency-528 Iron Works website" />
+  <meta name="description" content="Frequency-528 Iron Works — Custom metalwork, design consulting, and digital resources for iron craftsmen and collectors." />
   <style>
-    body { font-family: system-ui, -apple-system, Arial, sans-serif; color:#111; margin:0; padding:2rem; background:#f7f7f7 }
-    .container{max-width:900px;margin:0 auto;background:#fff;padding:2rem;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-    header h1{margin:0 0 .25rem}
-    p.lead{color:#444}
-    footer{margin-top:2rem;color:#666;font-size:.9rem}
-    .notice{background:#fff8e1;border-left:4px solid #ffd54f;padding:1rem;margin:1rem 0}
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --black:   #111;
+      --iron:    #2b2b2b;
+      --rust:    #b94a1b;
+      --gold:    #c49a1a;
+      --light:   #f5f3ef;
+      --white:   #fff;
+      --radius:  6px;
+      --shadow:  0 4px 18px rgba(0,0,0,0.10);
+    }
+
+    body { margin:0; font-family: system-ui, -apple-system, Arial, sans-serif; background:var(--light); color:var(--black); }
+
+    /* ── NAV ── */
+    nav {
+      background:var(--iron);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.85rem 2rem; position:sticky; top:0; z-index:100;
+    }
+    nav .logo { color:var(--gold); font-size:1.2rem; font-weight:700; text-decoration:none; letter-spacing:.04em; }
+    nav ul { list-style:none; margin:0; padding:0; display:flex; gap:1.5rem; }
+    nav a { color:#ccc; text-decoration:none; font-size:.93rem; }
+    nav a:hover { color:var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--iron) 60%, #3d2b1b 100%);
+      color:var(--white); text-align:center; padding:5rem 2rem 4rem;
+    }
+    .hero h1 { font-size:clamp(2rem,5vw,3.2rem); margin:0 0 1rem; letter-spacing:.03em; }
+    .hero h1 span { color:var(--gold); }
+    .hero p { font-size:1.1rem; color:#ccc; max-width:600px; margin:0 auto 2rem; }
+    .btn {
+      display:inline-block; padding:.75rem 2rem; border-radius:var(--radius);
+      font-weight:600; font-size:1rem; cursor:pointer; text-decoration:none;
+      transition:opacity .15s;
+    }
+    .btn:hover { opacity:.85; }
+    .btn-primary { background:var(--rust); color:var(--white); border:none; }
+    .btn-outline { background:transparent; color:var(--gold); border:2px solid var(--gold); margin-left:.75rem; }
+
+    /* ── SECTIONS ── */
+    section { padding:4rem 2rem; }
+    section:nth-child(even) { background:var(--white); }
+    .section-inner { max-width:960px; margin:0 auto; }
+    h2 { font-size:1.8rem; color:var(--iron); margin:0 0 .5rem; }
+    h2 span { color:var(--rust); }
+    .subtitle { color:#666; margin:0 0 2rem; }
+
+    /* ── SERVICES ── */
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; }
+    .card {
+      background:var(--light); border-radius:var(--radius); padding:1.5rem;
+      border-top:4px solid var(--gold); box-shadow:var(--shadow);
+    }
+    .card h3 { margin:0 0 .5rem; color:var(--iron); }
+    .card p  { margin:0; color:#555; font-size:.93rem; }
+
+    /* ── STORE ── */
+    .tab-bar { display:flex; gap:.75rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+    .tab-btn {
+      padding:.45rem 1.1rem; border:2px solid var(--iron); border-radius:20px;
+      background:transparent; cursor:pointer; font-size:.9rem; font-weight:600; color:var(--iron);
+      transition:all .15s;
+    }
+    .tab-btn.active, .tab-btn:hover { background:var(--iron); color:var(--white); }
+
+    .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; }
+    .product-card {
+      background:var(--white); border-radius:var(--radius); padding:1.5rem;
+      box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.75rem;
+      border-top:3px solid var(--rust);
+    }
+    .product-card h3 { margin:0; color:var(--iron); }
+    .product-card p  { margin:0; color:#555; font-size:.9rem; flex:1; }
+    .price { font-size:1.3rem; font-weight:700; color:var(--rust); }
+    .add-to-cart {
+      padding:.6rem 1rem; background:var(--rust); color:var(--white);
+      border:none; border-radius:var(--radius); cursor:pointer; font-weight:600;
+      transition:opacity .15s;
+    }
+    .add-to-cart:hover { opacity:.85; }
+
+    /* ── CART ── */
+    .cart-panel { background:var(--light); border-radius:var(--radius); padding:1.5rem; margin-top:2rem; box-shadow:var(--shadow); }
+    .cart-panel h3 { margin:0 0 1rem; }
+    #cartItems { min-height:60px; }
+    .empty-cart { color:#888; font-style:italic; }
+    .cart-item {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:.6rem 0; border-bottom:1px solid #ddd;
+    }
+    .cart-item-info h4 { margin:0; font-size:.95rem; }
+    .cart-item-info p  { margin:0; font-size:.8rem; color:#777; }
+    .cart-item-price { font-weight:700; color:var(--rust); margin-right:.75rem; }
+    .remove-btn {
+      background:none; border:1px solid #ccc; border-radius:4px; padding:.2rem .6rem;
+      cursor:pointer; font-size:.8rem; color:#666;
+    }
+    .cart-summary { margin-top:1rem; text-align:right; }
+    .cart-summary p { margin:.25rem 0; color:#555; }
+    .cart-summary strong { color:var(--iron); }
+    #checkoutBtn { margin-top:.75rem; }
+
+    /* ── AI CHAT ── */
+    .chat-wrap { max-width:640px; margin:0 auto; }
+    #chatMessages {
+      background:var(--white); border:1px solid #ddd; border-radius:var(--radius);
+      padding:1rem; height:300px; overflow-y:auto; margin-bottom:1rem;
+    }
+    .message { margin:.6rem 0; }
+    .user-message p  { background:var(--iron); color:var(--white); padding:.6rem 1rem; border-radius:18px 18px 4px 18px; display:inline-block; margin:0; max-width:80%; }
+    .ai-message   p  { background:#e9e9e9; color:var(--black); padding:.6rem 1rem; border-radius:18px 18px 18px 4px; display:inline-block; margin:0; max-width:80%; }
+    .user-message { text-align:right; }
+    .chat-input { display:flex; gap:.5rem; }
+    #userInput { flex:1; padding:.65rem 1rem; border:1px solid #ccc; border-radius:var(--radius); font-size:1rem; }
+    #sendBtn { padding:.65rem 1.4rem; background:var(--rust); color:var(--white); border:none; border-radius:var(--radius); cursor:pointer; font-weight:600; }
+
+    /* ── NEWSLETTER ── */
+    #newsletterForm { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem; }
+    #newsletterForm input[type="email"] {
+      flex:1; min-width:220px; padding:.7rem 1rem; border:1px solid #ccc;
+      border-radius:var(--radius); font-size:1rem;
+    }
+    #newsletterForm button { padding:.7rem 1.5rem; background:var(--gold); color:var(--white); border:none; border-radius:var(--radius); cursor:pointer; font-weight:700; }
+
+    /* ── FOOTER ── */
+    footer { background:var(--iron); color:#aaa; text-align:center; padding:2rem; font-size:.9rem; }
+    footer a { color:var(--gold); text-decoration:none; }
+
+    @media(max-width:600px){
+      nav ul { display:none; }
+      .hero { padding:3.5rem 1.25rem 3rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Frequency-528 Iron Works</h1>
-      <p class="lead">Welcome — this is a minimal homepage added so GitHub Pages can serve your site.</p>
-    </header>
 
-    <section>
-      <p>If you expected a full site, make sure your build output (index.html and assets) is committed to the <code>main</code> branch or configure Pages to use the correct branch/folder.</p>
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="#">⚒ Frequency-528 Iron Works</a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#store">Store</a></li>
+      <li><a href="#ai-chat">Design AI</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-      <div class="notice">
-        <strong>Custom domain:</strong> I added a CNAME file with <code>frequency528ironworks.com</code> to this repo so GitHub Pages will use your domain once DNS is pointed here.
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Crafted in <span>Iron</span>, Tuned to <span>528</span></h1>
+    <p>Custom metalwork, architectural ironwork, and digital resources — built with precision, passion, and purpose.</p>
+    <a href="#store" class="btn btn-primary">Shop Now</a>
+    <a href="#ai-chat" class="btn btn-outline">Design with AI</a>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <h2>What We <span>Do</span></h2>
+      <p class="subtitle">Handcrafted ironwork and design consulting for every project.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Architectural Gates</h3>
+          <p>Custom entry gates, driveway gates, and security fencing forged to your specs.</p>
+        </div>
+        <div class="card">
+          <h3>Railings &amp; Balustrades</h3>
+          <p>Interior and exterior railings — stair, balcony, and deck — built to last generations.</p>
+        </div>
+        <div class="card">
+          <h3>Decorative Ironwork</h3>
+          <p>Furniture, art pieces, candle holders, fire features, and bespoke interior elements.</p>
+        </div>
+        <div class="card">
+          <h3>Design Consulting</h3>
+          <p>From concept sketch to finished install — our team guides you every step of the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORE -->
+  <section id="store">
+    <div class="section-inner">
+      <h2>Our <span>Store</span></h2>
+      <p class="subtitle">Digital guides, design packs, and art prints for iron enthusiasts.</p>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="filterProducts('all')">All</button>
+        <button class="tab-btn" onclick="filterProducts('ebook')">eBooks</button>
+        <button class="tab-btn" onclick="filterProducts('art')">Digital Art</button>
       </div>
 
-      <p>Included scripts in this repo (if used by your pages):</p>
-      <ul>
-        <li><code>ai-design.js</code></li>
-        <li><code>store.js</code></li>
-      </ul>
+      <div class="products">
+        <div class="product-card" data-category="ebook">
+          <h3>Iron Works Mastery Guide</h3>
+          <p>A comprehensive 80-page eBook covering tools, techniques, and finishes for professional iron fabrication.</p>
+          <span class="price">$29.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="ebook">
+          <h3>Gate Design Blueprint Pack</h3>
+          <p>25 ready-to-use CAD-inspired gate blueprints spanning classic, contemporary, and ornate styles.</p>
+          <span class="price">$39.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="art">
+          <h3>Forged Textures Vol. 1</h3>
+          <p>High-resolution digital art prints featuring raw iron, rust, and forge textures — perfect for framing or branding.</p>
+          <span class="price">$19.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="art">
+          <h3>528 Hz Iron Poster</h3>
+          <p>Artistic print merging sacred geometry with iron-forge aesthetics. Available in 3 colorways.</p>
+          <span class="price">$15.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
 
-      <p>If you want, I can replace this page with your actual site content or deploy a built app — tell me how you want it to look.</p>
-    </section>
+      <!-- CART -->
+      <div class="cart-panel">
+        <h3>🛒 Your Cart</h3>
+        <div id="cartItems"><p class="empty-cart">Your cart is empty. Add items to get started!</p></div>
+        <div class="cart-summary">
+          <p>Subtotal: <strong id="subtotal">$0.00</strong></p>
+          <p>Tax (8%): <strong id="tax">$0.00</strong></p>
+          <p style="font-size:1.1rem;">Total: <strong id="total">$0.00</strong></p>
+          <button id="checkoutBtn" class="btn btn-primary">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <p>Next steps: point your domain DNS to GitHub Pages (see SETUP_GUIDE.md), then wait for propagation and enable HTTPS in Pages settings.</p>
-    </footer>
-  </div>
+  <!-- AI DESIGN CHAT -->
+  <section id="ai-chat">
+    <div class="section-inner">
+      <h2>AI Design <span>Assistant</span></h2>
+      <p class="subtitle">Tell us your vision — our AI design assistant will guide you through the process.</p>
+      <div class="chat-wrap">
+        <div id="chatMessages">
+          <div class="message ai-message"><p>👋 Welcome to Frequency-528 Iron Works! Tell me about the iron piece you're envisioning and I'll help guide your design.</p></div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="userInput" placeholder="Describe your project idea…" autocomplete="off" />
+          <button id="sendBtn">Send</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER / CONTACT -->
+  <section id="contact" style="background:var(--iron);color:var(--white);">
+    <div class="section-inner" style="text-align:center;">
+      <h2 style="color:var(--gold);">Stay <span style="color:var(--white);">Connected</span></h2>
+      <p style="color:#ccc;margin-bottom:.5rem;">Get project inspiration, new product drops, and ironwork tips straight to your inbox.</p>
+      <form id="newsletterForm">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p style="margin-top:2rem;color:#aaa;">Questions? Email us at <a href="mailto:hello@frequency528ironworks.com" style="color:var(--gold);">hello@frequency528ironworks.com</a></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <strong>Frequency-528 Iron Works</strong> &mdash; <a href="https://frequency528ironworks.com">frequency528ironworks.com</a></p>
+  </footer>
 
   <script src="ai-design.js"></script>
   <script src="store.js"></script>
