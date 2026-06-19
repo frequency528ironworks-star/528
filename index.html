@@ -47,7 +47,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
             text-align: center;
         }
 
@@ -90,7 +90,127 @@
             color: var(--sub-gray);
             letter-spacing: 5px;
             text-transform: uppercase;
-            margin: 0;
+            margin: 0 0 4rem 0;
+        }
+
+        /* Two Column Layout */
+        .grid-layout {
+            display: flex;
+            gap: 2rem;
+            width: 100%;
+            max-width: 900px;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .panel-box {
+            flex: 1;
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            box-sizing: border-box;
+        }
+
+        .panel-box h2 {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin: 0 0 1rem 0;
+            color: #ffffff;
+            text-transform: uppercase;
+            border-bottom: 1px solid #222;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Contact Details Info */
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .contact-phone a {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .contact-phone a:hover {
+            color: #888;
+        }
+
+        /* AI Interactive Section */
+        .panel-box p {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.4;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #fff;
+            padding: 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: none;
+            height: 60px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #666;
+        }
+
+        .ai-btn {
+            background: linear-gradient(to bottom, #ffffff, #b5b5b5);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            padding: 0.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .ai-btn:hover {
+            opacity: 0.9;
+        }
+
+        .ai-response {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #222;
+            color: #ddd;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: none;
         }
 
         footer {
@@ -100,6 +220,13 @@
             color: #444444;
             font-size: 0.8rem;
             letter-spacing: 1px;
+        }
+
+        /* Responsive Fix for Phones */
+        @media (max-width: 768px) {
+            .grid-layout {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -112,6 +239,34 @@
     <div class="container">
         <h1>ITS NOT JUST IRON ...<br>ITS "FREQUENCY 528" IRON</h1>
         <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
+
+        <div class="grid-layout">
+            
+            <div class="panel-box">
+                <h2>Direct Line</h2>
+                <div class="contact-item">
+                    <div class="contact-name">Shane Cavender</div>
+                    <div class="contact-phone"><a href="tel:404-807-5409">404-807-5409</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-name">Heylee</div>
+                    <div class="contact-phone"><a href="tel:478-331-8547">478-331-8547</a></div>
+                </div>
+            </div>
+
+            <div class="panel-box">
+                <h2>AI Design Assistant</h2>
+                <p>Describe your vision (e.g., "A modern geometric gate with heavy industrial steel lines") to bring your project configuration to life.</p>
+                
+                <div class="input-group">
+                    <textarea id="aiInput" placeholder="Describe the ironwork structure you want..."></textarea>
+                    <button class="ai-btn" onclick="generateConcept()">Visualize</button>
+                </div>
+
+                <div class="ai-response" id="aiResponse"></div>
+            </div>
+
+        </div>
     </div>
 
     <footer>
@@ -119,6 +274,7 @@
     </footer>
 
     <script>
+        // Audio Engine
         let audioCtx = null;
 
         function startFrequency() {
@@ -131,7 +287,6 @@
             oscillator.type = 'sine';
             oscillator.frequency.setValueAtTime(528, audioCtx.currentTime);
 
-            // Volume hits immediately, then dissolves exponentially over 3 seconds
             gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3); 
 
@@ -139,11 +294,26 @@
             gainNode.connect(audioCtx.destination);
             
             oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 3); // Cuts the feed completely at 3 seconds
+            oscillator.stop(audioCtx.currentTime + 3); 
         }
 
         window.addEventListener('click', startFrequency);
         window.addEventListener('touchstart', startFrequency);
+
+        // Interactive Response Simulation
+        function generateConcept() {
+            const input = document.getElementById('aiInput').value;
+            const responseBox = document.getElementById('aiResponse');
+            
+            if(!input.trim()) return;
+
+            responseBox.style.display = "block";
+            responseBox.innerHTML = "<em>Analyzing design frequency & blueprinting metal layout...</em>";
+            
+            setTimeout(() => {
+                responseBox.innerHTML = `<strong>Fabrication Concept:</strong><br>Your idea for "${input}" integrates flawlessly with heavy structural iron styling. For this custom 528 project, we recommend thick gauge industrial steel borders paired with sleek geometric layout lines to preserve structural frequency and ultimate premium curb appeal. Give Shane or Heylee a call above to review this blueprint layout!`;
+            }, 1500);
+        }
     </script>
 
 </body>
