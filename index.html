@@ -1,48 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Frequency-528 Iron Works</title>
-  <meta name="description" content="Frequency-528 Iron Works website" />
-  <style>
-    body { font-family: system-ui, -apple-system, Arial, sans-serif; color:#111; margin:0; padding:2rem; background:#f7f7f7 }
-    .container{max-width:900px;margin:0 auto;background:#fff;padding:2rem;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-    header h1{margin:0 0 .25rem}
-    p.lead{color:#444}
-    footer{margin-top:2rem;color:#666;font-size:.9rem}
-    .notice{background:#fff8e1;border-left:4px solid #ffd54f;padding:1rem;margin:1rem 0}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequency 528 Iron Works</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --text-color: #ffffff;
+            --accent-orange: #ff5500;
+            --muted-text: #888888;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-family: 'Impact', Arial, sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-size: 3.8rem;
+            line-height: 1.2;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .highlight {
+            color: var(--accent-orange);
+            text-shadow: 0px 0px 25px rgba(255, 85, 0, 0.7);
+        }
+
+        .subtext {
+            font-size: 1.2rem;
+            color: var(--muted-text);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--muted-text);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
+
     <header>
-      <h1>Frequency-528 Iron Works</h1>
-      <p class="lead">Welcome — this is a minimal homepage added so GitHub Pages can serve your site.</p>
+        <div class="logo">FREQUENCY-<span>528</span> // IRON WORKS</div>
     </header>
 
-    <section>
-      <p>If you expected a full site, make sure your build output (index.html and assets) is committed to the <code>main</code> branch or configure Pages to use the correct branch/folder.</p>
-
-      <div class="notice">
-        <strong>Custom domain:</strong> I added a CNAME file with <code>frequency528ironworks.com</code> to this repo so GitHub Pages will use your domain once DNS is pointed here.
-      </div>
-
-      <p>Included scripts in this repo (if used by your pages):</p>
-      <ul>
-        <li><code>ai-design.js</code></li>
-        <li><code>store.js</code></li>
-      </ul>
-
-      <p>If you want, I can replace this page with your actual site content or deploy a built app — tell me how you want it to look.</p>
-    </section>
+    <div class="container">
+        <h1>ITS NOT JUST IRON ...<br>ITS <span class="highlight">"FREQUENCY 528"</span> IRON</h1>
+        <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
+    </div>
 
     <footer>
-      <p>Next steps: point your domain DNS to GitHub Pages (see SETUP_GUIDE.md), then wait for propagation and enable HTTPS in Pages settings.</p>
+        &copy; 2026 FREQUENCY 528 IRON WORKS. ALL RIGHTS RESERVED.
     </footer>
-  </div>
 
-  <script src="ai-design.js"></script>
-  <script src="store.js"></script>
 </body>
 </html>
