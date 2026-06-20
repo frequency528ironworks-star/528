@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT NOT JUST IRON...ITS FREQUENCY 528 IRON</title>
     
-    <!-- Premium Google Font: Inter (Light, Regular, Medium, Bold) -->
+    <!-- Premium Google Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     
     <style>
         /* --- CORE CONFIGURATION & RESET --- */
@@ -24,10 +24,10 @@
         }
 
         body {
-            background-color: #0a0a0a; /* True Deep Black Background */
+            background-color: #0a0a0a;
             color: #e5e5e5;
-            line-height: 1.6;
-            padding-top: 140px; /* Offset to clear the premium deep header layout */
+            line-height: 1.5;
+            padding-top: 180px; /* Space for the deep fixed header */
             overflow-x: hidden;
         }
 
@@ -37,29 +37,32 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 140px;
+            min-height: 140px;
             background-color: #000000;
-            border-bottom: 2px solid #bba15c; /* Subdued brass/gold structural boundary line */
+            border-bottom: 2px solid #bba15c;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 4%;
+            justify-content: center;
+            padding: 12px 20px;
             z-index: 999999;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
 
-        /* Nav Quick Links (Left Anchor) */
+        /* Nav Quick Links (Top Layout Layer) */
         .header-nav-left {
             display: flex;
-            gap: 20px;
-            flex: 1;
+            gap: 15px;
+            margin-bottom: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .header-nav-left a {
             color: #aaaaaa;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color 0.2s ease;
@@ -69,52 +72,55 @@
             color: #d4af37;
         }
 
-        /* Centered Dynamic Logo Structure */
+        /* Lowered & Centered Dynamic Logo Structure */
         .logo-container {
             text-align: center;
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            width: 100%;
+            margin-top: 4px;
+            margin-bottom: 10px;
         }
 
         .main-logo-text {
             font-weight: 900;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
             text-transform: uppercase;
             background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.2);
-            animation: pulseFontSize 8s infinite ease-in-out;
-            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            display: inline-block;
+            line-height: 1.2;
+            
+            /* Big -> Small -> Slowly back to Big Animation Loop */
+            animation: customPulse 7s infinite ease-in-out;
         }
 
-        /* Breathing logo dynamic scale loop (Large -> Small -> Large) */
-        @keyframes pulseFontSize {
-            0% { font-size: 1.95rem; }
-            50% { font-size: 1.55rem; }
-            100% { font-size: 1.95rem; }
+        @keyframes customPulse {
+            0% { transform: scale(1.15); }
+            35% { transform: scale(0.85); }
+            100% { transform: scale(1.15); }
         }
 
-        /* Right Anchor Contact Panel Block */
+        /* Bottom Anchor Contact Panel Block */
         .header-contact-right {
-            flex: 1;
-            text-align: right;
+            width: 100%;
+            text-align: center;
             display: flex;
-            flex-direction: column;
-            gap: 2px;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-top: 1px solid #111111;
+            padding-top: 6px;
         }
 
         .contact-line {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #ffffff;
-            font-weight: 400;
         }
 
         .contact-line span {
-            color: #d4af37; /* Brass accent text highlights */
+            color: #d4af37;
             font-weight: 600;
         }
 
@@ -122,42 +128,32 @@
             font-size: 0.8rem;
             color: #aaaaaa;
             text-decoration: none;
-            margin-top: 4px;
-            transition: color 0.2s;
-        }
-
-        .contact-email-link:hover {
-            color: #ffffff;
         }
 
         /* --- MAIN FREEFORM WORKSPACE CANVAS --- */
         .freeform-canvas {
             position: relative;
             width: 100%;
-            max-width: 1300px;
+            max-width: 1100px; /* Snugger layout constraint for cleaner laptop reading */
             margin: 0 auto;
-            padding: 40px 4%;
+            padding: 20px 15px;
         }
 
-        /* --- CORE MODULE CONTAINER SYSTEM --- */
+        /* --- COMPACT & MOBILE RESPONSIVE BLOCK SYSTEM --- */
         .workspace-block {
             background-color: #111111;
             border: 1px solid #222222;
-            border-radius: 16px;
-            padding: 48px;
-            margin-bottom: 56px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+            border-radius: 12px;
+            padding: 24px 16px; /* Reduced from 48px to prevent device cutoff */
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         .block-title {
-            font-size: 2rem;
+            font-size: 1.5rem; /* Better scale balance */
             font-weight: 700;
-            letter-spacing: -0.5px;
             color: #ffffff;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            margin-bottom: 8px;
         }
 
         .block-title span {
@@ -166,33 +162,32 @@
 
         .block-subtitle {
             color: #888888;
-            font-size: 1rem;
-            margin-bottom: 32px;
-            max-width: 700px;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
         }
 
-        /* --- AI ASSISTANT PORTAL INTERFACE --- */
+        /* --- INTERACTIVE AI PORTAL INTERFACE --- */
         .ai-portal-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .form-row-split {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 16px;
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .input-group label {
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #bbbbbb;
@@ -201,111 +196,90 @@
         .input-group input, .input-group textarea {
             background-color: #161616;
             border: 1px solid #333333;
-            border-radius: 8px;
-            padding: 14px;
+            border-radius: 6px;
+            padding: 12px;
             color: #ffffff;
-            font-size: 0.95rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            font-size: 0.9rem;
+            width: 100%;
         }
 
         .input-group input:focus, .input-group textarea:focus {
             outline: none;
             border-color: #d4af37;
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
         }
 
         .ai-submit-btn {
             background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
             color: #000000;
             border: none;
-            padding: 16px 32px;
-            font-size: 1rem;
+            padding: 14px 24px;
+            font-size: 0.9rem;
             font-weight: 700;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            transition: opacity 0.2s, transform 0.1s;
-            margin-top: 12px;
-            align-self: flex-start;
-        }
-
-        .ai-submit-btn:hover {
-            opacity: 0.95;
-        }
-
-        .ai-submit-btn:active {
-            transform: scale(0.98);
+            margin-top: 8px;
+            width: 100%; /* Spans full width nicely on mobile viewports */
         }
 
         /* --- PORTFOLIO MEDIA GALLERY GRID --- */
         .gallery-matrix {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
         }
 
         .gallery-card {
             background-color: #161616;
             border: 1px solid #222222;
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-4px);
-            border-color: #d4af37;
         }
 
         .gallery-media-placeholder {
             width: 100%;
-            height: 240px;
-            background: linear-gradient(45deg, #1f1f1f 25%, #252525 50%, #1f1f1f 75%);
+            height: 180px;
+            background: #1f1f1f;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #555555;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-bottom: 1px solid #222222;
         }
 
         .gallery-info {
-            padding: 20px;
+            padding: 16px;
         }
 
         .gallery-info h4 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #ffffff;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .gallery-info p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #888888;
         }
 
-        /* --- VIDEO TUTORIAL ENGINE CAPABILITIES --- */
+        /* --- COMPACT VIDEO ENGINE --- */
         .video-wrapper {
-            position: relative;
             width: 100%;
-            max-width: 850px;
-            margin: 0 auto;
             background-color: #161616;
             border: 1px solid #333333;
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.6);
         }
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* Perfect 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
         }
 
-        .video-container iframe, .video-container video {
+        .video-container video {
             position: absolute;
             top: 0;
             left: 0;
@@ -314,31 +288,31 @@
             border: none;
         }
 
-        /* --- LIVE CLIENT REVIEWS & FEEDBACK LOOP --- */
+        /* --- REVIEWS STREAM --- */
         .feedback-input-area {
             border-bottom: 1px solid #222222;
-            padding-bottom: 32px;
-            margin-bottom: 32px;
+            padding-bottom: 24px;
+            margin-bottom: 24px;
         }
 
         .reviews-stream {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
         }
 
         .review-post {
             background-color: #161616;
             border-left: 3px solid #d4af37;
-            padding: 24px;
-            border-radius: 0 12px 12px 0;
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
         }
 
         .review-meta {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
+            margin-bottom: 4px;
+            font-size: 0.8srem;
         }
 
         .review-author {
@@ -352,17 +326,17 @@
 
         .review-body {
             color: #aaaaaa;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
-        /* --- TERMINAL FOOTER BRAND BOUNDARY --- */
+        /* --- FOOTER TERMINAL --- */
         footer {
             border-top: 1px solid #222222;
-            padding: 40px 4%;
+            padding: 30px 20px;
             text-align: center;
             background-color: #000000;
             color: #666666;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         footer a {
@@ -370,44 +344,57 @@
             text-decoration: none;
         }
 
-        /* --- RESPONSIVE STRUCTURAL OVERRIDES --- */
-        @media (max-width: 992px) {
-            .fixed-header {
-                height: auto;
-                flex-direction: column;
-                padding: 20px;
-                gap: 16px;
-            }
+        /* --- DESKTOP AND LAPTOP LAYOUT EXPANSIONS --- */
+        @media (min-width: 768px) {
             body {
-                padding-top: 240px;
+                padding-top: 140px;
+            }
+            .fixed-header {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 0 4%;
+                height: 110px;
+                min-height: auto;
             }
             .header-nav-left {
-                justify-content: center;
-                width: 100%;
-                order: 2;
+                margin-bottom: 0;
+                justify-content: flex-start;
+                flex: 1;
+                gap: 24px;
             }
             .logo-container {
-                order: 1;
-                width: 100%;
-            }
-            .header-contact-right {
-                text-align: center;
-                width: 100%;
-                order: 3;
+                width: auto;
+                flex: 2;
+                margin: 0;
             }
             .main-logo-text {
-                animation: none; /* Disables pulse logic on small mobile screens for structural layout reading stability */
-                font-size: 1.4rem !important;
+                font-size: 1.6rem;
+            }
+            .header-contact-right {
+                width: auto;
+                flex: 1;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 2px;
+                border: none;
+                padding: 0;
+            }
+            .form-row-split {
+                grid-template-columns: 1fr 1fr;
+            }
+            .ai-submit-btn {
+                width: auto;
+            }
+            .workspace-block {
+                padding: 40px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- STABLE NAV-LAYER LOGO INTERFACE WITH INTEGRATED DIRECT CONTACT SYSTEM -->
+    <!-- STABLE NAV-LAYER LOGO INTERFACE WITH CONTACT PROFILES -->
     <header class="fixed-header">
-        
-        <!-- Left Anchored Quick Anchors -->
         <nav class="header-nav-left">
             <a href="#ai-portal">AI Portal</a>
             <a href="#portfolio">Portfolio</a>
@@ -415,134 +402,117 @@
             <a href="#reviews">Reviews</a>
         </nav>
 
-        <!-- Centered Core Metallic Dynamic Logo Segment -->
         <div class="logo-container">
             <div class="main-logo-text">IT NOT JUST IRON...ITS FREQUENCY 528 IRON</div>
         </div>
 
-        <!-- Right Anchored Urgent Execution Contact Blocks -->
         <div class="header-contact-right">
             <div class="contact-line">Shane Cavender: <span>404-807-5409</span></div>
             <div class="contact-line">Heyleigh: <span>478-331-8547</span></div>
             <a href="mailto:Frequency528ironworks@gmail.com" class="contact-email-link">Frequency528ironworks@gmail.com</a>
         </div>
-
     </header>
 
-    <!-- MAIN FREEFORM MASTER WORKSPACE COMPONENT LAYER -->
+    <!-- WORKSPACE CANVAS -->
     <main class="freeform-canvas">
 
-        <!-- MODULE 1: CUSTOMER DESIGN CONCEPT & SITE GEOMETRY PORTAL -->
+        <!-- AI ASSISTANT CONCEPT OVERLAY SECTION -->
         <section id="ai-portal" class="workspace-block">
             <h2 class="block-title">AI Client Concept <span>Visualizer</span></h2>
-            <p class="block-subtitle">Input your layout preferences, project dimensions, or conceptual structural designs directly. Provide your exact home property address location variables so our engineering systems can overlay spatial mockups accurately onto your site profile.</p>
+            <p class="block-subtitle">Input your layout ideas and home address so we can overlay design plans directly onto your site profile parameters.</p>
             
-            <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Your design concept data and address profiles have been securely routed to Shane & Heyleigh.');">
-                
+            <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Concept submission transmitted.');">
                 <div class="form-row-split">
-                    <!-- Client Identification Metrics -->
                     <div class="input-group">
                         <label for="client-name">Your Full Name</label>
-                        <input type="text" id="client-name" placeholder="John Doe" required>
+                        <input type="text" id="client-name" required>
                     </div>
                     <div class="input-group">
-                        <label for="client-phone">Direct Mobile Number</label>
-                        <input type="tel" id="client-phone" placeholder="(555) 555-5555" required>
+                        <label for="client-phone">Mobile Number</label>
+                        <input type="tel" id="client-phone" required>
                     </div>
                 </div>
 
-                <!-- Site Spatial Address Tracking Overlay Config -->
                 <div class="input-group">
-                    <label for="home-address">Installation / Home Property Address</label>
-                    <input type="text" id="home-address" placeholder="123 Main Street, City, State, Zip Code" required>
+                    <label for="home-address">Installation / Home Address</label>
+                    <input type="text" id="home-address" required>
                 </div>
 
-                <!-- Concept Idea Capture Field -->
                 <div class="input-group">
-                    <label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label>
-                    <textarea id="design-ideas" rows="6" placeholder="Specify iron gates, customized railings, security window sets, decorative frequency geometries, dimensional targets..." required></textarea>
+                    <label for="design-ideas">Describe Your Ironwork Vision</label>
+                    <textarea id="design-ideas" rows="4" required></textarea>
                 </div>
 
-                <button type="submit" class="ai-submit-btn">Transmit Concept to Ironworks</button>
+                <button type="submit" class="ai-submit-btn">Transmit Concept</button>
             </form>
         </section>
 
-        <!-- MODULE 2: PRODUCTION PORTFOLIO GRID MEDIA ENGINE -->
+        <!-- PORTFOLIO MEDIA MATRIX -->
         <section id="portfolio" class="workspace-block">
             <h2 class="block-title">Architectural <span>Portfolio</span></h2>
-            <p class="block-subtitle">Explore historical ironwork builds, heavy geometric implementations, and frequency design templates executed across properties.</p>
+            <p class="block-subtitle">Historical custom iron builds and architectural templates.</p>
             
             <div class="gallery-matrix">
-                <!-- Gallery Block 1 -->
                 <div class="gallery-card">
-                    <div class="gallery-media-placeholder"> Custom Gate Build [Placeholder Asset] </div>
+                    <div class="gallery-media-placeholder">Custom Driveway Gate</div>
                     <div class="gallery-info">
                         <h4>Heavy Ornamental Gate Set</h4>
-                        <p>High-grade precision engineered driveway structure.</p>
                     </div>
                 </div>
-                <!-- Gallery Block 2 -->
                 <div class="gallery-card">
-                    <div class="gallery-media-placeholder"> Geometric Railing [Placeholder Asset] </div>
+                    <div class="gallery-media-placeholder">Geometric Balustrades</div>
                     <div class="gallery-info">
-                        <h4>Structural Geometric Balustrades</h4>
-                        <p>Custom modern interior structural installation.</p>
+                        <h4>Structural Railings</h4>
                     </div>
                 </div>
-                <!-- Gallery Block 3 -->
                 <div class="gallery-card">
-                    <div class="gallery-media-placeholder"> Custom Architectural [Placeholder Asset] </div>
+                    <div class="gallery-media-placeholder">Frequency Bespoke Design</div>
                     <div class="gallery-info">
-                        <h4>Frequency 528 Custom Build</h4>
-                        <p>Bespoke custom specialized metal component asset.</p>
+                        <h4>528 Ironwork Specialized Build</h4>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MODULE 3: VIDEO HOW-TO COMPONENT INJECTION LAYER -->
+        <!-- HOW-TO VIDEO LAYER -->
         <section id="how-to" class="workspace-block">
             <h2 class="block-title">How-To Video <span>Showcase</span></h2>
-            <p class="block-subtitle">Review procedural design briefs, installation compliance measures, or conceptual demonstrations directly from the fabrication floor.</p>
+            <p class="block-subtitle">Watch design briefs and metal fabrication walkthroughs.</p>
             
             <div class="video-wrapper">
                 <div class="video-container">
-                    <!-- Standard video node setup. Replace path variables with your definitive MP4 or streaming asset links -->
-                    <video controls poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='%23d4af37'><path d='M8 5v14l11-7z'/></svg>">
+                    <video controls>
                         <source src="your-video-file.mp4" type="video/mp4">
-                        Your browser configuration does not process standard native video layers.
                     </video>
                 </div>
             </div>
         </section>
 
-        <!-- MODULE 4: CLIENT COMMENT ARCHIVE & FEEDBACK ENGINE -->
+        <!-- LIVE USER COMMENTS INTERFACE -->
         <section id="reviews" class="workspace-block">
-            <h2 class="block-title">Client <span>Reviews & Comments</span></h2>
-            <p class="block-subtitle">Read unfiltered user feedback regarding past execution parameters or drop your own feedback notes directly below.</p>
+            <h2 class="block-title">Reviews & <span>Comments</span></h2>
+            <p class="block-subtitle">Leave your thoughts or review past performance records.</p>
             
-            <!-- Comment Submission Framework Box -->
             <div class="feedback-input-area">
-                <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Review received for processing.');">
+                <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Review logged.');">
                     <div class="form-row-split">
                         <div class="input-group">
-                            <label for="reviewer-name">Name / Project Location</label>
-                            <input type="text" id="reviewer-name" placeholder="Example: Robert M. - Atlanta" required>
+                            <label for="reviewer-name">Name</label>
+                            <input type="text" id="reviewer-name" required>
                         </div>
                         <div class="input-group">
-                            <label for="review-rating">Project Rating Selection</label>
-                            <input type="text" id="review-rating" placeholder="★★★★★ (5/5 Stars)" required>
+                            <label for="review-rating">Rating</label>
+                            <input type="text" id="review-rating" placeholder="★★★★★" required>
                         </div>
                     </div>
                     <div class="input-group">
-                        <label for="review-text">Review Content Text</label>
-                        <textarea id="review-text" rows="3" placeholder="Drop your comment details regarding installation quality, speed, or precision parameters..." required></textarea>
+                        <label for="review-text">Comment Details</label>
+                        <textarea id="review-text" rows="3" required></textarea>
                     </div>
-                    <button type="submit" class="ai-submit-btn" style="padding: 12px 24px; font-size: 0.85rem;">Post Review Entry</button>
+                    <button type="submit" class="ai-submit-btn">Post Review</button>
                 </form>
             </div>
 
-            <!-- Pre-rendered Comments Stream -->
             <div class="reviews-stream">
                 <div class="review-post">
                     <div class="review-meta">
@@ -550,17 +520,7 @@
                         <div class="review-stars">★★★★★</div>
                     </div>
                     <div class="review-body">
-                        Shane and the crew completely killed it on our perimeter iron framework. Absolute precision balancing, and the brass gold finish hints are phenomenal. Truly clean craftsmanship.
-                    </div>
-                </div>
-
-                <div class="review-post">
-                    <div class="review-meta">
-                        <div class="review-author">Elena R.</div>
-                        <div class="review-stars">★★★★★</div>
-                    </div>
-                    <div class="review-body">
-                        The AI planning module made it so easy. Submitted our property mapping vectors along with conceptual specs and Heyleigh routed back precise site overlays almost instantly. Recommended.
+                        Shane and the crew completely killed it on our perimeter framework. Absolute precision!
                     </div>
                 </div>
             </div>
@@ -568,11 +528,57 @@
 
     </main>
 
-    <!-- STABLE BRAND ANCHOR FOOTER TERMINAL -->
     <footer>
-        <p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p>
-        <p style="color: #444444; font-size: 0.75rem; margin-top: 8px;">All structural asset positioning parameters verified stable.</p>
+        <p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a></p>
     </footer>
+
+    <!-- INTERACTIVE 3-DING 528HZ FREQUENCY SOUND ENGINE -->
+    <script>
+        let audioCtx = null;
+
+        function play528Ding(delay) {
+            setTimeout(() => {
+                if (!audioCtx) return;
+                
+                // Create clean sinusoidal oscillator for pure chime synthesis
+                let osc = audioCtx.createOscillator();
+                let gainNode = audioCtx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(528, audioCtx.currentTime); // The exact 528Hz transform frequency
+                
+                // Pure chime envelope generator
+                gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.5);
+                
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.5);
+            }, delay);
+        }
+
+        function triggerThreeDings() {
+            // Sequence 3 distinct dings spaced out cleanly by 400ms intervals
+            play528Ding(0);
+            play528Ding(400);
+            play528Ding(800);
+        }
+
+        // Initialize engine safely following native modern browser interaction rules
+        window.addEventListener('click', function() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Trigger the initial sequence instantly upon acknowledgment click
+                triggerThreeDings();
+                
+                // Lock down an automatic 2-minute processing loop interval (120,000 ms)
+                setInterval(triggerThreeDings, 120000);
+            }
+        }, { once: true });
+    </script>
 
 </body>
 </html>
