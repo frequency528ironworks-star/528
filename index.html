@@ -1,20 +1,86 @@
-@keyframes frequencyWave {
-            0% {
-                transform: scale(0.3) skewX(-5deg);
-                letter-spacing: -10px;
-                filter: drop-shadow(0 0 2px var(--glow-color));
-                opacity: 0.3;
-            }
-            50% {
-                transform: scale(1.1) skewX(5deg);
-                letter-spacing: 6px;
-                filter: drop-shadow(0 0 35px rgba(240, 192, 108, 0.8)) drop-shadow(4px 4px 15px #000000);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0.3) skewX(-5deg);
-                letter-spacing: -10px;
-                filter: drop-shadow(0 0 2px var(--glow-color));
-                opacity: 0.3;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequency Wave Header</title>
+    <style>
+        /* Base Page Styling */
+        :root {
+            --glow-color: rgba(240, 192, 108, 0.3);
+            --bg-color: #0d0e12;
+            --text-color: #ffffff;
         }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Container to center everything nicely */
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* The Animated Header */
+        .wave-header {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            display: inline-block; /* Crucial for transforms/scaling to work */
+            margin-bottom: 20px;
+            
+            /* Apply the animation here: 4 seconds duration, infinite loop, smooth easing */
+            animation: frequencyWave 4s infinite ease-in-out;
+        }
+
+        /* Subtext styling */
+        .subtext {
+            font-size: 1.2rem;
+            color: #8a8f98;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        /* The Frequency Wave Keyframes */
+        @keyframes frequencyWave { 
+            0% { 
+                transform: scale(0.3) skewX(-5deg); 
+                letter-spacing: -10px; 
+                filter: drop-shadow(0 0 2px var(--glow-color)); 
+                opacity: 0.3; 
+            } 
+            50% { 
+                transform: scale(1.1) skewX(5deg); 
+                letter-spacing: 6px; 
+                filter: drop-shadow(0 0 35px rgba(240, 192, 108, 0.8)) drop-shadow(4px 4px 15px #000000); 
+                opacity: 1; 
+            } 
+            100% { 
+                transform: scale(0.3) skewX(-5deg); 
+                letter-spacing: -10px; 
+                filter: drop-shadow(0 0 2px var(--glow-color)); 
+                opacity: 0.3; 
+            } 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="wave-header">RESONANCE</h1>
+        <p class="subtext">CSS Frequency Animation Active</p>
+    </div>
+
+</body>
+</html>
