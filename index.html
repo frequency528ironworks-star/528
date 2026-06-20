@@ -3,58 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Freeform Page</title>
+    <title>Master Layout Workspace</title>
+    
+    <!-- Premium Google Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Reset & Base Styles --- */
+        /* --- RESET & CORE BASICS --- */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-            color: #212529;
-            line-height: 1.5;
-            padding-top: 70px; /* Prevents freeform content from hiding behind the fixed header */
+            background-color: #fcfcfd;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding-top: 80px; /* Exact offset for the fixed header */
+            overflow-x: hidden;
         }
 
-        /* --- Fixed Header Styles --- */
+        /* --- STICKY / FIXED HEADER --- */
         .fixed-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 70px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eaeaea;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 40px;
-            z-index: 1000; /* Ensures header stays on top of everything */
+            padding: 0 5%;
+            z-index: 99999; /* Always stays on top */
         }
 
         .header-logo {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: #101113;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.8px;
+            color: #000000;
+            text-decoration: none;
         }
 
         .header-nav {
             display: flex;
-            gap: 24px;
+            align-items: center;
+            gap: 32px;
         }
 
         .header-nav a {
             text-decoration: none;
-            color: #495057;
+            color: #666666;
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.2s ease;
@@ -64,76 +74,545 @@
             color: #000000;
         }
 
-        /* --- Freeform Canvas Container --- */
-        .freeform-container {
+        .header-cta {
+            background-color: #000000;
+            color: #ffffff !important;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem !important;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+
+        .header-cta:hover {
+            background-color: #222222;
+        }
+
+        /* --- FREEFORM CANVAS CONTAINER --- */
+        .freeform-canvas {
             position: relative;
             width: 100%;
-            min-height: calc(100vh - 70px);
-            padding: 40px;
-            /* This layout allows you to use absolute positioning inside it, 
-               or just let elements flow naturally */
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 5%;
         }
 
-        /* --- Example Freeform Elements (Delete or Modify These) --- */
-        .welcome-card {
-            background: #ffffff;
-            padding: 32px;
-            border-radius: 12px;
-            border: 1px solid #e9ecef;
-            max-width: 600px;
+        /* --- HERO SECTION --- */
+        .hero-section {
+            padding: 80px 0;
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f3f4f6;
+            color: #000000;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
             margin-bottom: 24px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e5e7eb;
         }
 
-        .welcome-card h1 {
-            font-size: 2rem;
+        .hero-section h1 {
+            font-size: 4rem;
             font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #000000;
+            margin-bottom: 28px;
         }
 
-        .welcome-card p {
-            color: #6c757d;
+        .hero-section p {
+            font-size: 1.35rem;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 700px;
+            font-weight: 400;
         }
 
-        /* Example of an absolute positioned "freeform" element */
-        .floating-badge {
-            position: absolute;
-            top: 40px;
-            right: 40px;
+        .btn-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-primary {
             background-color: #000000;
             color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 600;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 1px solid #e2e8f0;
+            transition: background-color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f8fafc;
+        }
+
+        /* --- GRID/FEATURES SECTION --- */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            color: #666666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 100px;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            border: 1px solid #eaeaea;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.01);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 28px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .feature-card p {
+            color: #666666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- SPLIT MEDIA/CONTENT BLOCKS --- */
+        .split-row {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 120px;
+        }
+
+        .split-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .split-content, .split-visual {
+            flex: 1;
+        }
+
+        .split-visual {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            height: 450px;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .split-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .split-content p {
+            color: #555555;
+            font-size: 1.1rem;
+            margin-bottom: 28px;
+        }
+
+        /* --- PRICING SECTION --- */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 120px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .price-card {
+            background-color: #ffffff;
+            border: 1px solid #eaeaea;
+            border-radius: 20px;
+            padding: 48px 40px;
+            position: relative;
+        }
+
+        .price-card.featured {
+            border: 2px solid #000000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: -14px;
+            left: 40px;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 4px 14px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 30px;
+            text-transform: uppercase;
+        }
+
+        .tier-name {
+            font-weight: 600;
+            color: #666666;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .tier-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #000000;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        .tier-price span {
+            font-size: 1.1rem;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .feature-list li {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #444444;
+            font-size: 0.95rem;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .price-btn {
+            display: block;
+            text-align: center;
+            background-color: #f3f4f6;
+            color: #000000;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .price-card.featured .price-btn {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .price-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* --- FAQ SECTION --- */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 120px auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eaeaea;
+            padding: 24px 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 12px;
+            color: #000000;
+        }
+
+        .faq-answer {
+            color: #666666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- MASTER FOOTER --- */
+        footer {
+            border-top: 1px solid #eaeaea;
+            padding: 60px 5%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-copy {
+            color: #888888;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #888888;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #000000;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 968px) {
+            .split-row, .split-row.reverse {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+            .fixed-header {
+                padding: 0 24px;
+            }
+            .header-nav {
+                display: none; /* Simplifies layout for mobile viewing */
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- FIXED VIEWPORT NAVIGATION LAYER -->
     <header class="fixed-header">
-        <div class="header-logo">BrandName</div>
+        <a href="#" class="header-logo">Workspace.IO</a>
         <nav class="header-nav">
-            <a href="#">Home</a>
-            <a href="#">Features</a>
-            <a href="#">Pricing</a>
-            <a href="#">Contact</a>
+            <a href="#features">Features</a>
+            <a href="#showcase">Showcase</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+            <a href="#" class="header-cta">Get Started</a>
         </nav>
     </header>
 
-    <main class="freeform-container">
-        
-        <div class="welcome-card">
-            <h1>Your Freeform Canvas</h1>
-            <p>The header above is completely locked in place, and the typography is updated to a clean, modern sans-serif. Drop your components, grids, or absolute elements directly into this space.</p>
-        </div>
+    <!-- MAIN FREEFORM CANVAS ENGINE -->
+    <main class="freeform-canvas">
 
-        <div class="floating-badge">
-            Live Workspace
-        </div>
+        <!-- LAYER 1: HERO DISPLAY ENGINE -->
+        <section class="hero-section">
+            <div class="badge">Platform Version 4.0</div>
+            <h1>Engineered for speed.<br>Designed for absolute clarity.</h1>
+            <p>Welcome back to your interface environment. This structure completely isolates the navigation bar from scrolling elements, maintaining perfect viewport positioning across every breakpoint layout.</p>
+            <div class="btn-group">
+                <a href="#features" class="btn-primary">Explore Platform</a>
+                <a href="#pricing" class="btn-secondary">View Plans</a>
+            </div>
+        </section>
+
+        <!-- LAYER 2: THE CARD GRID MATRIX -->
+        <section id="features" style="padding-top: 40px;">
+            <h2 class="section-title">Core Architecture Specs</h2>
+            <p class="section-desc">Every element inside this container runs autonomously within standard CSS grid structures, adapting gracefully to screen coordinates.</p>
+            
+            <div class="grid-layout">
+                <!-- Card Container 1 -->
+                <div class="feature-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Z-Index Isolation</h3>
+                    <p>The header properties use locked viewport stacking values, ensuring content cards never slide over navigation menus during heavy momentum scrolling events.</p>
+                </div>
+                <!-- Card Container 2 -->
+                <div class="feature-card">
+                    <div class="card-icon">📐</div>
+                    <h3>Dynamic Grid Bounds</h3>
+                    <p>Built with auto-fitting grid templates that dynamically calculate available container widths to snap perfectly into alignment without breakages.</p>
+                </div>
+                <!-- Card Container 3 -->
+                <div class="feature-card">
+                    <div class="card-icon">✒️</div>
+                    <h3>Inter Variable System</h3>
+                    <p>Integrated typography weights from Google CDN networks provide absolute scaling resolution from display sizes down to structural micro-copy tables.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYER 3: SPLIT GRID MEDIA PANEL A -->
+        <section id="showcase" class="split-row">
+            <div class="split-content">
+                <h2>Total Layout Asset Control</h2>
+                <p>Manage absolute variables or modular blocks directly inside the open-ended workspace canvas. The canvas acts as a primary flex anchor, protecting structural data components from spilling past safe page parameters.</p>
+                <a href="#" class="btn-secondary" style="padding: 12px 24px; font-size: 0.95rem;">Review Documentation</a>
+            </div>
+            <div class="split-visual">
+                Media Content Window [Asset Block 01]
+            </div>
+        </section>
+
+        <!-- LAYER 4: SPLIT GRID MEDIA PANEL B -->
+        <section class="split-row reverse">
+            <div class="split-content">
+                <h2>Optimized Component Stacking</h2>
+                <p>Easily copy, repeat, or inject additional section loops into the HTML document. Spacing frameworks utilize relative margin calculation principles, allowing content blocks to sit natively on top of any viewport background layer.</p>
+            </div>
+            <div class="split-visual">
+                Media Content Window [Asset Block 02]
+            </div>
+        </section>
+
+        <!-- LAYER 5: THREE-TIER PRICING TABLE MATRIX -->
+        <section id="pricing" style="padding-top: 40px;">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 class="section-title">Flexible Workspace Pricing</h2>
+                <p class="section-desc" style="margin-left: auto; margin-right: auto;">Simple pricing tiers designed to scale alongside your layout requirements.</p>
+            </div>
+
+            <div class="pricing-container">
+                <!-- Standard Tier -->
+                <div class="price-card">
+                    <div class="tier-name">Starter Plan</div>
+                    <div class="tier-price">$19<span>/mo</span></div>
+                    <ul class="feature-list">
+                        <li>Standard Canvas Components</li>
+                        <li>Global Inter Font Controls</li>
+                        <li>Fixed Layout Templates</li>
+                        <li>Basic Email Integration</li>
+                    </ul>
+                    <a href="#" class="price-btn">Choose Plan</a>
+                </div>
+
+                <!-- Featured Professional Tier -->
+                <div class="price-card featured">
+                    <div class="featured-tag">Most Popular</div>
+                    <div class="tier-name">Growth Professional</div>
+                    <div class="tier-price">$49<span>/mo</span></div>
+                    <ul class="feature-list">
+                        <li>Unlimited Layout Blocks</li>
+                        <li>Advanced Z-Index Engine</li>
+                        <li>Priority Server Rendering</li>
+                        <li>Custom Web Component Access</li>
+                        <li>24/7 Dedicated Support Link</li>
+                    </ul>
+                    <a href="#" class="price-btn">Choose Plan</a>
+                </div>
+
+                <!-- Enterprise Tier -->
+                <div class="price-card">
+                    <div class="tier-name">Enterprise Suite</div>
+                    <div class="tier-price">$99<span>/mo</span></div>
+                    <ul class="feature-list">
+                        <li>Complete Variable Architecture</li>
+                        <li>Dedicated Component Nodes</li>
+                        <li>Custom Typography Uploads</li>
+                        <li>99.9% Uptime Agreement SLA</li>
+                    </ul>
+                    <a href="#" class="price-btn">Choose Plan</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYER 6: FAQ ACCORDION DATA BLOCKS -->
+        <section id="faq" class="faq-section">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How does the fixed header tracking behavior work?</div>
+                <div class="faq-answer">The header utilizes specific CSS sticky positioning principles that anchor its coordinate nodes directly to the zero-point of the main viewport grid, preventing other container layers from bleeding over navigation paths.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I inject third-party scripts inside this architecture?</div>
+                <div class="faq-answer">Yes. The main freeform container area is structurally isolated, allowing custom widgets, embedded tools, or analytics integrations to execute cleanly without risking unexpected design breaking loops.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I alter the typography sizing array properties?</div>
+                <div class="faq-answer">Font scales are driven cleanly via rem sizing metrics linked back to the standard document root system. Adjusting base font properties inside the body element will uniformly update typography layouts globally.</div>
+            </div>
+        </section>
 
     </main>
+
+    <!-- STABLE BOTTOM TERMINAL AREA -->
+    <footer>
+        <div class="footer-copy">
+            &copy; 2026 Workspace.IO Platform Layout Architecture. All rights reserved.
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Framework</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Security Nodes</a>
+        </div>
+    </footer>
 
 </body>
 </html>
