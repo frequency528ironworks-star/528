@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Layout Workspace</title>
+    <title>IT NOT JUST IRON...ITS FREQUENCY 528 IRON</title>
     
-    <!-- Premium Google Font: Inter -->
+    <!-- Premium Google Font: Inter (Light, Regular, Medium, Bold) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- RESET & CORE BASICS --- */
+        /* --- CORE CONFIGURATION & RESET --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,594 +24,554 @@
         }
 
         body {
-            background-color: #fcfcfd;
-            color: #1a1a1a;
+            background-color: #0a0a0a; /* True Deep Black Background */
+            color: #e5e5e5;
             line-height: 1.6;
-            padding-top: 80px; /* Exact offset for the fixed header */
+            padding-top: 140px; /* Offset to clear the premium deep header layout */
             overflow-x: hidden;
         }
 
-        /* --- STICKY / FIXED HEADER --- */
+        /* --- FIXED HEADER & NAVIGATION LAYERS --- */
         .fixed-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 80px;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #eaeaea;
+            height: 140px;
+            background-color: #000000;
+            border-bottom: 2px solid #bba15c; /* Subdued brass/gold structural boundary line */
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 5%;
-            z-index: 99999; /* Always stays on top */
+            padding: 0 4%;
+            z-index: 999999;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
 
-        .header-logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.8px;
-            color: #000000;
-            text-decoration: none;
-        }
-
-        .header-nav {
+        /* Nav Quick Links (Left Anchor) */
+        .header-nav-left {
             display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .header-nav a {
-            text-decoration: none;
-            color: #666666;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .header-nav a:hover {
-            color: #000000;
-        }
-
-        .header-cta {
-            background-color: #000000;
-            color: #ffffff !important;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 0.9rem !important;
-            font-weight: 600;
-            transition: background-color 0.2s ease;
-        }
-
-        .header-cta:hover {
-            background-color: #222222;
-        }
-
-        /* --- FREEFORM CANVAS CONTAINER --- */
-        .freeform-canvas {
-            position: relative;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 5%;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            padding: 80px 0;
-            max-width: 900px;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            background-color: #f3f4f6;
-            color: #000000;
-            padding: 6px 14px;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .hero-section h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            color: #000000;
-            margin-bottom: 28px;
-        }
-
-        .hero-section p {
-            font-size: 1.35rem;
-            color: #666666;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 700px;
-            font-weight: 400;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 16px;
-        }
-
-        .btn-primary {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 16px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: opacity 0.2s;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-
-        .btn-secondary {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 16px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 1px solid #e2e8f0;
-            transition: background-color 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background-color: #f8fafc;
-        }
-
-        /* --- GRID/FEATURES SECTION --- */
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
-
-        .section-desc {
-            color: #666666;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-bottom: 48px;
-        }
-
-        .grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-bottom: 100px;
-        }
-
-        .feature-card {
-            background-color: #ffffff;
-            border: 1px solid #eaeaea;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.01);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
-        }
-
-        .card-icon {
-            width: 56px;
-            height: 56px;
-            background-color: #000000;
-            color: #ffffff;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 28px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 14px;
-            letter-spacing: -0.3px;
-        }
-
-        .feature-card p {
-            color: #666666;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* --- SPLIT MEDIA/CONTENT BLOCKS --- */
-        .split-row {
-            display: flex;
-            align-items: center;
-            gap: 80px;
-            margin-bottom: 120px;
-        }
-
-        .split-row.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .split-content, .split-visual {
+            gap: 20px;
             flex: 1;
         }
 
-        .split-visual {
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            height: 450px;
-            border-radius: 24px;
-            border: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
+        .header-nav-left a {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
-        }
-
-        .split-content h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .split-content p {
-            color: #555555;
-            font-size: 1.1rem;
-            margin-bottom: 28px;
-        }
-
-        /* --- PRICING SECTION --- */
-        .pricing-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-            margin-bottom: 120px;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .price-card {
-            background-color: #ffffff;
-            border: 1px solid #eaeaea;
-            border-radius: 20px;
-            padding: 48px 40px;
-            position: relative;
-        }
-
-        .price-card.featured {
-            border: 2px solid #000000;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-
-        .featured-tag {
-            position: absolute;
-            top: -14px;
-            left: 40px;
-            background-color: #000000;
-            color: #ffffff;
-            padding: 4px 14px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            border-radius: 30px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
         }
 
-        .tier-name {
-            font-weight: 600;
-            color: #666666;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+        .header-nav-left a:hover {
+            color: #d4af37;
         }
 
-        .tier-price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #000000;
+        /* Centered Dynamic Logo Structure */
+        .logo-container {
+            text-align: center;
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-logo-text {
+            font-weight: 900;
             letter-spacing: -1px;
-            margin-bottom: 24px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.2);
+            animation: pulseFontSize 8s infinite ease-in-out;
+            line-height: 1.1;
         }
 
-        .tier-price span {
-            font-size: 1.1rem;
-            color: #666666;
+        /* Breathing logo dynamic scale loop (Large -> Small -> Large) */
+        @keyframes pulseFontSize {
+            0% { font-size: 1.95rem; }
+            50% { font-size: 1.55rem; }
+            100% { font-size: 1.95rem; }
+        }
+
+        /* Right Anchor Contact Panel Block */
+        .header-contact-right {
+            flex: 1;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .contact-line {
+            font-size: 0.85rem;
+            color: #ffffff;
             font-weight: 400;
         }
 
-        .feature-list {
-            list-style: none;
-            margin-bottom: 40px;
-        }
-
-        .feature-list li {
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #444444;
-            font-size: 0.95rem;
-        }
-
-        .feature-list li::before {
-            content: "✓";
-            color: #000000;
-            font-weight: 700;
-        }
-
-        .price-btn {
-            display: block;
-            text-align: center;
-            background-color: #f3f4f6;
-            color: #000000;
-            padding: 14px;
-            border-radius: 8px;
-            text-decoration: none;
+        .contact-line span {
+            color: #d4af37; /* Brass accent text highlights */
             font-weight: 600;
-            transition: all 0.2s;
         }
 
-        .price-card.featured .price-btn {
-            background-color: #000000;
-            color: #ffffff;
-        }
-
-        .price-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* --- FAQ SECTION --- */
-        .faq-section {
-            max-width: 800px;
-            margin: 0 auto 120px auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #eaeaea;
-            padding: 24px 0;
-        }
-
-        .faq-question {
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: -0.3px;
-            margin-bottom: 12px;
-            color: #000000;
-        }
-
-        .faq-answer {
-            color: #666666;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* --- MASTER FOOTER --- */
-        footer {
-            border-top: 1px solid #eaeaea;
-            padding: 60px 5%;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .footer-copy {
-            color: #888888;
-            font-size: 0.9rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-links a {
+        .contact-email-link {
+            font-size: 0.8rem;
+            color: #aaaaaa;
             text-decoration: none;
-            color: #888888;
-            font-size: 0.9rem;
+            margin-top: 4px;
             transition: color 0.2s;
         }
 
-        .footer-links a:hover {
-            color: #000000;
+        .contact-email-link:hover {
+            color: #ffffff;
         }
 
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 968px) {
-            .split-row, .split-row.reverse {
-                flex-direction: column;
-                gap: 40px;
-            }
-            .hero-section h1 {
-                font-size: 2.8rem;
-            }
+        /* --- MAIN FREEFORM WORKSPACE CANVAS --- */
+        .freeform-canvas {
+            position: relative;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 4%;
+        }
+
+        /* --- CORE MODULE CONTAINER SYSTEM --- */
+        .workspace-block {
+            background-color: #111111;
+            border: 1px solid #222222;
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 56px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        }
+
+        .block-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .block-title span {
+            color: #d4af37;
+        }
+
+        .block-subtitle {
+            color: #888888;
+            font-size: 1rem;
+            margin-bottom: 32px;
+            max-width: 700px;
+        }
+
+        /* --- AI ASSISTANT PORTAL INTERFACE --- */
+        .ai-portal-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .form-row-split {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #bbbbbb;
+        }
+
+        .input-group input, .input-group textarea {
+            background-color: #161616;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 14px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+        }
+
+        .ai-submit-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+            color: #000000;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: opacity 0.2s, transform 0.1s;
+            margin-top: 12px;
+            align-self: flex-start;
+        }
+
+        .ai-submit-btn:hover {
+            opacity: 0.95;
+        }
+
+        .ai-submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* --- PORTFOLIO MEDIA GALLERY GRID --- */
+        .gallery-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-card {
+            background-color: #161616;
+            border: 1px solid #222222;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+        }
+
+        .gallery-media-placeholder {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(45deg, #1f1f1f 25%, #252525 50%, #1f1f1f 75%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555555;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #222222;
+        }
+
+        .gallery-info {
+            padding: 20px;
+        }
+
+        .gallery-info h4 {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .gallery-info p {
+            font-size: 0.85rem;
+            color: #888888;
+        }
+
+        /* --- VIDEO TUTORIAL ENGINE CAPABILITIES --- */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: #161616;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Perfect 16:9 Aspect Ratio */
+            height: 0;
+        }
+
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- LIVE CLIENT REVIEWS & FEEDBACK LOOP --- */
+        .feedback-input-area {
+            border-bottom: 1px solid #222222;
+            padding-bottom: 32px;
+            margin-bottom: 32px;
+        }
+
+        .reviews-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-post {
+            background-color: #161616;
+            border-left: 3px solid #d4af37;
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .review-stars {
+            color: #d4af37;
+        }
+
+        .review-body {
+            color: #aaaaaa;
+            font-size: 0.95rem;
+        }
+
+        /* --- TERMINAL FOOTER BRAND BOUNDARY --- */
+        footer {
+            border-top: 1px solid #222222;
+            padding: 40px 4%;
+            text-align: center;
+            background-color: #000000;
+            color: #666666;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        /* --- RESPONSIVE STRUCTURAL OVERRIDES --- */
+        @media (max-width: 992px) {
             .fixed-header {
-                padding: 0 24px;
+                height: auto;
+                flex-direction: column;
+                padding: 20px;
+                gap: 16px;
             }
-            .header-nav {
-                display: none; /* Simplifies layout for mobile viewing */
+            body {
+                padding-top: 240px;
+            }
+            .header-nav-left {
+                justify-content: center;
+                width: 100%;
+                order: 2;
+            }
+            .logo-container {
+                order: 1;
+                width: 100%;
+            }
+            .header-contact-right {
+                text-align: center;
+                width: 100%;
+                order: 3;
+            }
+            .main-logo-text {
+                animation: none; /* Disables pulse logic on small mobile screens for structural layout reading stability */
+                font-size: 1.4rem !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- FIXED VIEWPORT NAVIGATION LAYER -->
+    <!-- STABLE NAV-LAYER LOGO INTERFACE WITH INTEGRATED DIRECT CONTACT SYSTEM -->
     <header class="fixed-header">
-        <a href="#" class="header-logo">Workspace.IO</a>
-        <nav class="header-nav">
-            <a href="#features">Features</a>
-            <a href="#showcase">Showcase</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">FAQ</a>
-            <a href="#" class="header-cta">Get Started</a>
+        
+        <!-- Left Anchored Quick Anchors -->
+        <nav class="header-nav-left">
+            <a href="#ai-portal">AI Portal</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#how-to">How To</a>
+            <a href="#reviews">Reviews</a>
         </nav>
+
+        <!-- Centered Core Metallic Dynamic Logo Segment -->
+        <div class="logo-container">
+            <div class="main-logo-text">IT NOT JUST IRON...ITS FREQUENCY 528 IRON</div>
+        </div>
+
+        <!-- Right Anchored Urgent Execution Contact Blocks -->
+        <div class="header-contact-right">
+            <div class="contact-line">Shane Cavender: <span>404-807-5409</span></div>
+            <div class="contact-line">Heyleigh: <span>478-331-8547</span></div>
+            <a href="mailto:Frequency528ironworks@gmail.com" class="contact-email-link">Frequency528ironworks@gmail.com</a>
+        </div>
+
     </header>
 
-    <!-- MAIN FREEFORM CANVAS ENGINE -->
+    <!-- MAIN FREEFORM MASTER WORKSPACE COMPONENT LAYER -->
     <main class="freeform-canvas">
 
-        <!-- LAYER 1: HERO DISPLAY ENGINE -->
-        <section class="hero-section">
-            <div class="badge">Platform Version 4.0</div>
-            <h1>Engineered for speed.<br>Designed for absolute clarity.</h1>
-            <p>Welcome back to your interface environment. This structure completely isolates the navigation bar from scrolling elements, maintaining perfect viewport positioning across every breakpoint layout.</p>
-            <div class="btn-group">
-                <a href="#features" class="btn-primary">Explore Platform</a>
-                <a href="#pricing" class="btn-secondary">View Plans</a>
-            </div>
-        </section>
-
-        <!-- LAYER 2: THE CARD GRID MATRIX -->
-        <section id="features" style="padding-top: 40px;">
-            <h2 class="section-title">Core Architecture Specs</h2>
-            <p class="section-desc">Every element inside this container runs autonomously within standard CSS grid structures, adapting gracefully to screen coordinates.</p>
+        <!-- MODULE 1: CUSTOMER DESIGN CONCEPT & SITE GEOMETRY PORTAL -->
+        <section id="ai-portal" class="workspace-block">
+            <h2 class="block-title">AI Client Concept <span>Visualizer</span></h2>
+            <p class="block-subtitle">Input your layout preferences, project dimensions, or conceptual structural designs directly. Provide your exact home property address location variables so our engineering systems can overlay spatial mockups accurately onto your site profile.</p>
             
-            <div class="grid-layout">
-                <!-- Card Container 1 -->
-                <div class="feature-card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Z-Index Isolation</h3>
-                    <p>The header properties use locked viewport stacking values, ensuring content cards never slide over navigation menus during heavy momentum scrolling events.</p>
+            <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Your design concept data and address profiles have been securely routed to Shane & Heyleigh.');">
+                
+                <div class="form-row-split">
+                    <!-- Client Identification Metrics -->
+                    <div class="input-group">
+                        <label for="client-name">Your Full Name</label>
+                        <input type="text" id="client-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="client-phone">Direct Mobile Number</label>
+                        <input type="tel" id="client-phone" placeholder="(555) 555-5555" required>
+                    </div>
                 </div>
-                <!-- Card Container 2 -->
-                <div class="feature-card">
-                    <div class="card-icon">📐</div>
-                    <h3>Dynamic Grid Bounds</h3>
-                    <p>Built with auto-fitting grid templates that dynamically calculate available container widths to snap perfectly into alignment without breakages.</p>
+
+                <!-- Site Spatial Address Tracking Overlay Config -->
+                <div class="input-group">
+                    <label for="home-address">Installation / Home Property Address</label>
+                    <input type="text" id="home-address" placeholder="123 Main Street, City, State, Zip Code" required>
                 </div>
-                <!-- Card Container 3 -->
-                <div class="feature-card">
-                    <div class="card-icon">✒️</div>
-                    <h3>Inter Variable System</h3>
-                    <p>Integrated typography weights from Google CDN networks provide absolute scaling resolution from display sizes down to structural micro-copy tables.</p>
+
+                <!-- Concept Idea Capture Field -->
+                <div class="input-group">
+                    <label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label>
+                    <textarea id="design-ideas" rows="6" placeholder="Specify iron gates, customized railings, security window sets, decorative frequency geometries, dimensional targets..." required></textarea>
                 </div>
-            </div>
+
+                <button type="submit" class="ai-submit-btn">Transmit Concept to Ironworks</button>
+            </form>
         </section>
 
-        <!-- LAYER 3: SPLIT GRID MEDIA PANEL A -->
-        <section id="showcase" class="split-row">
-            <div class="split-content">
-                <h2>Total Layout Asset Control</h2>
-                <p>Manage absolute variables or modular blocks directly inside the open-ended workspace canvas. The canvas acts as a primary flex anchor, protecting structural data components from spilling past safe page parameters.</p>
-                <a href="#" class="btn-secondary" style="padding: 12px 24px; font-size: 0.95rem;">Review Documentation</a>
-            </div>
-            <div class="split-visual">
-                Media Content Window [Asset Block 01]
-            </div>
-        </section>
-
-        <!-- LAYER 4: SPLIT GRID MEDIA PANEL B -->
-        <section class="split-row reverse">
-            <div class="split-content">
-                <h2>Optimized Component Stacking</h2>
-                <p>Easily copy, repeat, or inject additional section loops into the HTML document. Spacing frameworks utilize relative margin calculation principles, allowing content blocks to sit natively on top of any viewport background layer.</p>
-            </div>
-            <div class="split-visual">
-                Media Content Window [Asset Block 02]
-            </div>
-        </section>
-
-        <!-- LAYER 5: THREE-TIER PRICING TABLE MATRIX -->
-        <section id="pricing" style="padding-top: 40px;">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <h2 class="section-title">Flexible Workspace Pricing</h2>
-                <p class="section-desc" style="margin-left: auto; margin-right: auto;">Simple pricing tiers designed to scale alongside your layout requirements.</p>
-            </div>
-
-            <div class="pricing-container">
-                <!-- Standard Tier -->
-                <div class="price-card">
-                    <div class="tier-name">Starter Plan</div>
-                    <div class="tier-price">$19<span>/mo</span></div>
-                    <ul class="feature-list">
-                        <li>Standard Canvas Components</li>
-                        <li>Global Inter Font Controls</li>
-                        <li>Fixed Layout Templates</li>
-                        <li>Basic Email Integration</li>
-                    </ul>
-                    <a href="#" class="price-btn">Choose Plan</a>
-                </div>
-
-                <!-- Featured Professional Tier -->
-                <div class="price-card featured">
-                    <div class="featured-tag">Most Popular</div>
-                    <div class="tier-name">Growth Professional</div>
-                    <div class="tier-price">$49<span>/mo</span></div>
-                    <ul class="feature-list">
-                        <li>Unlimited Layout Blocks</li>
-                        <li>Advanced Z-Index Engine</li>
-                        <li>Priority Server Rendering</li>
-                        <li>Custom Web Component Access</li>
-                        <li>24/7 Dedicated Support Link</li>
-                    </ul>
-                    <a href="#" class="price-btn">Choose Plan</a>
-                </div>
-
-                <!-- Enterprise Tier -->
-                <div class="price-card">
-                    <div class="tier-name">Enterprise Suite</div>
-                    <div class="tier-price">$99<span>/mo</span></div>
-                    <ul class="feature-list">
-                        <li>Complete Variable Architecture</li>
-                        <li>Dedicated Component Nodes</li>
-                        <li>Custom Typography Uploads</li>
-                        <li>99.9% Uptime Agreement SLA</li>
-                    </ul>
-                    <a href="#" class="price-btn">Choose Plan</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- LAYER 6: FAQ ACCORDION DATA BLOCKS -->
-        <section id="faq" class="faq-section">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Frequently Asked Questions</h2>
+        <!-- MODULE 2: PRODUCTION PORTFOLIO GRID MEDIA ENGINE -->
+        <section id="portfolio" class="workspace-block">
+            <h2 class="block-title">Architectural <span>Portfolio</span></h2>
+            <p class="block-subtitle">Explore historical ironwork builds, heavy geometric implementations, and frequency design templates executed across properties.</p>
             
-            <div class="faq-item">
-                <div class="faq-question">How does the fixed header tracking behavior work?</div>
-                <div class="faq-answer">The header utilizes specific CSS sticky positioning principles that anchor its coordinate nodes directly to the zero-point of the main viewport grid, preventing other container layers from bleeding over navigation paths.</div>
+            <div class="gallery-matrix">
+                <!-- Gallery Block 1 -->
+                <div class="gallery-card">
+                    <div class="gallery-media-placeholder"> Custom Gate Build [Placeholder Asset] </div>
+                    <div class="gallery-info">
+                        <h4>Heavy Ornamental Gate Set</h4>
+                        <p>High-grade precision engineered driveway structure.</p>
+                    </div>
+                </div>
+                <!-- Gallery Block 2 -->
+                <div class="gallery-card">
+                    <div class="gallery-media-placeholder"> Geometric Railing [Placeholder Asset] </div>
+                    <div class="gallery-info">
+                        <h4>Structural Geometric Balustrades</h4>
+                        <p>Custom modern interior structural installation.</p>
+                    </div>
+                </div>
+                <!-- Gallery Block 3 -->
+                <div class="gallery-card">
+                    <div class="gallery-media-placeholder"> Custom Architectural [Placeholder Asset] </div>
+                    <div class="gallery-info">
+                        <h4>Frequency 528 Custom Build</h4>
+                        <p>Bespoke custom specialized metal component asset.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 3: VIDEO HOW-TO COMPONENT INJECTION LAYER -->
+        <section id="how-to" class="workspace-block">
+            <h2 class="block-title">How-To Video <span>Showcase</span></h2>
+            <p class="block-subtitle">Review procedural design briefs, installation compliance measures, or conceptual demonstrations directly from the fabrication floor.</p>
+            
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <!-- Standard video node setup. Replace path variables with your definitive MP4 or streaming asset links -->
+                    <video controls poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='%23d4af37'><path d='M8 5v14l11-7z'/></svg>">
+                        <source src="your-video-file.mp4" type="video/mp4">
+                        Your browser configuration does not process standard native video layers.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 4: CLIENT COMMENT ARCHIVE & FEEDBACK ENGINE -->
+        <section id="reviews" class="workspace-block">
+            <h2 class="block-title">Client <span>Reviews & Comments</span></h2>
+            <p class="block-subtitle">Read unfiltered user feedback regarding past execution parameters or drop your own feedback notes directly below.</p>
+            
+            <!-- Comment Submission Framework Box -->
+            <div class="feedback-input-area">
+                <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Review received for processing.');">
+                    <div class="form-row-split">
+                        <div class="input-group">
+                            <label for="reviewer-name">Name / Project Location</label>
+                            <input type="text" id="reviewer-name" placeholder="Example: Robert M. - Atlanta" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="review-rating">Project Rating Selection</label>
+                            <input type="text" id="review-rating" placeholder="★★★★★ (5/5 Stars)" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="review-text">Review Content Text</label>
+                        <textarea id="review-text" rows="3" placeholder="Drop your comment details regarding installation quality, speed, or precision parameters..." required></textarea>
+                    </div>
+                    <button type="submit" class="ai-submit-btn" style="padding: 12px 24px; font-size: 0.85rem;">Post Review Entry</button>
+                </form>
             </div>
 
-            <div class="faq-item">
-                <div class="faq-question">Can I inject third-party scripts inside this architecture?</div>
-                <div class="faq-answer">Yes. The main freeform container area is structurally isolated, allowing custom widgets, embedded tools, or analytics integrations to execute cleanly without risking unexpected design breaking loops.</div>
-            </div>
+            <!-- Pre-rendered Comments Stream -->
+            <div class="reviews-stream">
+                <div class="review-post">
+                    <div class="review-meta">
+                        <div class="review-author">Marcus T.</div>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                    <div class="review-body">
+                        Shane and the crew completely killed it on our perimeter iron framework. Absolute precision balancing, and the brass gold finish hints are phenomenal. Truly clean craftsmanship.
+                    </div>
+                </div>
 
-            <div class="faq-item">
-                <div class="faq-question">How do I alter the typography sizing array properties?</div>
-                <div class="faq-answer">Font scales are driven cleanly via rem sizing metrics linked back to the standard document root system. Adjusting base font properties inside the body element will uniformly update typography layouts globally.</div>
+                <div class="review-post">
+                    <div class="review-meta">
+                        <div class="review-author">Elena R.</div>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                    <div class="review-body">
+                        The AI planning module made it so easy. Submitted our property mapping vectors along with conceptual specs and Heyleigh routed back precise site overlays almost instantly. Recommended.
+                    </div>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- STABLE BOTTOM TERMINAL AREA -->
+    <!-- STABLE BRAND ANCHOR FOOTER TERMINAL -->
     <footer>
-        <div class="footer-copy">
-            &copy; 2026 Workspace.IO Platform Layout Architecture. All rights reserved.
-        </div>
-        <div class="footer-links">
-            <a href="#">Privacy Framework</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Security Nodes</a>
-        </div>
+        <p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p>
+        <p style="color: #444444; font-size: 0.75rem; margin-top: 8px;">All structural asset positioning parameters verified stable.</p>
     </footer>
 
 </body>
