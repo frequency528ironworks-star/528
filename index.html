@@ -24,7 +24,7 @@
             cursor: pointer;
         }
         
-        /* FIXED HEADER */
+        /* FIXED HEADER (Straight, not slanted) */
         header {
             position: fixed;
             top: 0;
@@ -77,7 +77,7 @@
             margin-top: 120px; 
         }
 
-        /* DRAMATIC VIBRATION ANIMATION (Small to Large) */
+        /* DRAMATIC VIBRATION ANIMATION (Starts small, expands out massive) */
         @keyframes frequencyWave {
             0% {
                 transform: scale(0.2) skewX(-6deg);
@@ -391,4 +391,37 @@
                 adminLoggedIn = false;
                 document.getElementById('videoAdmin').style.display = "none";
                 document.getElementById('galleryAdmin').style.display = "none";
-                document.querySelector('.admin-link').innerText = "Admin Login
+                document.querySelector('.admin-link').innerText = "Admin Login";
+            }
+        }
+
+        // Direct Dashboard Image Add Injection
+        function addNewGalleryItem() {
+            const src = document.getElementById('imgSrcInput').value.trim();
+            const label = document.getElementById('imgLabelInput').value.trim();
+            if(!src || !label) { alert("Please complete both parameters."); return; }
+            
+            const grid = document.getElementById('mainGalleryGrid');
+            const item = document.createElement('div');
+            item.className = "gallery-item";
+            item.innerHTML = `<img src="${src}"><div class="gallery-label">${label}</div>`;
+            grid.insertBefore(item, grid.firstChild);
+            
+            document.getElementById('imgSrcInput').value = "";
+            document.getElementById('imgLabelInput').value = "";
+            alert("Image injected onto page live display grid successfully!");
+        }
+
+        // Video Upload Live Stream Swapper
+        function updateLiveVideo() {
+            const src = document.getElementById('videoSrcInput').value.trim();
+            if(!src) return;
+            const videoEl = document.getElementById('mainWebVideo');
+            videoEl.src = src;
+            videoEl.load();
+            alert("Main Video tutorial stream changed successfully!");
+            document.getElementById('videoSrcInput').value = "";
+        }
+    </script>
+</body>
+</html>
