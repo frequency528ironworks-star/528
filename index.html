@@ -23,8 +23,6 @@
             overflow-x: hidden;
             cursor: pointer;
         }
-        
-        /* FIXED HEADER (Straight, not slanted) */
         header {
             position: fixed;
             top: 0;
@@ -63,7 +61,6 @@
         .top-left-contact a:hover {
             color: #cca450;
         }
-        
         .container {
             flex: 1;
             display: flex;
@@ -76,34 +73,16 @@
             width: 100%;
             margin-top: 120px; 
         }
-
-        /* DRAMATIC VIBRATION ANIMATION */
         @keyframes frequencyWave {
-            0% {
-                transform: scale(0.2) skewX(-6deg);
-                letter-spacing: -12px;
-                filter: drop-shadow(0 0 2px var(--glow-color));
-                opacity: 0.2;
-            }
-            50% {
-                transform: scale(1.05) skewX(6deg);
-                letter-spacing: 5px;
-                filter: drop-shadow(0 0 40px rgba(240, 192, 108, 0.85)) drop-shadow(4px 4px 15px #000000);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0.2) skewX(-6deg);
-                letter-spacing: -12px;
-                filter: drop-shadow(0 0 2px var(--glow-color));
-                opacity: 0.2;
-            }
+            0% { transform: scale(1.0); filter: drop-shadow(0 0 5px rgba(240, 192, 108, 0.4)); }
+            50% { transform: scale(1.02); filter: drop-shadow(0 0 30px rgba(240, 192, 108, 0.8)); }
+            100% { transform: scale(1.0); filter: drop-shadow(0 0 5px rgba(240, 192, 108, 0.4)); }
         }
-
         h1 {
             font-family: 'Impact', 'Arial Black', sans-serif;
             font-size: calc(1.8rem + 2vw);
             line-height: 1.2;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             margin: 0 0 1.5rem 0;
             text-transform: uppercase;
             background: linear-gradient(to bottom, #ffffff 0%, #f3dfa2 30%, #cca450 55%, #ae802b 75%, #ecc670 100%);
@@ -112,7 +91,7 @@
             display: inline-block;
             width: 100%;
             word-wrap: break-word;
-            animation: frequencyWave 4.5s ease-in-out infinite;
+            animation: frequencyWave 3.5s ease-in-out infinite;
         }
         .subtext {
             font-size: 1rem;
@@ -121,7 +100,6 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             margin: 0 0 3rem 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
             line-height: 1.4;
         }
         .section-box {
@@ -139,12 +117,11 @@
         .section-box h2 {
             font-family: 'Impact', sans-serif;
             font-size: 1.5rem;
-            letter-spacing: 1px;
-            margin: 0 0 1rem 0;
             color: #f3dfa2;
             text-transform: uppercase;
             border-bottom: 1px solid #262118;
             padding-bottom: 0.5rem;
+            margin: 0 0 1rem 0;
         }
         .section-box p {
             color: #a8a090;
@@ -152,11 +129,9 @@
             margin: 0 0 1.25rem 0;
             line-height: 1.4;
         }
-
-        /* VIDEO CONTAINER STYLING */
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             background: #000;
@@ -164,16 +139,10 @@
             border-radius: 6px;
             margin-bottom: 1rem;
         }
-        .video-wrapper video, .video-wrapper iframe {
+        .video-wrapper video {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+            top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
-
-        /* AI & ADMIN LAYOUTS */
         .input-group {
             display: flex;
             flex-direction: column;
@@ -188,7 +157,6 @@
             color: #fff;
             padding: 0.75rem;
             font-family: inherit;
-            font-size: 0.95rem;
             box-sizing: border-box;
         }
         textarea { resize: none; height: 70px; }
@@ -199,12 +167,9 @@
             border-radius: 4px;
             padding: 0.75rem;
             font-weight: bold;
-            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
             cursor: pointer;
         }
-        .action-btn:hover { opacity: 0.9; }
         .admin-controls {
             display: none;
             background: #161410;
@@ -213,8 +178,6 @@
             margin-bottom: 1.5rem;
             border-radius: 6px;
         }
-
-        /* GALLERY */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -227,93 +190,69 @@
             height: 240px;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
         }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         .gallery-label {
             position: absolute; bottom: 0; left: 0; right: 0;
             background: rgba(0, 0, 0, 0.8); padding: 0.5rem;
             font-size: 0.8rem; font-weight: bold; text-transform: uppercase;
-            color: #cca450; text-align: center; border-top: 1px solid rgba(204, 164, 80, 0.2);
+            color: #cca450; text-align: center;
         }
-        .gallery-item:hover { border-color: #cca450; transform: scale(1.02); }
-
         footer {
             text-align: center; padding: 2rem 1rem; border-top: 1px solid #161616;
-            color: #444; font-size: 0.8rem; letter-spacing: 1px; margin-top: 3rem;
+            color: #444; font-size: 0.8rem; margin-top: 3rem;
         }
         .admin-link {
             display: inline-block; margin-top: 1rem; color: #333; text-decoration: none;
             font-size: 0.7rem; text-transform: uppercase; border: 1px solid #1c1c1c;
             padding: 4px 8px; border-radius: 3px;
         }
-        .admin-link:hover { color: #cca450; border-color: #222; }
-
         @media (min-width: 769px) {
             header { padding: 2rem; }
-            header .logo { font-size: 1.5rem; }
             .container { padding: 4rem 2rem; margin-top: 150px; }
             h1 { font-size: 4.2rem; }
-            .subtext { font-size: 1.3rem; letter-spacing: 5px; }
         }
     </style>
 </head>
 <body>
-
     <header>
         <div class="logo">FREQUENCY-<span>528</span> // IRON WORKS</div>
         <div class="top-left-contact">
             Shane Cavender: <a href="tel:404-807-5409">404-807-5409</a> &nbsp;//&nbsp; Heylee: <a href="tel:478-331-8547">478-331-8547</a>
         </div>
     </header>
-
     <div class="container">
         <h1>ITS NOT JUST IRON ...<br>ITS "FREQUENCY 528" IRON</h1>
         <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
-
         <div class="section-box">
             <h2>Fabrication & How-To Guides</h2>
             <p>Watch our step-by-step custom ironwork builds, structural techniques, and live forge demonstrations.</p>
-            
             <div class="admin-controls" id="videoAdmin">
-                <h3 style="color:#cca450; margin-top:0; font-size:1rem;">Add New Video Setup</h3>
-                <div class="input-group">
-                    <input type="text" id="videoSrcInput" placeholder="Video File Name (e.g., tutorial1.mp4) or YouTube Link">
-                    <button class="action-btn" onclick="updateLiveVideo()">Update Video Stream</button>
-                </div>
+                <input type="text" id="videoSrcInput" placeholder="Video File Name (e.g., tutorial1.mp4)">
+                <button class="action-btn" onclick="updateLiveVideo()">Update Video</button>
             </div>
-
             <div class="video-wrapper">
                 <video id="mainWebVideo" controls poster="bcard.jpg">
                     <source src="forge-guide.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
                 </video>
             </div>
         </div>
-
         <div class="section-box">
             <h2>AI Design Assistant</h2>
-            <p>Describe your vision (e.g., "A modern geometric gate with heavy industrial steel lines") to plan your setup configuration.</p>
+            <p>Describe your vision to plan your setup configuration.</p>
             <div class="input-group">
                 <textarea id="aiInput" placeholder="Describe the ironwork structure you want..."></textarea>
                 <button class="action-btn" onclick="generateConcept()">Visualize Blueprint</button>
             </div>
             <div style="margin-top:1rem; color:#f3dfa2; display:none;" id="aiResponse"></div>
         </div>
-
         <div class="section-box">
             <h2>Craftsmanship Gallery</h2>
-            <p>Our premium high-frequency fabrications. Admins can sign in below to expand this collection instantly.</p>
-            
             <div class="admin-controls" id="galleryAdmin">
-                <h3 style="color:#cca450; margin-top:0; font-size:1rem;">Upload New Gallery Item</h3>
-                <div class="input-group">
-                    <input type="text" id="imgSrcInput" placeholder="Image File Name (e.g., gate.jpg)">
-                    <input type="text" id="imgLabelInput" placeholder="Display Label (e.g., Industrial Driveway Gate)">
-                    <button class="action-btn" onclick="addNewGalleryItem()">Inject Into Grid</button>
-                </div>
+                <input type="text" id="imgSrcInput" placeholder="Image File Name">
+                <input type="text" id="imgLabelInput" placeholder="Display Label">
+                <button class="action-btn" onclick="addNewGalleryItem()">Inject Into Grid</button>
             </div>
-
             <div class="gallery-grid" id="mainGalleryGrid">
                 <div class="gallery-item"><img src="enntrance.png"><div class="gallery-label">Premium Entrance</div></div>
                 <div class="gallery-item"><img src="mailbox.png"><div class="gallery-label">Custom Mailbox</div></div>
@@ -324,57 +263,41 @@
             </div>
         </div>
     </div>
-
     <footer>
         <div>&copy; 2026 FREQUENCY 528 IRON WORKS. ALL RIGHTS RESERVED.</div>
         <a href="#" class="admin-link" onclick="toggleAdminSystem(event)">Admin Login</a>
     </footer>
-
     <script>
-        // Audio engine setup
-        let audioCtx = null;
-        let playCount = 0;
-        let soundInterval = null;
-
+        let audioCtx = null; let playCount = 0; let soundInterval = null;
         function playSinglePulse() {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            let osc = audioCtx.createOscillator();
-            let gain = audioCtx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(528, audioCtx.currentTime);
+            let osc = audioCtx.createOscillator(); let gain = audioCtx.createGain();
+            osc.type = 'sine'; osc.frequency.setValueAtTime(528, audioCtx.currentTime);
             gain.gain.setValueAtTime(0, audioCtx.currentTime);
             gain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.1);
             gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.5);
             osc.connect(gain); gain.connect(audioCtx.destination);
             osc.start(); osc.stop(audioCtx.currentTime + 1.5);
         }
-
         function startFrequencySequence() {
             window.removeEventListener('click', startFrequencySequence);
             window.removeEventListener('touchstart', startFrequencySequence);
-            playSinglePulse();
-            playCount = 1;
+            playSinglePulse(); playCount = 1;
             soundInterval = setInterval(() => {
-                if (playCount < 3) { playSinglePulse(); playCount++; } 
-                else { clearInterval(soundInterval); }
+                if (playCount < 3) { playSinglePulse(); playCount++; } else { clearInterval(soundInterval); }
             }, 4000);
         }
         window.addEventListener('click', startFrequencySequence);
         window.addEventListener('touchstart', startFrequencySequence);
-
-        // AI Script Configuration
         function generateConcept() {
             const input = document.getElementById('aiInput').value;
             const responseBox = document.getElementById('aiResponse');
             if(!input.trim()) return;
-            responseBox.style.display = "block";
-            responseBox.innerHTML = "<em>Blueprinting metal configuration layout...</em>";
+            responseBox.style.display = "block"; responseBox.innerHTML = "<em>Blueprinting metal configuration layout...</em>";
             setTimeout(() => {
                 responseBox.innerHTML = `<strong>Fabrication Blueprint:</strong> Your idea for "${input}" works perfectly. We recommend combining heavy structural framing rows with high-frequency clean geometric patterns to achieve an elite signature curb appeal. Give Shane or Heylee a call above to launch production details!`;
             }, 1200);
         }
-
-        // Admin Management Portal Controls
         let adminLoggedIn = false;
         function toggleAdminSystem(e) {
             e.preventDefault();
@@ -382,11 +305,10 @@
                 let pass = prompt("Enter Master Access Code:");
                 if(pass === "528") {
                     adminLoggedIn = true;
-                    alert("Access Authenticated. Web editing interfaces active.");
                     document.getElementById('videoAdmin').style.display = "block";
                     document.getElementById('galleryAdmin').style.display = "block";
                     document.querySelector('.admin-link').innerText = "Exit Admin Mode";
-                } else if(pass !== null) { alert("Invalid signature frequency verification."); }
+                }
             } else {
                 adminLoggedIn = false;
                 document.getElementById('videoAdmin').style.display = "none";
@@ -394,33 +316,20 @@
                 document.querySelector('.admin-link').innerText = "Admin Login";
             }
         }
-
-        // Direct Dashboard Image Add Injection
         function addNewGalleryItem() {
             const src = document.getElementById('imgSrcInput').value.trim();
             const label = document.getElementById('imgLabelInput').value.trim();
-            if(!src || !label) { alert("Please complete both parameters."); return; }
-            
+            if(!src || !label) return;
             const grid = document.getElementById('mainGalleryGrid');
             const item = document.createElement('div');
             item.className = "gallery-item";
             item.innerHTML = `<img src="${src}"><div class="gallery-label">${label}</div>`;
             grid.insertBefore(item, grid.firstChild);
-            
-            document.getElementById('imgSrcInput').value = "";
-            document.getElementById('imgLabelInput').value = "";
-            alert("Image injected onto page live display grid successfully!");
         }
-
-        // Video Upload Live Stream Swapper
         function updateLiveVideo() {
             const src = document.getElementById('videoSrcInput').value.trim();
             if(!src) return;
-            const videoEl = document.getElementById('mainWebVideo');
-            videoEl.src = src;
-            videoEl.load();
-            alert("Main Video tutorial stream changed successfully!");
-            document.getElementById('videoSrcInput').value = "";
+            document.getElementById('mainWebVideo').src = src;
         }
     </script>
 </body>
