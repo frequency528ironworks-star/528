@@ -24,11 +24,7 @@
             cursor: pointer;
         }
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+            position: relative;
             background-color: rgba(5, 5, 5, 0.95);
             padding: 1.5rem 1rem;
             text-align: left;
@@ -71,12 +67,32 @@
             text-align: center;
             box-sizing: border-box;
             width: 100%;
-            margin-top: 120px; 
         }
         @keyframes frequencyWave {
-            0% { transform: scale(0.15); letter-spacing: -10px; filter: drop-shadow(0 0 2px rgba(240, 192, 108, 0.2)); opacity: 0.15; }
-            50% { transform: scale(1.05); letter-spacing: 4px; filter: drop-shadow(0 0 35px rgba(240, 192, 108, 0.85)); opacity: 1; }
-            100% { transform: scale(0.15); letter-spacing: -10px; filter: drop-shadow(0 0 2px rgba(240, 192, 108, 0.2)); opacity: 0.15; }
+            0% { text-shadow: 0 0 5px rgba(240, 192, 108, 0.3); }
+            50% { text-shadow: 0 0 25px rgba(240, 192, 108, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(240, 192, 108, 0.3); }
         }
         h1 {
-            font-family: 'Impact', '
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-size: calc(1.8rem + 2vw);
+            line-height: 1.2;
+            margin: 1.5rem 0;
+            text-transform: uppercase;
+            color: #f3dfa2;
+            animation: frequencyWave 3s ease-in-out infinite;
+        }
+        .subtext {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--sub-gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0 0 3rem 0;
+            line-height: 1.4;
+        }
+        .section-box {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(12, 12, 12, 0.85);
+            border: 1px solid #262
