@@ -6,12 +6,11 @@
     <title>Frequency 528 Iron Works</title>
     <style>
         :root {
-            --bg-black: #050505; 
-            --shadow-gray: #1a1a1a; 
-            --sub-gray: #a39073; 
-            --glow-color: rgba(224, 169, 74, 0.35); 
+            --bg-black: #050505;
+            --shadow-gray: #1a1a1a;
+            --sub-gray: #a39073;
+            --glow-color: rgba(224, 169, 74, 0.35);
         }
-
         body {
             margin: 0;
             padding: 0;
@@ -24,24 +23,29 @@
             overflow-x: hidden;
             cursor: pointer;
         }
-
+        
+        /* FIXES THE HEADER TO THE TOP (Static Out/In) */
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(5, 5, 5, 0.95); /* Solid black background so content scrolls underneath safely */
             padding: 1.5rem 1rem;
             text-align: left;
             border-bottom: 1px solid #161616;
+            box-sizing: border-box;
         }
-
         .logo {
             font-family: 'Impact', Arial, sans-serif;
             font-size: 1.2rem;
             letter-spacing: 1px;
             color: #ffffff;
         }
-
         .logo span {
-            color: #bfa16f; 
+            color: #bfa16f;
         }
-
         /* Tiny Top-Left Contact Info */
         .top-left-contact {
             margin-top: 0.5rem;
@@ -51,18 +55,17 @@
             text-transform: uppercase;
             line-height: 1.4;
         }
-
         .top-left-contact a {
             color: #ffffff;
             text-decoration: none;
             font-weight: bold;
             margin-left: 4px;
         }
-
         .top-left-contact a:hover {
             color: #cca450;
         }
-
+        
+        /* Added margin-top so the container doesn't get hidden behind the fixed header */
         .container {
             flex: 1;
             display: flex;
@@ -73,8 +76,8 @@
             text-align: center;
             box-sizing: border-box;
             width: 100%;
+            margin-top: 100px; 
         }
-
         @keyframes frequencyWave {
             0% {
                 transform: scale(0.96) skewX(-2deg);
@@ -92,10 +95,9 @@
                 opacity: 0.9;
             }
         }
-
         h1 {
             font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: calc(2.2rem + 2vw); 
+            font-size: calc(2.2rem + 2vw);
             line-height: 1.2;
             letter-spacing: 1px;
             margin: 0 0 1.5rem 0;
@@ -108,9 +110,8 @@
             word-wrap: break-word;
             animation: frequencyWave 4s ease-in-out infinite;
         }
-
         .subtext {
-            font-size: 1rem; 
+            font-size: 1rem;
             font-weight: bold;
             color: var(--sub-gray);
             letter-spacing: 2px;
@@ -119,12 +120,11 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
             line-height: 1.4;
         }
-
         .section-box {
             width: 100%;
             max-width: 900px;
             background: rgba(12, 12, 12, 0.85);
-            border: 1px solid #262118; 
+            border: 1px solid #262118;
             border-radius: 8px;
             padding: 1.5rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
@@ -132,32 +132,28 @@
             text-align: left;
             margin-bottom: 2rem;
         }
-
         .section-box h2 {
             font-family: 'Impact', sans-serif;
             font-size: 1.5rem;
             letter-spacing: 1px;
             margin: 0 0 1rem 0;
-            color: #f3dfa2; 
+            color: #f3dfa2;
             text-transform: uppercase;
             border-bottom: 1px solid #262118;
             padding-bottom: 0.5rem;
         }
-
         .section-box p {
             color: #a8a090;
             font-size: 0.9rem;
             margin: 0 0 1.25rem 0;
             line-height: 1.4;
         }
-
         /* AI Interactive Elements */
         .input-group {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-
         textarea {
             width: 100%;
             background: #0f0f0d;
@@ -172,12 +168,10 @@
             box-sizing: border-box;
             transition: border-color 0.3s;
         }
-
         textarea:focus {
             outline: none;
             border-color: #cca450;
         }
-
         .action-btn {
             background: linear-gradient(to bottom, #f3dfa2, #cca450);
             color: #000;
@@ -191,11 +185,9 @@
             cursor: pointer;
             transition: opacity 0.2s;
         }
-
         .action-btn:hover {
             opacity: 0.9;
         }
-
         .ai-response {
             margin-top: 1.25rem;
             padding-top: 1.25rem;
@@ -205,14 +197,12 @@
             line-height: 1.5;
             display: none;
         }
-
         /* Responsive Photo Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 1.2rem;
         }
-
         .gallery-item {
             background: #111;
             border: 1px solid #222;
@@ -223,19 +213,16 @@
             transition: border-color 0.3s, transform 0.3s;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-
         .gallery-item:hover {
             border-color: #cca450;
             transform: scale(1.02);
         }
-
         .gallery-label {
             position: absolute;
             bottom: 0;
@@ -251,28 +238,24 @@
             text-align: center;
             border-top: 1px solid rgba(204, 164, 80, 0.2);
         }
-
         /* Testimonials Styles */
         .review-card {
             border-left: 3px solid #cca450;
             padding-left: 1rem;
             margin-bottom: 1.5rem;
         }
-
         .review-text {
             font-style: italic;
             color: #ddd;
             font-size: 0.95rem;
             margin: 0 0 0.25rem 0;
         }
-
         .review-author {
             color: #8c816f;
             font-size: 0.85rem;
             font-weight: bold;
             text-transform: uppercase;
         }
-
         /* Footer & Access Dashboard Button */
         footer {
             text-align: center;
@@ -285,7 +268,6 @@
             width: 100%;
             box-sizing: border-box;
         }
-
         .admin-link {
             display: inline-block;
             margin-top: 1rem;
@@ -298,39 +280,70 @@
             border-radius: 3px;
             transition: background 0.2s, color 0.2s;
         }
-
         .admin-link:hover {
             background: #111;
             color: #cca450;
             border-color: #222;
         }
-
         @media (min-width: 769px) {
-            header { padding: 2rem; .logo { font-size: 1.5rem; } }
-            .top-left-contact { font-size: 0.85rem; }
-            .container { padding: 4rem 2rem; }
-            h1 { font-size: 4.8rem; letter-spacing: 3px; line-height: 1.1; white-space: nowrap; width: auto; }
-            .subtext { font-size: 1.3rem; letter-spacing: 5px; margin-bottom: 4rem; }
-            .section-box { padding: 2.5rem; h2 { font-size: 1.8rem; } p { font-size: 0.95rem; } }
-            .gallery-grid { gap: 1.5rem; }
-            .gallery-item { height: 260px; }
-            footer { padding: 2rem; font-size: 0.8rem; margin-top: 4rem; }
+            header {
+                padding: 2rem;
+            }
+            header .logo {
+                font-size: 1.5rem;
+            }
+            .top-left-contact {
+                font-size: 0.85rem;
+            }
+            .container {
+                padding: 4rem 2rem;
+                margin-top: 140px; /* Shifts content down a little extra on desktop for the fixed header */
+            }
+            h1 {
+                font-size: 4.8rem;
+                letter-spacing: 3px;
+                line-height: 1.1;
+                white-space: nowrap;
+                width: auto;
+            }
+            .subtext {
+                font-size: 1.3rem;
+                letter-spacing: 5px;
+                margin-bottom: 4rem;
+            }
+            .section-box {
+                padding: 2.5rem;
+            }
+            .section-box h2 {
+                font-size: 1.8rem;
+            }
+            .section-box p {
+                font-size: 0.95rem;
+            }
+            .gallery-grid {
+                gap: 1.5rem;
+            }
+            .gallery-item {
+                height: 260px;
+            }
+            footer {
+                padding: 2rem;
+                font-size: 0.8rem;
+                margin-top: 4rem;
+            }
         }
     </style>
 </head>
 <body>
-
     <header>
         <div class="logo">FREQUENCY-<span>528</span> // IRON WORKS</div>
         <div class="top-left-contact">
             Shane Cavender: <a href="tel:404-807-5409">404-807-5409</a> &nbsp;//&nbsp; Heylee: <a href="tel:478-331-8547">478-331-8547</a>
         </div>
     </header>
-
     <div class="container">
         <h1>ITS NOT JUST IRON ...<br>ITS "FREQUENCY 528" IRON</h1>
         <p class="subtext">Custom Craftsmanship // High-Vibrational Metalwork</p>
-
         <div class="section-box">
             <h2>AI Design Assistant</h2>
             <p>Describe your vision (e.g., "A modern geometric gate with heavy industrial steel lines") to bring your project configuration to life.</p>
@@ -340,7 +353,6 @@
             </div>
             <div class="ai-response" id="aiResponse"></div>
         </div>
-
         <div class="section-box">
             <h2>Craftsmanship Gallery</h2>
             <div class="gallery-grid">
@@ -370,7 +382,6 @@
                 </div>
             </div>
         </div>
-
         <div class="section-box">
             <h2>Client Reviews</h2>
             <div class="review-card">
@@ -383,31 +394,64 @@
             </div>
         </div>
     </div>
-
     <footer>
         <div>&copy; 2026 FREQUENCY 528 IRON WORKS. ALL RIGHTS RESERVED.</div>
         <a href="#" class="admin-link" onclick="toggleAdminSystem(event)">Admin Login</a>
     </footer>
-
     <script>
-        // Tone frequency generator
+        // Tone frequency setup
         let audioCtx = null;
-        function startFrequency() {
-            if (audioCtx) return; 
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let playCount = 0;
+        let soundInterval = null;
+
+        // Function that builds and plays a single 528Hz acoustic tone pulse
+        function playSinglePulse() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
             let oscillator = audioCtx.createOscillator();
             let gainNode = audioCtx.createGain();
+            
             oscillator.type = 'sine';
             oscillator.frequency.setValueAtTime(528, audioCtx.currentTime);
-            gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3); 
+            
+            // Soft fade-in and smooth fade-out over 1.5 seconds
+            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.1);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.5);
+            
             oscillator.connect(gainNode);
             gainNode.connect(audioCtx.destination);
+            
             oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 3); 
+            oscillator.stop(audioCtx.currentTime + 1.5);
         }
-        window.addEventListener('click', startFrequency);
-        window.addEventListener('touchstart', startFrequency);
+
+        // Handles starting the loop when user clicks anywhere on the page
+        function startFrequencySequence() {
+            // Remove click listeners right away so it doesn't try to restart a loop on every single click
+            window.removeEventListener('click', startFrequencySequence);
+            window.removeEventListener('touchstart', startFrequencySequence);
+            
+            // Play 1st tone right away upon user interaction
+            playSinglePulse();
+            playCount = 1;
+            
+            // Trigger loop to fire a sound pulse every 4 seconds until it has chimed a total of 3 times
+            soundInterval = setInterval(() => {
+                if (playCount < 3) {
+                    playSinglePulse();
+                    playCount++;
+                } else {
+                    clearInterval(soundInterval); // Cease completely after 3 chimes
+                }
+            }, 4000); 
+        }
+
+        // Web browsers block sound from playing automatically without human click interaction first
+        window.addEventListener('click', startFrequencySequence);
+        window.addEventListener('touchstart', startFrequencySequence);
 
         // AI Script Configuration
         function generateConcept() {
@@ -441,6 +485,5 @@
             }
         }
     </script>
-
 </body>
 </html>
