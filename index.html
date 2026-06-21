@@ -22,23 +22,26 @@
         .header-contact-right a{ color:#b8b8b8; text-decoration:none; margin-top:4px; font-size:.74rem; }
         .header-contact-right a:hover{ color:#fff; }
 
-        .logo-hero{ padding:38px 4% 10px; text-align:center; }
+        .logo-hero{ padding:48px 4% 14px; text-align:center; }
         .main-logo-text{
-            display:inline-block; max-width:min(1200px, 96vw); text-align:center; line-height:.9;
+            display:inline-block; max-width:min(1200px, 96vw); text-align:center; line-height:.84;
             font-family:'Cinzel',serif; font-weight:900; text-transform:uppercase; letter-spacing:-.6px;
-            font-size:clamp(2.6rem, 7vw, 7.4rem);
+            font-size:clamp(2.6rem, 7.2vw, 7.6rem);
             color:transparent; background:linear-gradient(135deg, #fff7d6 0%, #f1d37a 28%, #d4af37 52%, #a8740c 100%);
             -webkit-background-clip:text; background-clip:text;
-            text-shadow:0 0 10px rgba(241,211,122,.18), 0 0 32px rgba(212,175,55,.28), 0 2px 0 rgba(255,255,255,.18);
+            text-shadow:0 0 12px rgba(241,211,122,.2), 0 0 34px rgba(212,175,55,.3), 0 2px 0 rgba(255,255,255,.18);
             filter:drop-shadow(0 10px 18px rgba(0,0,0,.85));
-            animation:logoPulse 4.4s ease-in-out infinite, shimmer 7s linear infinite, vibrate 1.2s ease-in-out infinite;
+            animation:logoPulse 4.8s ease-in-out infinite, shimmer 7s linear infinite, vibrate 1.5s ease-in-out infinite;
             background-size:200% 100%;
             transform-origin:center center;
         }
-        .main-logo-text::after{ content:''; display:block; width:min(420px, 58vw); height:1px; margin:18px auto 0; background:linear-gradient(90deg, transparent, rgba(241,211,122,.85), transparent); box-shadow:0 0 18px rgba(212,175,55,.35); opacity:.9; }
-        @keyframes logoPulse{ 0%,100%{ transform:scale(.955); opacity:.9; } 50%{ transform:scale(1.055); opacity:1; } }
+        .main-logo-text .logo-line{ display:block; }
+        .main-logo-text .logo-line.small{ font-size:.58em; letter-spacing:2px; margin-top:.12em; }
+        .main-logo-text .logo-line.quote{ font-size:.78em; letter-spacing:.12em; margin-top:.16em; }
+        .main-logo-text::after{ content:''; display:block; width:min(460px, 60vw); height:1px; margin:20px auto 0; background:linear-gradient(90deg, transparent, rgba(241,211,122,.95), transparent); box-shadow:0 0 22px rgba(212,175,55,.45); opacity:.95; }
+        @keyframes logoPulse{ 0%,100%{ transform:scale(.965); opacity:.9; } 50%{ transform:scale(1.05); opacity:1; } }
         @keyframes shimmer{ 0%{ background-position:200% 0; } 100%{ background-position:-200% 0; } }
-        @keyframes vibrate{ 0%,100%{ transform:scale(.965) translateX(0); } 20%{ transform:scale(1.01) translateX(-1.2px); } 40%{ transform:scale(1.055) translateX(1.2px); } 60%{ transform:scale(1.01) translateX(-.7px); } 80%{ transform:scale(1.03) translateX(.7px); } }
+        @keyframes vibrate{ 0%,100%{ transform:scale(.975) translateX(0); } 20%{ transform:scale(1.01) translateX(-1px); } 40%{ transform:scale(1.045) translateX(1px); } 60%{ transform:scale(1.01) translateX(-.6px); } 80%{ transform:scale(1.025) translateX(.6px); } }
         .tagline{ text-align:center; color:#8f8f8f; font-size:.88rem; margin-top:10px; letter-spacing:.2px; }
 
         .freeform-canvas{ width:100%; max-width:1100px; margin:0 auto; padding:12px 4% 40px; }
@@ -81,7 +84,7 @@
         .small-note{ color:#999; font-size:.83rem; }
         footer{ border-top:1px solid #202020; padding:24px 4%; text-align:center; background:#000; color:#686868; font-size:.83rem; }
         footer a{ color:var(--gold); text-decoration:none; }
-        @media (max-width: 900px){ body{ padding-top:84px; } .fixed-header{ min-height:auto; flex-direction:column; align-items:center; text-align:center; padding:12px 14px; } .header-nav-left,.header-contact-right{ justify-content:center; align-items:center; text-align:center; } .header-contact-right{ align-items:center; } .logo-hero{ padding:18px 4% 6px; } .main-logo-text{ font-size:clamp(2.1rem, 11vw, 4.6rem); } .workspace-block,.video-block{ padding:16px; } .block-header{ flex-direction:column; align-items:flex-start; } .ai-submit-btn{ width:100%; text-align:center; } }
+        @media (max-width: 900px){ body{ padding-top:84px; } .fixed-header{ min-height:auto; flex-direction:column; align-items:center; text-align:center; padding:12px 14px; } .header-nav-left,.header-contact-right{ justify-content:center; align-items:center; text-align:center; } .header-contact-right{ align-items:center; } .logo-hero{ padding:18px 4% 6px; } .main-logo-text{ font-size:clamp(2.2rem, 11vw, 4.9rem); } .workspace-block,.video-block{ padding:16px; } .block-header{ flex-direction:column; align-items:flex-start; } .ai-submit-btn{ width:100%; text-align:center; } }
     </style>
 </head>
 <body>
@@ -101,7 +104,11 @@
     </header>
 
     <section class="logo-hero">
-        <div class="main-logo-text" id="heroLogo">IT NOT JUST IRON...ITS FREQUENCY 528 IRON</div>
+        <div class="main-logo-text" id="heroLogo">
+            <span class="logo-line">IT NOT JUST IRON...</span>
+            <span class="logo-line small">ITS</span>
+            <span class="logo-line quote">"FREQUENCY 528" IRON</span>
+        </div>
         <div class="tagline">Premium ironwork concepts • custom design • clean presentation</div>
     </section>
 
