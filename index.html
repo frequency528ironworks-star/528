@@ -81,7 +81,7 @@
         .gallery-info p{ color:#8a8a8a; font-size:.85rem; }
         .video-wrapper{ width:100%; background:var(--panel-2); border:1px solid #333; border-radius:14px; overflow:hidden; box-shadow:0 14px 36px rgba(0,0,0,.55); margin-top:12px; }
         .video-container{ position:relative; padding-bottom:56.25%; height:0; }
-        .video-container video,.video-container iframe{ position:absolute; top:0; left:0; width:100%; height:none; border:none; }
+        .video-container video,.video-container iframe{ position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
         .feedback-input-area{ border-bottom:1px solid #242424; padding-bottom:18px; margin-bottom:18px; }
         .reviews-stream{ display:flex; flex-direction:column; gap:14px; }
         .review-post{ background:var(--panel-2); border-left:3px solid var(--gold); padding:16px; border-radius:0 12px 12px 0; }
@@ -355,8 +355,11 @@
            Default password: frequency528
            SHA-256 hash stored below. Change via "Change Admin Password"
            after signing in -- new hash is saved in browser localStorage.
+           Note: client-side auth is a lightweight access gate appropriate
+           for a personal portfolio site. Do not use for sensitive data.
         ================================================================ */
         const DEFAULT_ADMIN_HASH = '9decce85c2e8b37303ac32090da7364c250dd32c788bf71d7777aee456429619';
+        const MAX_UPLOAD_MB = 10;
         let adminAuthenticated = false;
 
         async function sha256(str) {
@@ -466,7 +469,7 @@
                 'Accept': 'application/vnd.github.v3+json',
                 'Content-Type': 'application/json'
             };
-            if (token) headers['Authorization'] = 'token ' + token;
+            if (token) headers['Authorization'] = 'Bearer ' + token;
             const opts = { method: method, headers: headers };
             if (body !== undefined && body !== null) opts.body = JSON.stringify(body);
             const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + path;
@@ -541,8 +544,8 @@
         }
 
         async function uploadSingleFile(file) {
-            if (file.size > 10 * 1024 * 1024) {
-                throw new Error(file.name + ' exceeds the 10 MB limit.');
+            if (file.size > MAX_UPLOAD_MB * 1024 * 1024) {
+                throw new Error(file.name + ' exceeds the ' + MAX_UPLOAD_MB + ' MB limit.');
             }
             const b64full  = await fileToBase64(file);
             const b64      = b64full.split(',')[1];
