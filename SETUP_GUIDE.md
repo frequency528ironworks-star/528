@@ -1,5 +1,83 @@
 # GitHub Pages + Namecheap Domain Setup Guide
 
+---
+
+## Admin Sign-In & Photo Upload Setup
+
+### How the admin system works
+
+The website now has a **real admin sign-in** system. Here is what was built:
+
+- Click **"Edit / Sign In"** on the site to open the admin sign-in modal.
+- Enter the admin password — it is verified with SHA-256 (no plain-text password stored).
+- After signing in, the **Admin Upload** section appears at the bottom of the page.
+- You can drag-and-drop or click to select photos, then click **Upload Photos**.
+- Photos are committed directly to this GitHub repository (in `admin/uploads/`) using the GitHub API.
+- The **Portfolio Gallery** section automatically shows all uploaded photos.
+- You can delete photos from the gallery when in Admin Mode.
+
+---
+
+### Default Admin Password
+
+**Default password: `frequency528`**
+
+You should change this after your first sign-in:
+1. Sign in with the default password.
+2. Scroll down to the **Admin Upload** section.
+3. Enter a new password (minimum 8 characters) in the **Change Admin Password** fields.
+4. Click **Update Password** — your new password is saved in your browser.
+
+> **Note:** The password is stored as a SHA-256 hash in your browser's localStorage.
+> If you clear your browser data, the password resets to the default `frequency528`.
+> To permanently change the default, update the `DEFAULT_ADMIN_HASH` constant in `index.html`
+> with the SHA-256 hash of your new password.
+
+---
+
+### One-Time GitHub PAT Setup (required for photo uploads)
+
+To upload photos, you need a **GitHub Personal Access Token (PAT)**. This is a secret key
+that lets the website commit photos to this repository on your behalf.
+
+**Step 1 — Create the PAT (takes ~2 minutes):**
+
+1. Go to: **https://github.com/settings/tokens?type=beta** (fine-grained PAT)
+2. Click **"Generate new token"**
+3. Give it a name, e.g. `frequency528-upload`
+4. Set **Expiration** to 1 year (or "No expiration")
+5. Under **Repository access**, select: **Only select repositories → frequency528ironworks-star/528**
+6. Under **Permissions → Repository permissions**, set:
+   - **Contents**: Read and write
+   - Leave everything else as "No access"
+7. Click **Generate token** and copy the token (starts with `github_pat_...`)
+
+> Keep this token private. It only has permission to write files to this one repo.
+
+**Step 2 — Enter the PAT in the website:**
+
+1. Sign in to the admin panel on your website
+2. The **"One-Time Setup Required"** panel will appear automatically
+3. Paste your token into the field and click **Save**
+4. Your token is saved in your browser's localStorage (not in the code)
+
+**Step 3 — Start uploading:**
+
+After saving the PAT, use the upload zone to select and upload portfolio photos.
+They will be committed to `admin/uploads/` in this repository and appear in the
+Portfolio Gallery section within seconds.
+
+---
+
+### Updating your PAT when it expires
+
+If your PAT expires, uploads will fail. To update it:
+1. Sign in to the admin panel
+2. Under **"Update GitHub PAT"**, enter your new token
+3. Click **Update PAT**
+
+---
+
 ## Step 1: Enable GitHub Pages (5 minutes)
 
 1. Go to your repository: https://github.com/frequency528ironworks-star/528
