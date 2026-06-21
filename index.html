@@ -10,81 +10,471 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        html { scroll-behavior: smooth; }
-        body { background-color: #0a0a0a; color: #e5e5e5; line-height: 1.6; padding-top: 140px; overflow-x: hidden; }
+        /* --- CORE CONFIGURATION & RESET --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
 
-        .fixed-header { position: fixed; top: 0; left: 0; width: 100%; height: 140px; background-color: #000000; border-bottom: 2px solid #bba15c; display: flex; align-items: center; justify-content: space-between; padding: 0 4%; z-index: 999999; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); }
-        .header-nav-left { display: flex; gap: 20px; flex: 1; }
-        .header-nav-left a { color: #aaaaaa; text-decoration: none; font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.2s ease; }
-        .header-nav-left a:hover { color: #d4af37; }
-        
-        .logo-container { text-align: center; flex: 2; }
-        .main-logo-text { font-weight: 900; letter-spacing: -1px; text-transform: uppercase; background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6); animation: pulseFontSize 8s infinite ease-in-out; line-height: 1.1; font-size: 1.95rem; }
-        
-        .header-contact-right { flex: 1; text-align: right; display: flex; flex-direction: column; gap: 2px; }
-        .contact-line { font-size: 0.85rem; color: #ffffff; }
-        .contact-line span { color: #d4af37; font-weight: 600; }
-        .contact-email-link { font-size: 0.8rem; color: #aaaaaa; text-decoration: none; }
-        
-        .freeform-canvas { position: relative; width: 100%; max-width: 1300px; margin: 0 auto; padding: 40px 4%; }
-        .workspace-block { background-color: #111111; border: 1px solid #222222; border-radius: 16px; padding: 48px; margin-bottom: 56px; }
-        
-        .block-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .block-title { font-size: 2rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 12px; }
-        .block-title span { color: #d4af37; }
-        
-        /* Edit Button Style */
-        .edit-btn { background: #222; color: #d4af37; border: 1px solid #d4af37; padding: 8px 16px; font-weight: 600; text-transform: uppercase; cursor: pointer; border-radius: 8px; font-size: 0.8rem; }
-        .edit-btn:hover { background: #d4af37; color: #000; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-        .ai-portal-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-        .input-group { display: flex; flex-direction: column; gap: 8px; }
-        .input-group input, .input-group textarea { background-color: #161616; border: 1px solid #333333; border-radius: 8px; padding: 14px; color: #ffffff; }
-        .ai-submit-btn { background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%); color: #000000; border: none; padding: 16px 32px; font-weight: 700; border-radius: 8px; cursor: pointer; text-transform: uppercase; }
-        
-        .gallery-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
-        .gallery-card { background-color: #161616; border: 1px solid #222222; border-radius: 12px; padding: 20px; }
-        
-        .video-wrapper { width: 100%; max-width: 850px; margin: 0 auto; background-color: #161616; border-radius: 12px; overflow: hidden; }
-        
-        footer { border-top: 1px solid #222222; padding: 40px 4%; text-align: center; color: #666; font-size: 0.85rem; }
+        body {
+            background-color: #0a0a0a; /* True Deep Black Background */
+            color: #e5e5e5;
+            line-height: 1.6;
+            padding-top: 140px; /* Offset to clear the premium deep header layout */
+            overflow-x: hidden;
+        }
 
+        /* --- FIXED HEADER & NAVIGATION LAYERS --- */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 140px;
+            background-color: #000000;
+            border-bottom: 2px solid #bba15c; /* Subdued brass/gold structural boundary line */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4%;
+            z-index: 999999;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Nav Quick Links (Left Anchor) */
+        .header-nav-left {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .header-nav-left a {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+        }
+
+        .header-nav-left a:hover {
+            color: #d4af37;
+        }
+
+        /* Centered Dynamic Logo Structure */
+        .logo-container {
+            text-align: center;
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-logo-text {
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.2);
+            animation: pulseFontSize 8s infinite ease-in-out;
+            line-height: 1.1;
+        }
+
+        /* Breathing logo dynamic scale loop (Large -> Small -> Large) */
+        @keyframes pulseFontSize {
+            0% { font-size: 1.95rem; }
+            50% { font-size: 1.55rem; }
+            100% { font-size: 1.95rem; }
+        }
+
+        /* Right Anchor Contact Panel Block */
+        .header-contact-right {
+            flex: 1;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .contact-line {
+            font-size: 0.85rem;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        .contact-line span {
+            color: #d4af37; /* Brass accent text highlights */
+            font-weight: 600;
+        }
+
+        .contact-email-link {
+            font-size: 0.8rem;
+            color: #aaaaaa;
+            text-decoration: none;
+            margin-top: 4px;
+            transition: color 0.2s;
+        }
+
+        .contact-email-link:hover {
+            color: #ffffff;
+        }
+
+        /* --- MAIN FREEFORM WORKSPACE CANVAS --- */
+        .freeform-canvas {
+            position: relative;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 4%;
+        }
+
+        /* --- CORE MODULE CONTAINER SYSTEM --- */
+        .workspace-block {
+            background-color: #111111;
+            border: 1px solid #222222;
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 56px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        }
+
+        /* Header row with edit button added */
+        .block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .edit-btn {
+            background: #222; 
+            color: #d4af37; 
+            border: 1px solid #d4af37; 
+            padding: 8px 16px; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .block-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .block-title span {
+            color: #d4af37;
+        }
+
+        .block-subtitle {
+            color: #888888;
+            font-size: 1rem;
+            margin-bottom: 32px;
+            max-width: 700px;
+        }
+
+        /* --- AI ASSISTANT PORTAL INTERFACE --- */
+        .ai-portal-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .form-row-split {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #bbbbbb;
+        }
+
+        .input-group input, .input-group textarea {
+            background-color: #161616;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 14px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+        }
+
+        .ai-submit-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+            color: #000000;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: opacity 0.2s, transform 0.1s;
+            margin-top: 12px;
+            align-self: flex-start;
+        }
+
+        .ai-submit-btn:hover {
+            opacity: 0.95;
+        }
+
+        .ai-submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* --- PORTFOLIO MEDIA GALLERY GRID --- */
+        .gallery-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-card {
+            background-color: #161616;
+            border: 1px solid #222222;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+        }
+
+        .gallery-media-placeholder {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(45deg, #1f1f1f 25%, #252525 50%, #1f1f1f 75%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555555;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #222222;
+        }
+
+        .gallery-info {
+            padding: 20px;
+        }
+
+        .gallery-info h4 {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .gallery-info p {
+            font-size: 0.85rem;
+            color: #888888;
+        }
+
+        /* --- VIDEO TUTORIAL ENGINE CAPABILITIES --- */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: #161616;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Perfect 16:9 Aspect Ratio */
+            height: 0;
+        }
+
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- LIVE CLIENT REVIEWS & FEEDBACK LOOP --- */
+        .feedback-input-area {
+            border-bottom: 1px solid #222222;
+            padding-bottom: 32px;
+            margin-bottom: 32px;
+        }
+
+        .reviews-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-post {
+            background-color: #161616;
+            border-left: 3px solid #d4af37;
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .review-stars {
+            color: #d4af37;
+        }
+
+        .review-body {
+            color: #aaaaaa;
+            font-size: 0.95rem;
+        }
+
+        /* --- TERMINAL FOOTER BRAND BOUNDARY --- */
+        footer {
+            border-top: 1px solid #222222;
+            padding: 40px 4%;
+            text-align: center;
+            background-color: #000000;
+            color: #666666;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        /* --- RESPONSIVE STRUCTURAL OVERRIDES --- */
         @media (max-width: 992px) {
-            .fixed-header { height: auto; padding: 20px; }
-            body { padding-top: 240px; }
+            .fixed-header {
+                height: auto;
+                flex-direction: column;
+                padding: 20px;
+                gap: 16px;
+            }
+            body {
+                padding-top: 240px;
+            }
+            .header-nav-left {
+                justify-content: center;
+                width: 100%;
+                order: 2;
+            }
+            .logo-container {
+                order: 1;
+                width: 100%;
+            }
+            .header-contact-right {
+                text-align: center;
+                width: 100%;
+                order: 3;
+            }
+            .main-logo-text {
+                animation: none; /* Disables pulse logic on small mobile screens for structural layout reading stability */
+                font-size: 1.4rem !important;
+            }
         }
     </style>
 </head>
 <body>
+
     <header class="fixed-header">
+        
         <nav class="header-nav-left">
             <a href="#ai-portal">AI Portal</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#how-to">How To</a>
             <a href="#reviews">Reviews</a>
         </nav>
+
         <div class="logo-container">
             <div class="main-logo-text">IT NOT JUST IRON...ITS FREQUENCY 528 IRON</div>
         </div>
+
         <div class="header-contact-right">
             <div class="contact-line">Shane Cavender: <span>404-807-5409</span></div>
             <div class="contact-line">Heyleigh: <span>478-331-8547</span></div>
             <a href="mailto:Frequency528ironworks@gmail.com" class="contact-email-link">Frequency528ironworks@gmail.com</a>
         </div>
+
     </header>
 
     <main class="freeform-canvas">
+
         <section id="ai-portal" class="workspace-block">
             <div class="block-header">
                 <h2 class="block-title">AI Client Concept <span>Visualizer</span></h2>
                 <button class="edit-btn">Edit / Sign In</button>
             </div>
-            <form class="ai-portal-grid">
-                <div class="input-group"><input type="text" placeholder="Full Name"></div>
-                <div class="input-group"><input type="tel" placeholder="Mobile Number"></div>
-                <div class="input-group"><textarea rows="6" placeholder="Describe Vision"></textarea></div>
-                <button type="submit" class="ai-submit-btn">Transmit Concept</button>
+            <p class="block-subtitle">Input your layout preferences, project dimensions, or conceptual structural designs directly. Provide your exact home property address location variables so our engineering systems can overlay spatial mockups accurately onto your site profile.</p>
+            
+            <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Your design concept data and address profiles have been securely routed to Shane & Heyleigh.');">
+                
+                <div class="form-row-split">
+                    <div class="input-group">
+                        <label for="client-name">Your Full Name</label>
+                        <input type="text" id="client-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="client-phone">Direct Mobile Number</label>
+                        <input type="tel" id="client-phone" placeholder="(555) 555-5555" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="home-address">Installation / Home Property Address</label>
+                    <input type="text" id="home-address" placeholder="123 Main Street, City, State, Zip Code" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label>
+                    <textarea id="design-ideas" rows="6" placeholder="Specify iron gates, customized railings, security window sets, decorative frequency geometries, dimensional targets..." required></textarea>
+                </div>
+
+                <button type="submit" class="ai-submit-btn">Transmit Concept to Ironworks</button>
             </form>
         </section>
 
@@ -93,46 +483,106 @@
                 <h2 class="block-title">Architectural <span>Portfolio</span></h2>
                 <button class="edit-btn">Edit / Sign In</button>
             </div>
+            <p class="block-subtitle">Explore historical ironwork builds, heavy geometric implementations, and frequency design templates executed across properties.</p>
+            
             <div class="gallery-matrix">
-                <div class="gallery-card"><h4>Heavy Ornamental Gate</h4></div>
-                <div class="gallery-card"><h4>Structural Balustrades</h4></div>
+                <div class="gallery-card">
+                    <div class="gallery-media-placeholder"> Custom Gate Build [Placeholder Asset] </div>
+                    <div class="gallery-info">
+                        <h4>Heavy Ornamental Gate Set</h4>
+                        <p>High-grade precision engineered driveway structure.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-media-placeholder"> Geometric Railing [Placeholder Asset] </div>
+                    <div class="gallery-info">
+                        <h4>Structural Geometric Balustrades</h4>
+                        <p>Custom modern interior structural installation.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-media-placeholder"> Custom Architectural [Placeholder Asset] </div>
+                    <div class="gallery-info">
+                        <h4>Frequency 528 Custom Build</h4>
+                        <p>Bespoke custom specialized metal component asset.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="how-to" class="workspace-block">
             <div class="block-header">
-                <h2 class="block-title">How-To <span>Showcase</span></h2>
+                <h2 class="block-title">How-To Video <span>Showcase</span></h2>
                 <button class="edit-btn">Edit / Sign In</button>
             </div>
-            <div class="video-wrapper"><video controls style="width:100%"></video></div>
+            <p class="block-subtitle">Review procedural design briefs, installation compliance measures, or conceptual demonstrations directly from the fabrication floor.</p>
+            
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <video controls poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='%23d4af37'><path d='M8 5v14l11-7z'/></svg>">
+                        <source src="your-video-file.mp4" type="video/mp4">
+                        Your browser configuration does not process standard native video layers.
+                    </video>
+                </div>
+            </div>
         </section>
+
+        <section id="reviews" class="workspace-block">
+            <div class="block-header">
+                <h2 class="block-title">Client <span>Reviews & Comments</span></h2>
+                <button class="edit-btn">Edit / Sign In</button>
+            </div>
+            <p class="block-subtitle">Read unfiltered user feedback regarding past execution parameters or drop your own feedback notes directly below.</p>
+            
+            <div class="feedback-input-area">
+                <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Review received for processing.');">
+                    <div class="form-row-split">
+                        <div class="input-group">
+                            <label for="reviewer-name">Name / Project Location</label>
+                            <input type="text" id="reviewer-name" placeholder="Example: Robert M. - Atlanta" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="review-rating">Project Rating Selection</label>
+                            <input type="text" id="review-rating" placeholder="★★★★★ (5/5 Stars)" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="review-text">Review Content Text</label>
+                        <textarea id="review-text" rows="3" placeholder="Drop your comment details regarding installation quality, speed, or precision parameters..." required></textarea>
+                    </div>
+                    <button type="submit" class="ai-submit-btn" style="padding: 12px 24px; font-size: 0.85rem;">Post Review Entry</button>
+                </form>
+            </div>
+
+            <div class="reviews-stream">
+                <div class="review-post">
+                    <div class="review-meta">
+                        <div class="review-author">Marcus T.</div>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                    <div class="review-body">
+                        Shane and the crew completely killed it on our perimeter iron framework. Absolute precision balancing, and the brass gold finish hints are phenomenal. Truly clean craftsmanship.
+                    </div>
+                </div>
+
+                <div class="review-post">
+                    <div class="review-meta">
+                        <div class="review-author">Elena R.</div>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                    <div class="review-body">
+                        The AI planning module made it so easy. Submitted our property mapping vectors along with conceptual specs and Heyleigh routed back precise site overlays almost instantly. Recommended.
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer>&copy; 2026 frequency528ironworks.com | Premium Metalworks Layout Node System.</footer>
+    <footer>
+        <p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p>
+        <p style="color: #444444; font-size: 0.75rem; margin-top: 8px;">All structural asset positioning parameters verified stable.</p>
+    </footer>
 
-    <script>
-        let audioCtx = null;
-        function play528Ding(delay) {
-            setTimeout(() => {
-                if (!audioCtx) return;
-                let osc = audioCtx.createOscillator();
-                let gainNode = audioCtx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(528, audioCtx.currentTime); 
-                gainNode.gain.setValueAtTime(0.25, audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.4);
-                osc.connect(gainNode); gainNode.connect(audioCtx.destination);
-                osc.start(); osc.stop(audioCtx.currentTime + 1.4);
-            }, delay);
-        }
-        function triggerThreeDings() { play528Ding(0); play528Ding(350); play528Ding(700); }
-        window.addEventListener('click', function() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                triggerThreeDings();
-                setInterval(triggerThreeDings, 120000);
-            }
-        }, { once: true });
-    </script>
 </body>
 </html>
