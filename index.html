@@ -38,7 +38,17 @@
         .main-logo-text .logo-line{ display:block; }
         .main-logo-text .logo-line.small{ font-size:.58em; letter-spacing:2px; margin-top:.12em; }
         .main-logo-text .logo-line.quote{ font-size:.78em; letter-spacing:.12em; margin-top:.16em; }
-        .main-logo-text::after{ content:''; display:block; width:min(460px, 60vw); height:1px; margin:20px auto 0; background:linear-gradient(90deg, transparent, rgba(241,211,122,.95), transparent); box-shadow:0 0 22px rgba(212,175,55,.45); opacity:.95; }
+        .logo-tagline{
+            display:inline-block;
+            margin-top:18px;
+            padding-top:10px;
+            font-size:.76rem;
+            letter-spacing:2.5px;
+            text-transform:uppercase;
+            color:#c8b27a;
+            border-top:1px solid rgba(241,211,122,.72);
+            text-shadow:0 0 10px rgba(212,175,55,.22);
+        }
         @keyframes logoPulse{ 0%,100%{ transform:scale(.965); opacity:.9; } 50%{ transform:scale(1.05); opacity:1; } }
         @keyframes shimmer{ 0%{ background-position:200% 0; } 100%{ background-position:-200% 0; } }
         @keyframes vibrate{ 0%,100%{ transform:scale(.975) translateX(0); } 20%{ transform:scale(1.01) translateX(-1px); } 40%{ transform:scale(1.045) translateX(1px); } 60%{ transform:scale(1.01) translateX(-.6px); } 80%{ transform:scale(1.025) translateX(.6px); } }
@@ -105,11 +115,11 @@
 
     <section class="logo-hero">
         <div class="main-logo-text" id="heroLogo">
-            <span class="logo-line">IT NOT JUST IRON...</span>
+            <span class="logo-line">ITS NOT JUST IRON</span>
             <span class="logo-line small">ITS</span>
             <span class="logo-line quote">"FREQUENCY 528" IRON</span>
         </div>
-        <div class="tagline">Premium ironwork concepts • custom design • clean presentation</div>
+        <div class="logo-tagline">You Dream It,,, I Build It !</div>
     </section>
 
     <main class="freeform-canvas">
@@ -131,26 +141,6 @@
                 <p class="small-note" style="margin-top:10px;">Connect this to your email or upload service next.</p>
             </div>
         </section>
-        <section id="portfolio" class="workspace-block">
-            <div class="block-header"><h2 class="block-title">Architectural <span>Portfolio</span></h2><button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button></div>
-            <p class="block-subtitle">Explore past ironwork builds, custom gates, railings, and special projects.</p>
-            <div class="gallery-matrix">
-                <div class="gallery-card"><div class="gallery-media-placeholder">Custom Gate Build [Placeholder Asset]</div><div class="gallery-info"><h4>Heavy Ornamental Gate Set</h4><p>High-grade precision engineered driveway structure.</p></div></div>
-                <div class="gallery-card"><div class="gallery-media-placeholder">Geometric Railing [Placeholder Asset]</div><div class="gallery-info"><h4>Structural Geometric Balustrades</h4><p>Custom modern interior structural installation.</p></div></div>
-                <div class="gallery-card"><div class="gallery-media-placeholder">Custom Architectural [Placeholder Asset]</div><div class="gallery-info"><h4>Frequency 528 Custom Build</h4><p>Bespoke custom specialized metal component asset.</p></div></div>
-            </div>
-        </section>
-        <section id="how-to" class="video-block">
-            <div class="block-header"><h2 class="block-title">How-To <span>Video Showcase</span></h2><button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button></div>
-            <p class="block-subtitle">Use this section for how-to videos, demos, or custom project walkthroughs.</p>
-            <div class="video-wrapper"><div class="video-container"><video controls poster="https://via.placeholder.com/1280x720?text=Frequency+528+Iron+Video"><source src="your-video-file.mp4" type="video/mp4">Your browser does not support the video tag.</video></div></div>
-        </section>
-        <section id="reviews" class="workspace-block">
-            <h2 class="block-title">Client <span>Reviews & Comments</span></h2><p class="block-subtitle">Read feedback from past clients or leave your own note below.</p>
-            <div class="feedback-input-area"><form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Review received.');"><div class="form-row-split"><div class="input-group"><label for="reviewer-name">Name / Project Location</label><input type="text" id="reviewer-name" placeholder="Example: Robert M. - Atlanta" required></div><div class="input-group"><label for="review-rating">Project Rating Selection</label><input type="text" id="review-rating" placeholder="★★★★★ (5/5 Stars)" required></div></div><div class="input-group"><label for="review-text">Review Content Text</label><textarea id="review-text" rows="3" placeholder="Tell us about the quality, speed, or look..." required></textarea></div><button type="submit" class="ai-submit-btn" style="padding:11px 22px;font-size:.85rem;">Post Review Entry</button></form></div>
-            <div class="reviews-stream"><div class="review-post"><div class="review-meta"><div class="review-author">Marcus T.</div><div class="review-stars">★★★★★</div></div><div class="review-body">Shane and the crew completely killed it on our perimeter iron framework. Clean craftsmanship and great finish work.</div></div><div class="review-post"><div class="review-meta"><div class="review-author">Elena R.</div><div class="review-stars">★★★★★</div></div><div class="review-body">The planning process was easy. We submitted our idea and got back a very professional response.</div></div></div>
-        </section>
-        <section id="admin" class="workspace-block"><div class="block-header"><h2 class="block-title">Administrator <span>Access</span></h2><button class="admin-btn" type="button" onclick="toggleAdmin()">Admin Sign In</button></div><p class="block-subtitle">Sign in to manage uploads and admin-only content.</p><div class="small-note">Open the admin panel above to unlock tools.</div></section>
     </main>
 
     <footer><p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p><p style="color:#444;font-size:0.75rem;margin-top:8px;">All structural asset positioning parameters verified stable.</p></footer>
