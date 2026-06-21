@@ -27,32 +27,31 @@
             background-color: #0a0a0a;
             color: #e5e5e5;
             line-height: 1.5;
-            padding-top: 180px; /* Space for the deep fixed header */
+            padding-top: 100px; /* Space for the clean, slim fixed header */
             overflow-x: hidden;
         }
 
-        /* --- FIXED HEADER & NAVIGATION LAYERS --- */
+        /* --- SLIM & CLEAN FIXED HEADER --- */
         .fixed-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            min-height: 140px;
             background-color: #000000;
             border-bottom: 2px solid #bba15c;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 12px 20px;
+            padding: 15px 20px;
             z-index: 999999;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
         }
 
-        /* Nav Quick Links (Top Layout Layer) */
+        /* Nav Quick Links Layout Layer */
         .header-nav-left {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             margin-bottom: 12px;
             justify-content: center;
             flex-wrap: wrap;
@@ -61,7 +60,7 @@
         .header-nav-left a {
             color: #aaaaaa;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -72,50 +71,21 @@
             color: #d4af37;
         }
 
-        /* Lowered & Centered Dynamic Logo Structure */
-        .logo-container {
-            text-align: center;
-            width: 100%;
-            margin-top: 4px;
-            margin-bottom: 10px;
-        }
-
-        .main-logo-text {
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            display: inline-block;
-            line-height: 1.2;
-            
-            /* Big -> Small -> Slowly back to Big Animation Loop */
-            animation: customPulse 7s infinite ease-in-out;
-        }
-
-        @keyframes customPulse {
-            0% { transform: scale(1.15); }
-            35% { transform: scale(0.85); }
-            100% { transform: scale(1.15); }
-        }
-
-        /* Bottom Anchor Contact Panel Block */
+        /* Contact Panel Block */
         .header-contact-right {
             width: 100%;
             text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
             border-top: 1px solid #111111;
-            padding-top: 6px;
+            padding-top: 8px;
         }
 
         .contact-line {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #ffffff;
         }
 
@@ -125,18 +95,66 @@
         }
 
         .contact-email-link {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #aaaaaa;
             text-decoration: none;
         }
 
-        /* --- MAIN FREEFORM WORKSPACE CANVAS --- */
+        .contact-email-link:hover {
+            color: #ffffff;
+        }
+
+        /* --- MAIN CONTENT CANVAS --- */
         .freeform-canvas {
             position: relative;
             width: 100%;
-            max-width: 1100px; /* Snugger layout constraint for cleaner laptop reading */
+            max-width: 1100px; 
             margin: 0 auto;
-            padding: 20px 15px;
+            padding: 40px 15px;
+        }
+
+        /* --- LOWERED, TWO-LINE SPLIT LOGO CONTAINER --- */
+        .massive-logo-showcase {
+            text-align: center;
+            width: 100%;
+            padding: 40px 0 60px 0; /* Pushes it down safely below the header layout */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            /* Big -> Small -> Slowly back to Big Animation Engine applied to the whole block */
+            animation: giantPulse 8s infinite ease-in-out;
+        }
+
+        .logo-line-1, .logo-line-2 {
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.2);
+            line-height: 1.1;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Responsive sizing arrays for the split logo lines */
+        .logo-line-1 {
+            font-size: 1.85rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .logo-line-2 {
+            font-size: 2.3rem;
+            letter-spacing: -1px;
+        }
+
+        @keyframes giantPulse {
+            0% { transform: scale(1.15); }
+            30% { transform: scale(0.88); }
+            100% { transform: scale(1.15); }
         }
 
         /* --- COMPACT & MOBILE RESPONSIVE BLOCK SYSTEM --- */
@@ -144,16 +162,17 @@
             background-color: #111111;
             border: 1px solid #222222;
             border-radius: 12px;
-            padding: 24px 16px; /* Reduced from 48px to prevent device cutoff */
+            padding: 28px 20px; 
             margin-bottom: 32px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         .block-title {
-            font-size: 1.5rem; /* Better scale balance */
+            font-size: 1.6rem; 
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .block-title span {
@@ -162,7 +181,7 @@
 
         .block-subtitle {
             color: #888888;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-bottom: 24px;
         }
 
@@ -197,9 +216,9 @@
             background-color: #161616;
             border: 1px solid #333333;
             border-radius: 6px;
-            padding: 12px;
+            padding: 14px;
             color: #ffffff;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             width: 100%;
         }
 
@@ -212,15 +231,15 @@
             background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
             color: #000000;
             border: none;
-            padding: 14px 24px;
-            font-size: 0.9rem;
+            padding: 16px 28px;
+            font-size: 0.95rem;
             font-weight: 700;
             border-radius: 6px;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 8px;
-            width: 100%; /* Spans full width nicely on mobile viewports */
+            width: 100%; 
         }
 
         /* --- PORTFOLIO MEDIA GALLERY GRID --- */
@@ -239,13 +258,13 @@
 
         .gallery-media-placeholder {
             width: 100%;
-            height: 180px;
+            height: 190px;
             background: #1f1f1f;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #555555;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             border-bottom: 1px solid #222222;
         }
 
@@ -254,14 +273,9 @@
         }
 
         .gallery-info h4 {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #ffffff;
             margin-bottom: 4px;
-        }
-
-        .gallery-info p {
-            font-size: 0.8rem;
-            color: #888888;
         }
 
         /* --- COMPACT VIDEO ENGINE --- */
@@ -312,7 +326,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 4px;
-            font-size: 0.8srem;
+            font-size: 0.85rem;
         }
 
         .review-author {
@@ -326,7 +340,7 @@
 
         .review-body {
             color: #aaaaaa;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         /* --- FOOTER TERMINAL --- */
@@ -336,7 +350,7 @@
             text-align: center;
             background-color: #000000;
             color: #666666;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
         footer a {
@@ -344,31 +358,22 @@
             text-decoration: none;
         }
 
-        /* --- DESKTOP AND LAPTOP LAYOUT EXPANSIONS --- */
+        /* --- LAPTOPS AND LARGER SCREENS LAYOUT EXPANSIONS --- */
         @media (min-width: 768px) {
             body {
-                padding-top: 140px;
+                padding-top: 90px;
             }
             .fixed-header {
                 flex-direction: row;
                 justify-content: space-between;
                 padding: 0 4%;
-                height: 110px;
-                min-height: auto;
+                height: 80px;
             }
             .header-nav-left {
                 margin-bottom: 0;
                 justify-content: flex-start;
                 flex: 1;
                 gap: 24px;
-            }
-            .logo-container {
-                width: auto;
-                flex: 2;
-                margin: 0;
-            }
-            .main-logo-text {
-                font-size: 1.6rem;
             }
             .header-contact-right {
                 width: auto;
@@ -378,6 +383,14 @@
                 gap: 2px;
                 border: none;
                 padding: 0;
+            }
+            .logo-line-1 {
+                font-size: 2.8rem; /* Scaled perfectly for laptops */
+                letter-spacing: -1px;
+            }
+            .logo-line-2 {
+                font-size: 4.2rem; /* Ultra-massive focal statement on laptop */
+                letter-spacing: -2px;
             }
             .form-row-split {
                 grid-template-columns: 1fr 1fr;
@@ -393,7 +406,7 @@
 </head>
 <body>
 
-    <!-- STABLE NAV-LAYER LOGO INTERFACE WITH CONTACT PROFILES -->
+    <!-- STABLE NAV-LAYER HEADER WITH CONTACT PROFILES -->
     <header class="fixed-header">
         <nav class="header-nav-left">
             <a href="#ai-portal">AI Portal</a>
@@ -401,10 +414,6 @@
             <a href="#how-to">How To</a>
             <a href="#reviews">Reviews</a>
         </nav>
-
-        <div class="logo-container">
-            <div class="main-logo-text">IT NOT JUST IRON...ITS FREQUENCY 528 IRON</div>
-        </div>
 
         <div class="header-contact-right">
             <div class="contact-line">Shane Cavender: <span>404-807-5409</span></div>
@@ -415,6 +424,12 @@
 
     <!-- WORKSPACE CANVAS -->
     <main class="freeform-canvas">
+
+        <!-- PERFECTLY CENTERED STACKED TWO-LINE MASSIVE BRAND LOGO HERO -->
+        <section class="massive-logo-showcase">
+            <div class="logo-line-1">It Not Just Iron...</div>
+            <div class="logo-line-2">Its Frequency 528 Iron</div>
+        </section>
 
         <!-- AI ASSISTANT CONCEPT OVERLAY SECTION -->
         <section id="ai-portal" class="workspace-block">
@@ -540,14 +555,12 @@
             setTimeout(() => {
                 if (!audioCtx) return;
                 
-                // Create clean sinusoidal oscillator for pure chime synthesis
                 let osc = audioCtx.createOscillator();
                 let gainNode = audioCtx.createGain();
                 
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(528, audioCtx.currentTime); // The exact 528Hz transform frequency
+                osc.frequency.setValueAtTime(528, audioCtx.currentTime); 
                 
-                // Pure chime envelope generator
                 gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
                 gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.5);
                 
@@ -560,21 +573,15 @@
         }
 
         function triggerThreeDings() {
-            // Sequence 3 distinct dings spaced out cleanly by 400ms intervals
             play528Ding(0);
             play528Ding(400);
             play528Ding(800);
         }
 
-        // Initialize engine safely following native modern browser interaction rules
         window.addEventListener('click', function() {
             if (!audioCtx) {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                
-                // Trigger the initial sequence instantly upon acknowledgment click
                 triggerThreeDings();
-                
-                // Lock down an automatic 2-minute processing loop interval (120,000 ms)
                 setInterval(triggerThreeDings, 120000);
             }
         }, { once: true });
