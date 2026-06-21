@@ -6,31 +6,14 @@
     <title>IT NOT JUST IRON...ITS FREQUENCY 528 IRON</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Cinzel:wght@700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        :root{
-            --bg:#070707;
-            --panel:#101010;
-            --panel-2:#161616;
-            --line:#232323;
-            --gold:#d4af37;
-            --gold-2:#f1d37a;
-            --text:#e8e8e8;
-            --muted:#9b9b9b;
-        }
-
+        :root{ --bg:#070707; --panel:#101010; --panel-2:#161616; --line:#232323; --gold:#d4af37; --gold-2:#f1d37a; --text:#e8e8e8; }
         *{ box-sizing:border-box; margin:0; padding:0; font-family:'Inter',sans-serif; }
-        html{ scroll-behavior:smooth; }
         body{ background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; padding-top:88px; }
         a{ color:inherit; }
-
-        .fixed-header{
-            position:fixed; top:0; left:0; width:100%; min-height:88px;
-            background:rgba(0,0,0,.98); border-bottom:1px solid rgba(212,175,55,.45);
-            display:flex; align-items:center; justify-content:space-between; gap:16px;
-            padding:12px 4%; z-index:999999; backdrop-filter:blur(10px);
-        }
+        .fixed-header{ position:fixed; top:0; left:0; width:100%; min-height:88px; background:rgba(0,0,0,.98); border-bottom:1px solid rgba(212,175,55,.45); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 4%; z-index:999999; backdrop-filter:blur(10px); }
         .header-nav-left,.header-contact-right{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
         .header-nav-left a{ color:#b8b8b8; text-decoration:none; font-size:.8rem; font-weight:600; text-transform:uppercase; letter-spacing:1.2px; }
         .header-nav-left a:hover{ color:var(--gold-2); }
@@ -39,28 +22,23 @@
         .header-contact-right a{ color:#b8b8b8; text-decoration:none; margin-top:4px; font-size:.74rem; }
         .header-contact-right a:hover{ color:#fff; }
 
-        .logo-hero{ padding:34px 4% 8px; text-align:center; }
+        .logo-hero{ padding:38px 4% 10px; text-align:center; }
         .main-logo-text{
             display:inline-block; max-width:min(1200px, 96vw); text-align:center; line-height:.9;
-            font-family:'Playfair Display',serif; font-weight:900; text-transform:uppercase; letter-spacing:-1.2px;
-            font-size:clamp(2.4rem, 6.6vw, 6.9rem);
+            font-family:'Cinzel',serif; font-weight:900; text-transform:uppercase; letter-spacing:-.6px;
+            font-size:clamp(2.6rem, 7vw, 7.4rem);
             color:transparent; background:linear-gradient(135deg, #fff7d6 0%, #f1d37a 28%, #d4af37 52%, #a8740c 100%);
             -webkit-background-clip:text; background-clip:text;
-            text-shadow:0 0 8px rgba(241,211,122,.16), 0 0 26px rgba(212,175,55,.22);
-            filter:drop-shadow(0 10px 18px rgba(0,0,0,.8));
-            animation:logoPulse 4.2s ease-in-out infinite, shimmer 6s linear infinite, vibrate 1.6s ease-in-out infinite;
+            text-shadow:0 0 10px rgba(241,211,122,.18), 0 0 32px rgba(212,175,55,.28), 0 2px 0 rgba(255,255,255,.18);
+            filter:drop-shadow(0 10px 18px rgba(0,0,0,.85));
+            animation:logoPulse 4.4s ease-in-out infinite, shimmer 7s linear infinite, vibrate 1.2s ease-in-out infinite;
             background-size:200% 100%;
             transform-origin:center center;
         }
-        @keyframes logoPulse{ 0%,100%{ transform:scale(.95); opacity:.92; } 50%{ transform:scale(1.05); opacity:1; } }
+        .main-logo-text::after{ content:''; display:block; width:min(420px, 58vw); height:1px; margin:18px auto 0; background:linear-gradient(90deg, transparent, rgba(241,211,122,.85), transparent); box-shadow:0 0 18px rgba(212,175,55,.35); opacity:.9; }
+        @keyframes logoPulse{ 0%,100%{ transform:scale(.955); opacity:.9; } 50%{ transform:scale(1.055); opacity:1; } }
         @keyframes shimmer{ 0%{ background-position:200% 0; } 100%{ background-position:-200% 0; } }
-        @keyframes vibrate{
-            0%,100%{ transform:scale(.96) translateX(0); }
-            20%{ transform:scale(1.02) translateX(-1px); }
-            40%{ transform:scale(1.05) translateX(1px); }
-            60%{ transform:scale(1.01) translateX(-.5px); }
-            80%{ transform:scale(1.03) translateX(.5px); }
-        }
+        @keyframes vibrate{ 0%,100%{ transform:scale(.965) translateX(0); } 20%{ transform:scale(1.01) translateX(-1.2px); } 40%{ transform:scale(1.055) translateX(1.2px); } 60%{ transform:scale(1.01) translateX(-.7px); } 80%{ transform:scale(1.03) translateX(.7px); } }
         .tagline{ text-align:center; color:#8f8f8f; font-size:.88rem; margin-top:10px; letter-spacing:.2px; }
 
         .freeform-canvas{ width:100%; max-width:1100px; margin:0 auto; padding:12px 4% 40px; }
@@ -69,11 +47,9 @@
         .block-title{ font-size:1.28rem; font-weight:800; color:#fff; letter-spacing:-.3px; }
         .block-title span{ color:var(--gold); }
         .block-subtitle{ color:#909090; font-size:.93rem; max-width:720px; margin-bottom:16px; }
-
         .edit-btn,.admin-btn,.ai-submit-btn{ border:none; border-radius:10px; cursor:pointer; text-transform:uppercase; letter-spacing:.5px; font-weight:800; }
         .edit-btn,.admin-btn{ background:#171717; color:var(--gold); border:1px solid rgba(212,175,55,.8); padding:8px 14px; font-size:.71rem; }
         .edit-btn:hover,.admin-btn:hover{ background:var(--gold); color:#000; }
-
         .ai-portal-grid{ display:grid; gap:12px; }
         .form-row-split{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; }
         .input-group{ display:flex; flex-direction:column; gap:7px; }
@@ -82,7 +58,6 @@
         input:focus,textarea:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 2px rgba(212,175,55,.12); }
         .ai-submit-btn{ background:linear-gradient(135deg, #f1d37a 0%, #d4af37 50%, #9f6f08 100%); color:#0a0a0a; padding:12px 16px; font-size:.88rem; align-self:flex-start; box-shadow:0 8px 18px rgba(212,175,55,.08); }
         .ai-submit-btn:hover{ opacity:.97; }
-
         .gallery-matrix{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:14px; }
         .gallery-card{ background:var(--panel-2); border:1px solid #232323; border-radius:14px; overflow:hidden; transition:transform .22s ease, border-color .22s ease; }
         .gallery-card:hover{ transform:translateY(-4px); border-color:var(--gold); }
@@ -90,11 +65,9 @@
         .gallery-info{ padding:15px; }
         .gallery-info h4{ color:#fff; font-size:.99rem; margin-bottom:5px; }
         .gallery-info p{ color:#8a8a8a; font-size:.85rem; }
-
         .video-wrapper{ width:100%; background:var(--panel-2); border:1px solid #333; border-radius:14px; overflow:hidden; box-shadow:0 14px 36px rgba(0,0,0,.55); margin-top:12px; }
         .video-container{ position:relative; padding-bottom:56.25%; height:0; }
         .video-container video,.video-container iframe{ position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
-
         .feedback-input-area{ border-bottom:1px solid #242424; padding-bottom:18px; margin-bottom:18px; }
         .reviews-stream{ display:flex; flex-direction:column; gap:14px; }
         .review-post{ background:var(--panel-2); border-left:3px solid var(--gold); padding:16px; border-radius:0 12px 12px 0; }
@@ -102,30 +75,16 @@
         .review-author{ font-weight:700; color:#fff; }
         .review-stars{ color:var(--gold); }
         .review-body{ color:#aaa; font-size:.93rem; }
-
         .admin-panel{ display:none; margin-top:14px; padding:14px; border:1px dashed rgba(212,175,55,.8); border-radius:12px; background:#0c0c0c; }
         .admin-panel.active{ display:block; }
         .upload-grid{ display:grid; gap:10px; }
         .small-note{ color:#999; font-size:.83rem; }
-
         footer{ border-top:1px solid #202020; padding:24px 4%; text-align:center; background:#000; color:#686868; font-size:.83rem; }
         footer a{ color:var(--gold); text-decoration:none; }
-
-        @media (max-width: 900px){
-            body{ padding-top:84px; }
-            .fixed-header{ min-height:auto; flex-direction:column; align-items:center; text-align:center; padding:12px 14px; }
-            .header-nav-left,.header-contact-right{ justify-content:center; align-items:center; text-align:center; }
-            .header-contact-right{ align-items:center; }
-            .logo-hero{ padding:18px 4% 6px; }
-            .main-logo-text{ font-size:clamp(2rem, 11vw, 4.3rem); }
-            .workspace-block,.video-block{ padding:16px; }
-            .block-header{ flex-direction:column; align-items:flex-start; }
-            .ai-submit-btn{ width:100%; text-align:center; }
-        }
+        @media (max-width: 900px){ body{ padding-top:84px; } .fixed-header{ min-height:auto; flex-direction:column; align-items:center; text-align:center; padding:12px 14px; } .header-nav-left,.header-contact-right{ justify-content:center; align-items:center; text-align:center; } .header-contact-right{ align-items:center; } .logo-hero{ padding:18px 4% 6px; } .main-logo-text{ font-size:clamp(2.1rem, 11vw, 4.6rem); } .workspace-block,.video-block{ padding:16px; } .block-header{ flex-direction:column; align-items:flex-start; } .ai-submit-btn{ width:100%; text-align:center; } }
     </style>
 </head>
 <body>
-
     <header class="fixed-header">
         <nav class="header-nav-left" aria-label="Primary">
             <a href="#ai-portal">AI Portal</a>
@@ -134,7 +93,6 @@
             <a href="#reviews">Reviews</a>
             <a href="#admin">Admin</a>
         </nav>
-
         <div class="header-contact-right">
             <div>Shane Cavender: <span>404-807-5409</span></div>
             <div>Heyleigh: <span>478-331-8547</span></div>
@@ -149,214 +107,58 @@
 
     <main class="freeform-canvas">
         <section id="ai-portal" class="workspace-block" style="max-width:720px;margin-left:auto;margin-right:auto;">
-            <div class="block-header">
-                <h2 class="block-title">AI Client Concept <span>Visualizer</span></h2>
-                <button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button>
-            </div>
+            <div class="block-header"><h2 class="block-title">AI Client Concept <span>Visualizer</span></h2><button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button></div>
             <p class="block-subtitle">Share your idea, upload your property photo, and give us the details so we can help plan an overlay and custom concept for your project.</p>
-
             <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Your concept has been submitted.');">
                 <div class="form-row-split">
-                    <div class="input-group">
-                        <label for="client-name">Your Full Name</label>
-                        <input type="text" id="client-name" placeholder="John Doe" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="client-phone">Direct Mobile Number</label>
-                        <input type="tel" id="client-phone" placeholder="(555) 555-5555" required>
-                    </div>
+                    <div class="input-group"><label for="client-name">Your Full Name</label><input type="text" id="client-name" placeholder="John Doe" required></div>
+                    <div class="input-group"><label for="client-phone">Direct Mobile Number</label><input type="tel" id="client-phone" placeholder="(555) 555-5555" required></div>
                 </div>
-                <div class="input-group">
-                    <label for="home-address">Installation / Home Property Address</label>
-                    <input type="text" id="home-address" placeholder="123 Main Street, City, State, Zip Code" required>
-                </div>
-                <div class="input-group">
-                    <label for="property-photo">Upload Photo of Your Property</label>
-                    <input type="file" id="property-photo" accept="image/*">
-                </div>
-                <div class="input-group">
-                    <label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label>
-                    <textarea id="design-ideas" rows="3" placeholder="Tell us what you want built..." required></textarea>
-                </div>
+                <div class="input-group"><label for="home-address">Installation / Home Property Address</label><input type="text" id="home-address" placeholder="123 Main Street, City, State, Zip Code" required></div>
+                <div class="input-group"><label for="property-photo">Upload Photo of Your Property</label><input type="file" id="property-photo" accept="image/*"></div>
+                <div class="input-group"><label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label><textarea id="design-ideas" rows="3" placeholder="Tell us what you want built..." required></textarea></div>
                 <button type="submit" class="ai-submit-btn">Transmit Concept to Ironworks</button>
             </form>
-
             <div class="admin-panel" id="adminPanel">
-                <div class="upload-grid">
-                    <input type="password" id="adminPassword" placeholder="Admin Password">
-                    <input type="file" id="adminUpload" accept="image/*,video/*">
-                    <button class="ai-submit-btn" type="button" onclick="handleAdminLogin()">Unlock Admin Tools</button>
-                </div>
+                <div class="upload-grid"><input type="password" id="adminPassword" placeholder="Admin Password"><input type="file" id="adminUpload" accept="image/*,video/*"><button class="ai-submit-btn" type="button" onclick="handleAdminLogin()">Unlock Admin Tools</button></div>
                 <p class="small-note" style="margin-top:10px;">Connect this to your email or upload service next.</p>
             </div>
         </section>
-
         <section id="portfolio" class="workspace-block">
-            <div class="block-header">
-                <h2 class="block-title">Architectural <span>Portfolio</span></h2>
-                <button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button>
-            </div>
+            <div class="block-header"><h2 class="block-title">Architectural <span>Portfolio</span></h2><button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button></div>
             <p class="block-subtitle">Explore past ironwork builds, custom gates, railings, and special projects.</p>
-
             <div class="gallery-matrix">
-                <div class="gallery-card">
-                    <div class="gallery-media-placeholder">Custom Gate Build [Placeholder Asset]</div>
-                    <div class="gallery-info">
-                        <h4>Heavy Ornamental Gate Set</h4>
-                        <p>High-grade precision engineered driveway structure.</p>
-                    </div>
-                </div>
-                <div class="gallery-card">
-                    <div class="gallery-media-placeholder">Geometric Railing [Placeholder Asset]</div>
-                    <div class="gallery-info">
-                        <h4>Structural Geometric Balustrades</h4>
-                        <p>Custom modern interior structural installation.</p>
-                    </div>
-                </div>
-                <div class="gallery-card">
-                    <div class="gallery-media-placeholder">Custom Architectural [Placeholder Asset]</div>
-                    <div class="gallery-info">
-                        <h4>Frequency 528 Custom Build</h4>
-                        <p>Bespoke custom specialized metal component asset.</p>
-                    </div>
-                </div>
+                <div class="gallery-card"><div class="gallery-media-placeholder">Custom Gate Build [Placeholder Asset]</div><div class="gallery-info"><h4>Heavy Ornamental Gate Set</h4><p>High-grade precision engineered driveway structure.</p></div></div>
+                <div class="gallery-card"><div class="gallery-media-placeholder">Geometric Railing [Placeholder Asset]</div><div class="gallery-info"><h4>Structural Geometric Balustrades</h4><p>Custom modern interior structural installation.</p></div></div>
+                <div class="gallery-card"><div class="gallery-media-placeholder">Custom Architectural [Placeholder Asset]</div><div class="gallery-info"><h4>Frequency 528 Custom Build</h4><p>Bespoke custom specialized metal component asset.</p></div></div>
             </div>
         </section>
-
         <section id="how-to" class="video-block">
-            <div class="block-header">
-                <h2 class="block-title">How-To <span>Video Showcase</span></h2>
-                <button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button>
-            </div>
+            <div class="block-header"><h2 class="block-title">How-To <span>Video Showcase</span></h2><button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button></div>
             <p class="block-subtitle">Use this section for how-to videos, demos, or custom project walkthroughs.</p>
-
-            <div class="video-wrapper">
-                <div class="video-container">
-                    <video controls poster="https://via.placeholder.com/1280x720?text=Frequency+528+Iron+Video">
-                        <source src="your-video-file.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
+            <div class="video-wrapper"><div class="video-container"><video controls poster="https://via.placeholder.com/1280x720?text=Frequency+528+Iron+Video"><source src="your-video-file.mp4" type="video/mp4">Your browser does not support the video tag.</video></div></div>
         </section>
-
         <section id="reviews" class="workspace-block">
-            <h2 class="block-title">Client <span>Reviews & Comments</span></h2>
-            <p class="block-subtitle">Read feedback from past clients or leave your own note below.</p>
-
-            <div class="feedback-input-area">
-                <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Review received.');">
-                    <div class="form-row-split">
-                        <div class="input-group">
-                            <label for="reviewer-name">Name / Project Location</label>
-                            <input type="text" id="reviewer-name" placeholder="Example: Robert M. - Atlanta" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="review-rating">Project Rating Selection</label>
-                            <input type="text" id="review-rating" placeholder="★★★★★ (5/5 Stars)" required>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="review-text">Review Content Text</label>
-                        <textarea id="review-text" rows="3" placeholder="Tell us about the quality, speed, or look..." required></textarea>
-                    </div>
-                    <button type="submit" class="ai-submit-btn" style="padding:11px 22px;font-size:.85rem;">Post Review Entry</button>
-                </form>
-            </div>
-
-            <div class="reviews-stream">
-                <div class="review-post">
-                    <div class="review-meta">
-                        <div class="review-author">Marcus T.</div>
-                        <div class="review-stars">★★★★★</div>
-                    </div>
-                    <div class="review-body">Shane and the crew completely killed it on our perimeter iron framework. Clean craftsmanship and great finish work.</div>
-                </div>
-
-                <div class="review-post">
-                    <div class="review-meta">
-                        <div class="review-author">Elena R.</div>
-                        <div class="review-stars">★★★★★</div>
-                    </div>
-                    <div class="review-body">The planning process was easy. We submitted our idea and got back a very professional response.</div>
-                </div>
-            </div>
+            <h2 class="block-title">Client <span>Reviews & Comments</span></h2><p class="block-subtitle">Read feedback from past clients or leave your own note below.</p>
+            <div class="feedback-input-area"><form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Review received.');"><div class="form-row-split"><div class="input-group"><label for="reviewer-name">Name / Project Location</label><input type="text" id="reviewer-name" placeholder="Example: Robert M. - Atlanta" required></div><div class="input-group"><label for="review-rating">Project Rating Selection</label><input type="text" id="review-rating" placeholder="★★★★★ (5/5 Stars)" required></div></div><div class="input-group"><label for="review-text">Review Content Text</label><textarea id="review-text" rows="3" placeholder="Tell us about the quality, speed, or look..." required></textarea></div><button type="submit" class="ai-submit-btn" style="padding:11px 22px;font-size:.85rem;">Post Review Entry</button></form></div>
+            <div class="reviews-stream"><div class="review-post"><div class="review-meta"><div class="review-author">Marcus T.</div><div class="review-stars">★★★★★</div></div><div class="review-body">Shane and the crew completely killed it on our perimeter iron framework. Clean craftsmanship and great finish work.</div></div><div class="review-post"><div class="review-meta"><div class="review-author">Elena R.</div><div class="review-stars">★★★★★</div></div><div class="review-body">The planning process was easy. We submitted our idea and got back a very professional response.</div></div></div>
         </section>
-
-        <section id="admin" class="workspace-block">
-            <div class="block-header">
-                <h2 class="block-title">Administrator <span>Access</span></h2>
-                <button class="admin-btn" type="button" onclick="toggleAdmin()">Admin Sign In</button>
-            </div>
-            <p class="block-subtitle">Sign in to manage uploads and admin-only content.</p>
-            <div class="small-note">Open the admin panel above to unlock tools.</div>
-        </section>
+        <section id="admin" class="workspace-block"><div class="block-header"><h2 class="block-title">Administrator <span>Access</span></h2><button class="admin-btn" type="button" onclick="toggleAdmin()">Admin Sign In</button></div><p class="block-subtitle">Sign in to manage uploads and admin-only content.</p><div class="small-note">Open the admin panel above to unlock tools.</div></section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p>
-        <p style="color:#444;font-size:0.75rem;margin-top:8px;">All structural asset positioning parameters verified stable.</p>
-    </footer>
+    <footer><p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p><p style="color:#444;font-size:0.75rem;margin-top:8px;">All structural asset positioning parameters verified stable.</p></footer>
 
     <script>
         let audioStarted = false;
         let dingTimer = null;
-
-        function toggleAdmin() {
-            const panel = document.getElementById('adminPanel');
-            panel.classList.toggle('active');
-        }
-
-        function handleAdminLogin() {
-            const password = document.getElementById('adminPassword').value;
-            if (!password) {
-                alert('Please enter your admin password.');
-                return;
-            }
-            alert('Admin tools unlocked. Connect this button to your preferred authentication provider next.');
-            document.getElementById('adminUpload').focus();
-        }
-
-        function playDing() {
-            const AudioCtx = window.AudioContext || window.webkitAudioContext;
-            if (!AudioCtx) return;
-            const ctx = new AudioCtx();
-            const now = ctx.currentTime;
-            const freqs = [528, 664, 792];
-            freqs.forEach((freq, i) => {
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.type = 'sine';
-                osc.frequency.value = freq;
-                gain.gain.setValueAtTime(0.0001, now + i * 0.03);
-                gain.gain.exponentialRampToValueAtTime(0.08, now + i * 0.03 + 0.03);
-                gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.03 + 1.2);
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                osc.start(now + i * 0.03);
-                osc.stop(now + i * 0.03 + 1.25);
-            });
-            setTimeout(() => ctx.close(), 1600);
-        }
-
-        function startDingCycle() {
-            if (dingTimer) return;
-            playDing();
-            dingTimer = setInterval(playDing, 35000);
-        }
-
-        function unlockAudio() {
-            if (audioStarted) return;
-            audioStarted = true;
-            startDingCycle();
-            window.removeEventListener('pointerdown', unlockAudio);
-            window.removeEventListener('touchstart', unlockAudio);
-            window.removeEventListener('keydown', unlockAudio);
-        }
-
-        window.addEventListener('pointerdown', unlockAudio, { once: true });
-        window.addEventListener('touchstart', unlockAudio, { once: true });
-        window.addEventListener('keydown', unlockAudio, { once: true });
+        function toggleAdmin(){ document.getElementById('adminPanel').classList.toggle('active'); }
+        function handleAdminLogin(){ const password=document.getElementById('adminPassword').value; if(!password){ alert('Please enter your admin password.'); return; } alert('Admin tools unlocked. Connect this button to your preferred authentication provider next.'); document.getElementById('adminUpload').focus(); }
+        function playDing(){ const AudioCtx=window.AudioContext||window.webkitAudioContext; if(!AudioCtx) return; const ctx=new AudioCtx(); const now=ctx.currentTime; const freqs=[528,664,792]; freqs.forEach((freq,i)=>{ const osc=ctx.createOscillator(); const gain=ctx.createGain(); osc.type='sine'; osc.frequency.value=freq; gain.gain.setValueAtTime(0.0001, now+i*0.03); gain.gain.exponentialRampToValueAtTime(0.08, now+i*0.03+0.03); gain.gain.exponentialRampToValueAtTime(0.0001, now+i*0.03+1.2); osc.connect(gain); gain.connect(ctx.destination); osc.start(now+i*0.03); osc.stop(now+i*0.03+1.25); }); setTimeout(()=>ctx.close(),1600); }
+        function startDingCycle(){ if(dingTimer) return; playDing(); dingTimer=setInterval(playDing,35000); }
+        function unlockAudio(){ if(audioStarted) return; audioStarted=true; startDingCycle(); window.removeEventListener('pointerdown', unlockAudio); window.removeEventListener('touchstart', unlockAudio); window.removeEventListener('keydown', unlockAudio); }
+        window.addEventListener('pointerdown', unlockAudio, { once:true });
+        window.addEventListener('touchstart', unlockAudio, { once:true });
+        window.addEventListener('keydown', unlockAudio, { once:true });
     </script>
 </body>
 </html>
