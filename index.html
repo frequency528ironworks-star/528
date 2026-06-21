@@ -4,93 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT NOT JUST IRON...ITS FREQUENCY 528 IRON</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --gold: #d4af37; --bg: #0a0a0a; --block: #111111; --border: #222; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: #e5e5e5; line-height: 1.4; padding-top: 100px; }
+        html { scroll-behavior: smooth; }
+        body { background-color: #0a0a0a; color: #e5e5e5; line-height: 1.6; padding-top: 140px; overflow-x: hidden; }
 
-        /* Expert Shimmer Logic */
-        .shimmer-text {
-            background: linear-gradient(90deg, #fff 30%, var(--gold) 50%, #fff 70%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
+        .fixed-header { position: fixed; top: 0; left: 0; width: 100%; height: 140px; background-color: #000000; border-bottom: 2px solid #bba15c; display: flex; align-items: center; justify-content: space-between; padding: 0 4%; z-index: 999999; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); }
+        .header-nav-left { display: flex; gap: 20px; flex: 1; }
+        .header-nav-left a { color: #aaaaaa; text-decoration: none; font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.2s ease; }
+        .header-nav-left a:hover { color: #d4af37; }
+        
+        .logo-container { text-align: center; flex: 2; }
+        .main-logo-text { font-weight: 900; letter-spacing: -1px; text-transform: uppercase; background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6); animation: pulseFontSize 8s infinite ease-in-out; line-height: 1.1; font-size: 1.95rem; }
+        
+        .header-contact-right { flex: 1; text-align: right; display: flex; flex-direction: column; gap: 2px; }
+        .contact-line { font-size: 0.85rem; color: #ffffff; }
+        .contact-line span { color: #d4af37; font-weight: 600; }
+        .contact-email-link { font-size: 0.8rem; color: #aaaaaa; text-decoration: none; }
+        
+        .freeform-canvas { position: relative; width: 100%; max-width: 1300px; margin: 0 auto; padding: 40px 4%; }
+        .workspace-block { background-color: #111111; border: 1px solid #222222; border-radius: 16px; padding: 48px; margin-bottom: 56px; }
+        
+        .block-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .block-title { font-size: 2rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 12px; }
+        .block-title span { color: #d4af37; }
+        
+        /* Edit Button Style */
+        .edit-btn { background: #222; color: #d4af37; border: 1px solid #d4af37; padding: 8px 16px; font-weight: 600; text-transform: uppercase; cursor: pointer; border-radius: 8px; font-size: 0.8rem; }
+        .edit-btn:hover { background: #d4af37; color: #000; }
+
+        .ai-portal-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+        .input-group { display: flex; flex-direction: column; gap: 8px; }
+        .input-group input, .input-group textarea { background-color: #161616; border: 1px solid #333333; border-radius: 8px; padding: 14px; color: #ffffff; }
+        .ai-submit-btn { background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%); color: #000000; border: none; padding: 16px 32px; font-weight: 700; border-radius: 8px; cursor: pointer; text-transform: uppercase; }
+        
+        .gallery-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+        .gallery-card { background-color: #161616; border: 1px solid #222222; border-radius: 12px; padding: 20px; }
+        
+        .video-wrapper { width: 100%; max-width: 850px; margin: 0 auto; background-color: #161616; border-radius: 12px; overflow: hidden; }
+        
+        footer { border-top: 1px solid #222222; padding: 40px 4%; text-align: center; color: #666; font-size: 0.85rem; }
+
+        @media (max-width: 992px) {
+            .fixed-header { height: auto; padding: 20px; }
+            body { padding-top: 240px; }
         }
-        @keyframes shine { to { background-position: 200% center; } }
-        
-        .hero { text-align: center; padding: 20px 10px; }
-        .logo-1 { font-size: 1.8rem; font-weight: 900; text-transform: uppercase; }
-        .logo-2 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; }
-
-        /* Compact Grid Architecture */
-        .canvas { max-width: 950px; margin: 0 auto; padding: 15px; }
-        .block { background-color: var(--block); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 16px; }
-        .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .title { font-size: 1.1rem; font-weight: 700; color: #fff; }
-        .title span { color: var(--gold); }
-        
-        .btn-edit { background: #222; color: var(--gold); border: 1px solid var(--gold); padding: 4px 10px; font-size: 0.7rem; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
-        
-        .input-grid { display: grid; gap: 8px; }
-        input, textarea { background: #161616; border: 1px solid #333; border-radius: 4px; padding: 8px; color: #fff; width: 100%; }
-        .submit-btn { background: var(--gold); color: #000; border: none; padding: 8px; font-weight: 700; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
-        
-        @media (min-width: 768px) { .grid-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; } }
     </style>
 </head>
 <body>
-    <header style="position:fixed; top:0; width:100%; background:#000; border-bottom: 2px solid var(--gold); padding:10px; text-align:center; font-size:0.75rem; color:#888;">
-        SHANE: 404-807-5409 | HEYLEIGH: 478-331-8547
+    <header class="fixed-header">
+        <nav class="header-nav-left">
+            <a href="#ai-portal">AI Portal</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#how-to">How To</a>
+            <a href="#reviews">Reviews</a>
+        </nav>
+        <div class="logo-container">
+            <div class="main-logo-text">IT NOT JUST IRON...ITS FREQUENCY 528 IRON</div>
+        </div>
+        <div class="header-contact-right">
+            <div class="contact-line">Shane Cavender: <span>404-807-5409</span></div>
+            <div class="contact-line">Heyleigh: <span>478-331-8547</span></div>
+            <a href="mailto:Frequency528ironworks@gmail.com" class="contact-email-link">Frequency528ironworks@gmail.com</a>
+        </div>
     </header>
 
-    <main class="canvas">
-        <section class="hero">
-            <div class="logo-1 shimmer-text">It Not Just Iron...</div>
-            <div class="logo-2 shimmer-text">Its Frequency 528 Iron</div>
+    <main class="freeform-canvas">
+        <section id="ai-portal" class="workspace-block">
+            <div class="block-header">
+                <h2 class="block-title">AI Client Concept <span>Visualizer</span></h2>
+                <button class="edit-btn">Edit / Sign In</button>
+            </div>
+            <form class="ai-portal-grid">
+                <div class="input-group"><input type="text" placeholder="Full Name"></div>
+                <div class="input-group"><input type="tel" placeholder="Mobile Number"></div>
+                <div class="input-group"><textarea rows="6" placeholder="Describe Vision"></textarea></div>
+                <button type="submit" class="ai-submit-btn">Transmit Concept</button>
+            </form>
         </section>
 
-        <div class="grid-col">
-            <section class="block">
-                <div class="header-row">
-                    <h2 class="title">AI <span>Visualizer</span></h2>
-                    <button class="btn-edit">Edit / Sign In</button>
-                </div>
-                <form class="input-grid">
-                    <input type="text" placeholder="Project Name">
-                    <textarea rows="2" placeholder="Vision Details"></textarea>
-                    <button type="submit" class="submit-btn">Transmit</button>
-                </form>
-            </section>
-            <section class="block">
-                <div class="header-row">
-                    <h2 class="title">Bespoke <span>Showcase</span></h2>
-                    <button class="btn-edit">Edit / Sign In</button>
-                </div>
-                <div style="background:#161616; height:100px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:#444;">Media Player Node</div>
-            </section>
-        </div>
+        <section id="portfolio" class="workspace-block">
+            <div class="block-header">
+                <h2 class="block-title">Architectural <span>Portfolio</span></h2>
+                <button class="edit-btn">Edit / Sign In</button>
+            </div>
+            <div class="gallery-matrix">
+                <div class="gallery-card"><h4>Heavy Ornamental Gate</h4></div>
+                <div class="gallery-card"><h4>Structural Balustrades</h4></div>
+            </div>
+        </section>
+
+        <section id="how-to" class="workspace-block">
+            <div class="block-header">
+                <h2 class="block-title">How-To <span>Showcase</span></h2>
+                <button class="edit-btn">Edit / Sign In</button>
+            </div>
+            <div class="video-wrapper"><video controls style="width:100%"></video></div>
+        </section>
     </main>
 
+    <footer>&copy; 2026 frequency528ironworks.com | Premium Metalworks Layout Node System.</footer>
+
     <script>
-        // High-Precision Audio Engine
-        let ctx = null;
-        function play528(delay) {
+        let audioCtx = null;
+        function play528Ding(delay) {
             setTimeout(() => {
-                if (!ctx) return;
-                let osc = ctx.createOscillator();
-                let gain = ctx.createGain();
-                osc.frequency.setValueAtTime(528, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1);
-                osc.connect(gain); gain.connect(ctx.destination);
-                osc.start(); osc.stop(ctx.currentTime + 1);
+                if (!audioCtx) return;
+                let osc = audioCtx.createOscillator();
+                let gainNode = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(528, audioCtx.currentTime); 
+                gainNode.gain.setValueAtTime(0.25, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.4);
+                osc.connect(gainNode); gainNode.connect(audioCtx.destination);
+                osc.start(); osc.stop(audioCtx.currentTime + 1.4);
             }, delay);
         }
-        window.addEventListener('click', () => {
-            if (!ctx) {
-                ctx = new (window.AudioContext || window.webkitAudioContext)();
-                setInterval(() => { play528(0); play528(300); play528(600); }, 120000);
+        function triggerThreeDings() { play528Ding(0); play528Ding(350); play528Ding(700); }
+        window.addEventListener('click', function() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                triggerThreeDings();
+                setInterval(triggerThreeDings, 120000);
             }
         }, { once: true });
     </script>
