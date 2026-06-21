@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: frequency528ironworks-star/528
+  branch: main
+
+media_folder: "/"
+public_folder: "/"
+
+collections:
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: "portfolio"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
