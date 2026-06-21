@@ -10,15 +10,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        html { scroll-behavior: smooth; }
-        body { background-color: #0a0a0a; color: #e5e5e5; line-height: 1.6; padding-top: 160px; overflow-x: hidden; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.6;
+            padding-top: 160px;
+            overflow-x: hidden;
+        }
 
         .fixed-header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 160px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 160px;
             background-color: #000000;
             border-bottom: 1px solid #333;
-            display: flex; align-items: flex-end;
+            display: flex;
+            align-items: flex-end;
             justify-content: space-between;
             padding: 20px 4%;
             z-index: 9999;
@@ -26,13 +46,36 @@
             flex-wrap: wrap;
         }
 
-        .header-nav-left { display: flex; gap: 20px; padding-bottom: 10px; flex-wrap: wrap; }
-        .header-nav-left a { color: #888; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-        .header-nav-left a:hover { color: #d4af37; }
+        .header-nav-left {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+        }
 
-        .logo-container { text-align: center; flex: 2; padding-bottom: 10px; min-width: 220px; }
+        .header-nav-left a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-nav-left a:hover {
+            color: #d4af37;
+        }
+
+        .logo-container {
+            text-align: center;
+            flex: 2;
+            padding-bottom: 10px;
+            min-width: 220px;
+        }
+
         .main-logo-text {
-            font-weight: 800; font-size: 1.2rem; text-transform: uppercase;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-transform: uppercase;
             background: linear-gradient(90deg, #aa7c11, #f3e5ab, #aa7c11);
             background-size: 200% 100%;
             -webkit-background-clip: text;
@@ -40,34 +83,251 @@
             animation: fadeInOut 4s infinite ease-in-out, shimmer 3s infinite linear;
         }
 
-        @keyframes fadeInOut { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
-        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
 
-        .header-contact-right { text-align: right; font-size: 0.75rem; padding-bottom: 10px; line-height: 1.4; min-width: 180px; }
-        .header-contact-right span { color: #d4af37; }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
 
-        .freeform-canvas { max-width: 1100px; margin: 0 auto; padding: 20px 4%; }
+        .header-contact-right {
+            text-align: right;
+            font-size: 0.75rem;
+            padding-bottom: 10px;
+            line-height: 1.4;
+            min-width: 180px;
+        }
+
+        .header-contact-right span {
+            color: #d4af37;
+        }
+
+        .freeform-canvas {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 4%;
+        }
+
         .workspace-block {
-            background-color: #111; border: 1px solid #222; border-radius: 12px;
+            background-color: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
             padding: 30px;
             margin-bottom: 30px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
         }
-        .block-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 12px; }
-        .block-title { font-size: 1.5rem; font-weight: 700; color: #fff; }
-        .edit-btn, .admin-btn {
-            background: #1a1a1a; color: #d4af37; border: 1px solid #d4af37;
-            padding: 5px 12px; border-radius: 6px; font-size: 0.7rem; cursor: pointer; text-transform: uppercase;
-        }
-        .edit-btn:hover, .admin-btn:hover { background: #d4af37; color: #000; }
 
-        .input-group { margin-bottom: 15px; }
-        input, textarea {
-            width: 100%; background: #161616; border: 1px solid #333;
-            padding: 10px; border-radius: 6px; color: #fff;
+        .block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 12px;
         }
+
+        .block-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .block-title span {
+            color: #d4af37;
+        }
+
+        .edit-btn, .admin-btn {
+            background: #1a1a1a;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .edit-btn:hover, .admin-btn:hover {
+            background: #d4af37;
+            color: #000;
+        }
+
+        .block-subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            max-width: 750px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #bbb;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            background: #161616;
+            border: 1px solid #333;
+            padding: 10px;
+            border-radius: 6px;
+            color: #fff;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+        }
+
         .ai-submit-btn {
-            background: #d4af37; color: #000; border: none; padding: 10px 20px;
-            border-radius: 6px; font-weight: 700; cursor: pointer;
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .form-row-split {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-card {
+            background-color: #161616;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+        }
+
+        .gallery-media-placeholder {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(45deg, #1f1f1f 25%, #252525 50%, #1f1f1f 75%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #222;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .gallery-info {
+            padding: 20px;
+        }
+
+        .gallery-info h4 {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .gallery-info p {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .video-block {
+            background-color: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .video-wrapper {
+            width: 100%;
+            background-color: #161616;
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+            margin-top: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .feedback-input-area {
+            border-bottom: 1px solid #222;
+            padding-bottom: 32px;
+            margin-bottom: 32px;
+        }
+
+        .reviews-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-post {
+            background-color: #161616;
+            border-left: 3px solid #d4af37;
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .review-stars {
+            color: #d4af37;
+        }
+
+        .review-body {
+            color: #aaa;
+            font-size: 0.95rem;
         }
 
         .admin-panel {
@@ -78,14 +338,65 @@
             border-radius: 10px;
             background: #0f0f0f;
         }
-        .admin-panel.active { display: block; }
-        .upload-grid { display: grid; gap: 12px; }
-        .small-note { color: #aaa; font-size: 0.85rem; }
 
-        @media (max-width: 900px) {
-            .fixed-header { height: auto; align-items: center; flex-direction: column; }
-            body { padding-top: 220px; }
-            .logo-container, .header-contact-right { text-align: center; }
+        .admin-panel.active {
+            display: block;
+        }
+
+        .upload-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .small-note {
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            border-top: 1px solid #222;
+            padding: 40px 4%;
+            text-align: center;
+            background-color: #000;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        @media (max-width: 992px) {
+            .fixed-header {
+                height: auto;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                gap: 16px;
+            }
+
+            body {
+                padding-top: 240px;
+            }
+
+            .header-nav-left,
+            .logo-container,
+            .header-contact-right {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .main-logo-text {
+                animation: none;
+                font-size: 1.4rem !important;
+            }
+
+            .block-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -93,72 +404,62 @@
 
     <header class="fixed-header">
         <nav class="header-nav-left">
-            <a href="#ai-portal">Portal</a>
+            <a href="#ai-portal">AI Portal</a>
             <a href="#portfolio">Portfolio</a>
+            <a href="#how-to">How To</a>
+            <a href="#reviews">Reviews</a>
             <a href="#admin">Admin</a>
         </nav>
 
         <div class="logo-container">
-            <div class="main-logo-text">FREQUENCY 528 IRON</div>
+            <div class="main-logo-text">IT NOT JUST IRON...ITS FREQUENCY 528 IRON</div>
         </div>
 
         <div class="header-contact-right">
-            <div>Shane: <span>404-807-5409</span></div>
+            <div>Shane Cavender: <span>404-807-5409</span></div>
             <div>Heyleigh: <span>478-331-8547</span></div>
+            <a href="mailto:Frequency528ironworks@gmail.com" style="font-size:0.8rem;color:#aaa;text-decoration:none;display:block;margin-top:4px;">Frequency528ironworks@gmail.com</a>
         </div>
     </header>
 
     <main class="freeform-canvas">
+
         <section id="ai-portal" class="workspace-block">
             <div class="block-header">
-                <h2 class="block-title">AI Concept Visualizer</h2>
+                <h2 class="block-title">AI Client Concept <span>Visualizer</span></h2>
                 <button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button>
             </div>
+            <p class="block-subtitle">Input your layout preferences, project dimensions, or conceptual structural designs directly. Provide your exact home property address so our team can review your project properly.</p>
 
-            <form>
-                <div class="input-group">
-                    <label for="client-name">Your Name</label>
-                    <input type="text" id="client-name" name="name" placeholder="Your Name">
+            <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Your design concept has been submitted.');">
+                <div class="form-row-split">
+                    <div class="input-group">
+                        <label for="client-name">Your Full Name</label>
+                        <input type="text" id="client-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="client-phone">Direct Mobile Number</label>
+                        <input type="tel" id="client-phone" placeholder="(555) 555-5555" required>
+                    </div>
                 </div>
 
                 <div class="input-group">
-                    <label for="client-phone">Mobile Number</label>
-                    <input type="tel" id="client-phone" name="phone" placeholder="Mobile Number">
-                </div>
-
-                <div class="input-group">
-                    <label for="home-address">Installation / Home Address</label>
-                    <input type="text" id="home-address" name="address" placeholder="Installation / Home Address">
+                    <label for="home-address">Installation / Home Property Address</label>
+                    <input type="text" id="home-address" placeholder="123 Main Street, City, State, Zip Code" required>
                 </div>
 
                 <div class="input-group">
                     <label for="property-photo">Upload Photo of Your Property</label>
-                    <input type="file" id="property-photo" name="photo" accept="image/*">
+                    <input type="file" id="property-photo" accept="image/*">
                 </div>
 
                 <div class="input-group">
-                    <label for="design-ideas">Describe Your Ironwork Vision</label>
-                    <textarea id="design-ideas" name="vision" rows="3" placeholder="Describe Your Ironwork Vision"></textarea>
+                    <label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label>
+                    <textarea id="design-ideas" rows="6" placeholder="Specify iron gates, customized railings, security window sets, decorative geometries, dimensional targets..." required></textarea>
                 </div>
 
-                <button class="ai-submit-btn" type="submit">Transmit Concept</button>
+                <button type="submit" class="ai-submit-btn">Transmit Concept to Ironworks</button>
             </form>
-        </section>
-
-        <section id="portfolio" class="workspace-block">
-            <div class="block-header">
-                <h2 class="block-title">Portfolio</h2>
-                <button class="edit-btn" type="button" onclick="toggleAdmin()">Edit / Sign In</button>
-            </div>
-            <p class="small-note">Add your gallery images here after signing in.</p>
-        </section>
-
-        <section id="admin" class="workspace-block">
-            <div class="block-header">
-                <h2 class="block-title">Administrator Access</h2>
-                <button class="admin-btn" type="button" onclick="toggleAdmin()">Admin Sign In</button>
-            </div>
-            <p class="small-note">Sign in to manage uploads and admin-only content.</p>
 
             <div class="admin-panel" id="adminPanel">
                 <div class="upload-grid">
@@ -170,8 +471,102 @@
             </div>
         </section>
 
-        <!-- Rest of your sections would follow this compact pattern -->
+        <section id="portfolio" class="workspace-block">
+            <h2 class="block-title">Architectural <span>Portfolio</span></h2>
+            <p class="block-subtitle">Explore historical ironwork builds, heavy geometric implementations, and custom design templates executed across properties.</p>
+
+            <div class="gallery-matrix">
+                <div class="gallery-card">
+                    <div class="gallery-media-placeholder">Custom Gate Build [Placeholder Asset]</div>
+                    <div class="gallery-info">
+                        <h4>Heavy Ornamental Gate Set</h4>
+                        <p>High-grade precision engineered driveway structure.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-media-placeholder">Geometric Railing [Placeholder Asset]</div>
+                    <div class="gallery-info">
+                        <h4>Structural Geometric Balustrades</h4>
+                        <p>Custom modern interior structural installation.</p>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-media-placeholder">Custom Architectural [Placeholder Asset]</div>
+                    <div class="gallery-info">
+                        <h4>Frequency 528 Custom Build</h4>
+                        <p>Bespoke custom specialized metal component asset.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to" class="video-block">
+            <h2 class="block-title">How-To <span>Video Showcase</span></h2>
+            <p class="block-subtitle">Review procedural design briefs, installation compliance measures, or conceptual demonstrations directly from the fabrication floor.</p>
+
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <video controls poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='%23d4af37'><path d='M8 5v14l11-7z'/></svg>'>
+                        <source src="your-video-file.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="workspace-block">
+            <h2 class="block-title">Client <span>Reviews & Comments</span></h2>
+            <p class="block-subtitle">Read feedback regarding past projects or drop your own notes below.</p>
+
+            <div class="feedback-input-area">
+                <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Review received for processing.');">
+                    <div class="form-row-split">
+                        <div class="input-group">
+                            <label for="reviewer-name">Name / Project Location</label>
+                            <input type="text" id="reviewer-name" placeholder="Example: Robert M. - Atlanta" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="review-rating">Project Rating Selection</label>
+                            <input type="text" id="review-rating" placeholder="★★★★★ (5/5 Stars)" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="review-text">Review Content Text</label>
+                        <textarea id="review-text" rows="3" placeholder="Drop your comment details regarding installation quality, speed, or precision..." required></textarea>
+                    </div>
+                    <button type="submit" class="ai-submit-btn" style="padding: 12px 24px; font-size: 0.85rem;">Post Review Entry</button>
+                </form>
+            </div>
+
+            <div class="reviews-stream">
+                <div class="review-post">
+                    <div class="review-meta">
+                        <div class="review-author">Marcus T.</div>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                    <div class="review-body">
+                        Shane and the crew completely killed it on our perimeter iron framework. Absolute precision balancing, and the brass gold finish hints are phenomenal. Truly clean craftsmanship.
+                    </div>
+                </div>
+
+                <div class="review-post">
+                    <div class="review-meta">
+                        <div class="review-author">Elena R.</div>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                    <div class="review-body">
+                        The planning module made it so easy. Submitted our property mapping details and got back precise site overlays almost instantly. Recommended.
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <footer>
+        <p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p>
+        <p style="color:#444;font-size:0.75rem;margin-top:8px;">All structural asset positioning parameters verified stable.</p>
+    </footer>
 
     <script>
         function toggleAdmin() {
