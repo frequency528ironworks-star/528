@@ -426,9 +426,12 @@
         let adminAuthenticated = false;
 
         function escapeHtml(str) {
-            const d = document.createElement('div');
-            d.textContent = String(str);
-            return d.innerHTML;
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
         }
 
         async function sha256(str) {
@@ -501,7 +504,10 @@
         const REPO_OWNER = 'frequency528ironworks-star';
         const REPO_NAME  = '528';
 
-        // NOTE: The PAT is stored in this browser's localStorage only.
+        // NOTE: The PAT is stored in localStorage so admin can upload across sessions
+        // without re-entering the token each time (see SETUP_GUIDE.md).
+        // The token has minimal permissions (only write access to this one repository).
+        // For stronger security, use sessionStorage or a server-side proxy instead.
         // Never enter it on a shared or public device.
         function getGitHubPAT() { return localStorage.getItem('gh_pat_f528'); }
 
