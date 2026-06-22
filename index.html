@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IT NOT JUST IRON...ITS FREQUENCY 528 IRON</title>
+    <title>It's Not Just Iron — It's Frequency 528 Ironworks</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Cinzel:wght@700;800;900&display=swap" rel="stylesheet">
@@ -179,7 +179,7 @@
         .toast{ position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:#1a1a1a; color:#e8e8e8; border:1px solid #333; padding:12px 22px; border-radius:12px; font-size:.85rem; z-index:10000000; opacity:0; transition:all .28s ease; }
         .toast.show{ transform:translateX(-50%) translateY(0); opacity:1; }
         .toast.toast-success{ border-color:rgba(74,222,128,.5); color:#4ade80; }
-        .toast.toast-error{ border-color:rgba(248,113,113,.5); color:#f87171; }
+        .toast.toast-info{ border-color:rgba(148,163,184,.45); color:#94a3b8; }
     </style>
 </head>
 <body>
@@ -200,9 +200,9 @@
 
     <section class="logo-hero">
         <div class="main-logo-text" id="heroLogo">
-            <span class="logo-line line-1">IT'S NOT JUST IRON ITS ...</span>
-            <span class="logo-line line-2">"FREQUENCY 528"</span>
-            <span class="logo-line line-3">IRON</span>
+            <span class="logo-line line-1">IT'S NOT JUST IRON...</span>
+            <span class="logo-line line-2">FREQUENCY 528</span>
+            <span class="logo-line line-3">IRONWORKS</span>
         </div>
         <div class="logo-tagline">You Dream It... I Build It!</div>
     </section>
@@ -223,7 +223,7 @@
                 <div class="input-group"><label for="property-photo">Upload Photo of Your Property</label><input type="file" id="property-photo" accept="image/*"></div>
                 <div class="input-group"><label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label><textarea id="design-ideas" rows="3" placeholder="Tell us what you want built, style ideas, and any special details..." required></textarea></div>
                 <button type="submit" class="ai-submit-btn">Transmit Concept to Ironworks</button>
-       <div class="admin-config-row">
+            </form>
         </section>
 
         <section id="portfolio" class="workspace-block">
@@ -278,7 +278,8 @@
                     <p style="color:var(--gold-2); font-weight:700; font-size:.92rem; margin-bottom:8px;">&#9881; One-Time Setup Required</p>
                     <p style="color:#888; font-size:.84rem; margin-bottom:14px;">
                         Enter a GitHub Personal Access Token so photos can be saved to the website.<br>
-                        See <strong style="color:#bbb;">SETUP_GUIDE.md</strong> in the repo for how to create one (only takes 2 minutes).
+                        See <strong style="color:#bbb;">SETUP_GUIDE.md</strong> in the repo for how to create one (only takes 2 minutes).<br>
+                        <span style="color:#f59e0b; font-size:.8rem;">&#9888; This token is stored in your browser&rsquo;s localStorage. Only use a trusted, private device.</span>
                     </p>
                     <div class="admin-config-row">
                         <div>
@@ -629,19 +630,19 @@
 
         function renderGallery(images, container) {
             container.innerHTML = images.map(img => {
-                const src   = 'images/' + img.filename;
-                const title = (img.title || img.name).replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                const fn    = img.filename.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-                return '<div class="gallery-card" data-filename="' + img.filename + '">'
+                const src    = 'images/' + encodeURIComponent(img.filename);
+                const title  = escapeHtml(img.title || img.name);
+                const fnAttr = JSON.stringify(img.filename).replace(/"/g, '&quot;');
+                return '<div class="gallery-card" data-filename="' + escapeHtml(img.filename) + '">'
                     + '<div class="portfolio-img-wrap">'
                     + '<img src="' + src + '" alt="' + title + '" loading="lazy"'
                     + ' onerror="this.parentElement.style.background=\'#1a1a1a\';this.style.display=\'none\';">'
                     + '<button class="admin-delete-btn"'
-                    + ' onclick="deletePhoto(\'' + fn + '\',this.closest(\'.gallery-card\'))">'
+                    + ' onclick="deletePhoto(' + fnAttr + ',this.closest(\'.gallery-card\'))">'
                     + '&#x2715; Delete</button>'
                     + '</div>'
                     + '<div class="gallery-info"><h4>' + title + '</h4>'
-                    + '<p>' + (img.date || '') + '</p></div>'
+                    + '<p>' + escapeHtml(img.date || '') + '</p></div>'
                     + '</div>';
             }).join('');
         }
@@ -666,6 +667,16 @@
             });
         }
 
+        function escapeHtml(str) {
+            if (str == null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         const storedReviews = JSON.parse(localStorage.getItem('f528_reviews') || '[]');
 
         function renderReviews() {
@@ -678,9 +689,9 @@
                 const stars = '&#9733;'.repeat(r.stars) + '&#9734;'.repeat(5 - r.stars);
                 return '<div class="review-post">'
                     + '<div class="review-meta">'
-                    + '<span class="review-author">' + r.name + '</span>'
+                    + '<span class="review-author">' + escapeHtml(r.name) + '</span>'
                     + '<span class="review-stars">' + stars + '</span>'
-                    + '</div><p class="review-body">' + r.text + '</p></div>';
+                    + '</div><p class="review-body">' + escapeHtml(r.text) + '</p></div>';
             }).join('');
         }
 
