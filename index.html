@@ -448,6 +448,10 @@
             return (value || '').trim().replace(/^["']+|["']+$/g, '');
         }
 
+        function looksLikeGitHubPAT(value) {
+            return /^(github_pat_[A-Za-z0-9_]+|gh[a-z]_[A-Za-z0-9]+)$/i.test(value);
+        }
+
         function getGitHubPAT() {
             return sanitizePAT(localStorage.getItem('gh_pat_f528'));
         }
@@ -464,7 +468,7 @@
 
         function arrayBufferToBase64(buffer) {
             const bytes = new Uint8Array(buffer);
-            // 0x8000 keeps each apply() call well below common browser argument and call stack limits.
+            // 0x8000 is a conservative chunk size that stays below common browser apply()/stack limits.
             const chunkSize = 0x8000;
             let binary = '';
             for (let i = 0; i < bytes.length; i += chunkSize) {
@@ -553,6 +557,7 @@
         function savePAT() {
             const pat = document.getElementById('githubPATInput').value.trim();
             if (!pat) { showToast('Please enter your GitHub PAT.', 'error'); return; }
+            if (!looksLikeGitHubPAT(pat)) { showToast('That does not look like a GitHub PAT. Paste the full token and try again.', 'error'); return; }
             setGitHubPAT(pat);
             document.getElementById('patSetupPanel').style.display = 'none';
             document.getElementById('githubPATInput').value = '';
@@ -562,6 +567,7 @@
         function updatePAT() {
             const pat = document.getElementById('updatePATInput').value.trim();
             if (!pat) { showToast('Please enter a new GitHub PAT.', 'error'); return; }
+            if (!looksLikeGitHubPAT(pat)) { showToast('That does not look like a GitHub PAT. Paste the full token and try again.', 'error'); return; }
             setGitHubPAT(pat);
             document.getElementById('updatePATInput').value = '';
             showToast('GitHub PAT updated!', 'success');
@@ -686,6 +692,7 @@
 
         async function addToGallery(imageInfo) {
             const state = await readGalleryFile();
+            // Remove any existing entry for the same file so retrying an upload does not duplicate gallery metadata.
             const existingImages = state.gallery.images.filter(img => img.filename !== imageInfo.filename);
             state.gallery.images = [imageInfo].concat(existingImages);
             await writeGalleryFile(state.gallery, state.sha, 'Gallery: add ' + imageInfo.name);
@@ -697,8 +704,9 @@
             if (!getGitHubPAT()) { showToast('GitHub PAT required to delete photos.', 'error'); return; }
             try {
                 const state = await readGalleryFile();
-                if (state.gallery.images.length) {
-                    state.gallery.images = state.gallery.images.filter(i => i.filename !== filename);
+                const nextImages = state.gallery.images.filter(i => i.filename !== filename);
+                if (nextImages.length !== state.gallery.images.length) {
+                    state.gallery.images = nextImages;
                     await writeGalleryFile(state.gallery, state.sha, 'Gallery: remove ' + filename);
                 }
                 const fileData = await githubAPI(IMAGE_UPLOAD_DIR + '/' + filename);
