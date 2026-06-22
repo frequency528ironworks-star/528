@@ -464,7 +464,7 @@
         async function githubAPI(path, method, body) {
             method = method || 'GET';
             const token = getGitHubPAT();
-            if (!token) throw new Error('No GitHub PAT configured. Please save your token in the PAT setup panel.');
+            if (!token) throw new Error('No GitHub token configured. Please save your token using the "GitHub Personal Access Token" field above.');
             const headers = {
                 'Accept': 'application/vnd.github.v3+json',
                 'Content-Type': 'application/json',
@@ -481,7 +481,7 @@
                 let msg;
                 try { msg = (await res.json()).message || res.statusText; } catch(_) { msg = res.statusText; }
                 if (res.status === 401) msg = 'Invalid or expired GitHub PAT. Please update your token.';
-                if (res.status === 403) msg = 'GitHub PAT lacks write permission. Ensure it has Contents: Read and write access.';
+                if (res.status === 403) msg = 'GitHub token lacks write permission. Ensure it has the Contents scope with Read and write access.';
                 throw new Error('GitHub ' + res.status + ': ' + msg);
             }
             return res.json();
