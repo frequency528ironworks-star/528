@@ -449,7 +449,7 @@
         }
 
         function looksLikeGitHubPAT(value) {
-            return /^(github_pat_[A-Za-z0-9_]+|gh[a-z]_[A-Za-z0-9]+)$/i.test(value);
+            return /^(github_pat_[A-Za-z0-9_]+|gh[a-z]_[A-Za-z0-9]+)$/.test(value);
         }
 
         function getGitHubPAT() {
@@ -470,11 +470,11 @@
             const bytes = new Uint8Array(buffer);
             // 0x8000 is a conservative chunk size that stays below common browser apply()/stack limits.
             const chunkSize = 0x8000;
-            let binary = '';
+            const chunks = [];
             for (let i = 0; i < bytes.length; i += chunkSize) {
-                binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
+                chunks.push(String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize)));
             }
-            return btoa(binary);
+            return btoa(chunks.join(''));
         }
 
         function utf8ToBase64(value) {
@@ -692,7 +692,7 @@
 
         async function addToGallery(imageInfo) {
             const state = await readGalleryFile();
-            // Remove any existing entry for the same file so retrying an upload does not duplicate gallery metadata.
+            // Remove existing metadata for the same generated filename so a retried upload does not duplicate entries.
             const existingImages = state.gallery.images.filter(img => img.filename !== imageInfo.filename);
             state.gallery.images = [imageInfo].concat(existingImages);
             await writeGalleryFile(state.gallery, state.sha, 'Gallery: add ' + imageInfo.name);
