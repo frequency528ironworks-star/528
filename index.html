@@ -464,19 +464,25 @@
         async function githubAPI(path, method, body) {
             method = method || 'GET';
             const token = getGitHubPAT();
+            if (!token) throw new Error('No GitHub PAT configured. Please save your token in the PAT setup panel.');
             const headers = {
                 'Accept': 'application/vnd.github.v3+json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             };
-            if (token) headers['Authorization'] = 'Bearer ' + token;
             const opts = { method: method, headers: headers };
             if (body !== undefined && body !== null) opts.body = JSON.stringify(body);
-            const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + path;
+            const encodedPath = path.split('/').map(s => encodeURIComponent(s)).join('/');
+            const ref = method === 'GET' ? '?ref=main' : '';
+            const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + encodedPath + ref;
             const res = await fetch(url, opts);
             if (res.status === 404 && method === 'GET') return null;
             if (!res.ok) {
-                const txt = await res.text();
-                throw new Error('GitHub API ' + res.status + ': ' + txt);
+                let msg;
+                try { msg = (await res.json()).message || res.statusText; } catch(_) { msg = res.statusText; }
+                if (res.status === 401) msg = 'Invalid or expired GitHub PAT. Please update your token.';
+                if (res.status === 403) msg = 'GitHub PAT lacks write permission. Ensure it has Contents: Read and write access.';
+                throw new Error('GitHub ' + res.status + ': ' + msg);
             }
             return res.json();
         }
@@ -547,11 +553,12 @@
             const b64      = b64full.split(',')[1];
             const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
             const filename = Date.now() + '-' + safeName;
-            const filePath = 'images/' + filename;
+            const filePath = 'admin/uploads/' + filename;
 
             await githubAPI(filePath, 'PUT', {
                 message: 'Upload portfolio photo: ' + file.name,
-                content: b64
+                content: b64,
+                branch: 'main'
             });
             await addToGallery({
                 filename: filename,
@@ -575,7 +582,8 @@
             current.images.unshift(imageInfo);
             const body = {
                 message: 'Gallery: add ' + imageInfo.name,
-                content: btoa(JSON.stringify(current, null, 2))
+                content: btoa(unescape(encodeURIComponent(JSON.stringify(current, null, 2)))),
+                branch: 'main'
             };
             if (sha) body.sha = sha;
             await githubAPI('admin/gallery.json', 'PUT', body);
@@ -592,15 +600,17 @@
                     data.images = data.images.filter(i => i.filename !== filename);
                     await githubAPI('admin/gallery.json', 'PUT', {
                         message: 'Gallery: remove ' + filename,
-                        content: btoa(JSON.stringify(data, null, 2)),
-                        sha: existing.sha
+                        content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
+                        sha: existing.sha,
+                        branch: 'main'
                     });
                 }
-                const fileData = await githubAPI('images/' + filename);
+                const fileData = await githubAPI('admin/uploads/' + filename);
                 if (fileData) {
-                    await githubAPI('images/' + filename, 'DELETE', {
+                    await githubAPI('admin/uploads/' + filename, 'DELETE', {
                         message: 'Remove portfolio photo: ' + filename,
-                        sha: fileData.sha
+                        sha: fileData.sha,
+                        branch: 'main'
                     });
                 }
                 cardEl.remove();
@@ -638,7 +648,7 @@
 
         function renderGallery(images, container) {
             container.innerHTML = images.map(img => {
-                const src   = 'images/' + img.filename;
+                const src   = 'admin/uploads/' + img.filename;
                 const title = (img.title || img.name).replace(/</g,'&lt;').replace(/>/g,'&gt;');
                 const fn    = img.filename.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
                 return '<div class="gallery-card" data-filename="' + img.filename + '">'
