@@ -12,7 +12,7 @@ The website now has a **real admin sign-in** system. Here is what was built:
 - Enter the admin password — it is verified with SHA-256 (no plain-text password stored).
 - After signing in, the **Admin Upload** section appears at the bottom of the page.
 - You can drag-and-drop or click to select photos, then click **Upload Photos**.
-- Photos are committed directly to this GitHub repository (in `admin/uploads/`) using the GitHub API.
+- Photos are committed directly to this GitHub repository (in `images/`) using the GitHub API, and the gallery metadata is stored in `admin/gallery.json`.
 - The **Portfolio Gallery** section automatically shows all uploaded photos.
 - You can delete photos from the gallery when in Admin Mode.
 
@@ -64,7 +64,7 @@ that lets the website commit photos to this repository on your behalf.
 **Step 3 — Start uploading:**
 
 After saving the PAT, use the upload zone to select and upload portfolio photos.
-They will be committed to `admin/uploads/` in this repository and appear in the
+They will be committed to `images/` in this repository, added to `admin/gallery.json`, and appear in the
 Portfolio Gallery section within seconds.
 
 ---

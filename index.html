@@ -441,13 +441,118 @@
 
         const REPO_OWNER = 'frequency528ironworks-star';
         const REPO_NAME  = '528';
+        const GALLERY_PATH = 'admin/gallery.json';
+        const IMAGE_UPLOAD_DIR = 'images';
 
-        function getGitHubPAT() { return localStorage.getItem('gh_pat_f528'); }
+        function sanitizePAT(value) {
+            return (value || '').trim().replace(/^["']+|["']+$/g, '');
+        }
+
+        function getGitHubPAT() {
+            return sanitizePAT(localStorage.getItem('gh_pat_f528'));
+        }
+
+        function setGitHubPAT(value) {
+            const pat = sanitizePAT(value);
+            if (!pat) {
+                localStorage.removeItem('gh_pat_f528');
+                return '';
+            }
+            localStorage.setItem('gh_pat_f528', pat);
+            return pat;
+        }
+
+        function arrayBufferToBase64(buffer) {
+            const bytes = new Uint8Array(buffer);
+            const chunkSize = 0x8000;
+            let binary = '';
+            for (let i = 0; i < bytes.length; i += chunkSize) {
+                binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
+            }
+            return btoa(binary);
+        }
+
+        function utf8ToBase64(value) {
+            if (window.TextEncoder) {
+                return arrayBufferToBase64(new TextEncoder().encode(value));
+            }
+            return btoa(unescape(encodeURIComponent(value)));
+        }
+
+        function base64ToUtf8(value) {
+            const clean = (value || '').replace(/\s/g, '');
+            if (window.TextDecoder) {
+                const binary = atob(clean);
+                const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0));
+                return new TextDecoder().decode(bytes);
+            }
+            return decodeURIComponent(escape(atob(clean)));
+        }
+
+        function parseGitHubError(status, payload, path, method) {
+            const message = payload && payload.message ? payload.message : '';
+            const details = Array.isArray(payload && payload.errors)
+                ? payload.errors.map(err => err.message || err.code || JSON.stringify(err)).join(' ')
+                : '';
+            const combined = [message, details].filter(Boolean).join(' ').trim();
+
+            if (status === 401) {
+                return new Error('GitHub rejected the token. Save a valid PAT with repository Contents read/write access and try again.');
+            }
+            if (status === 403) {
+                if (/rate limit/i.test(combined)) {
+                    return new Error('GitHub rate limit reached. Wait a moment and try the upload again.');
+                }
+                return new Error('GitHub denied access. Confirm the PAT still has permission to this repository.');
+            }
+            if (status === 404 && method !== 'GET') {
+                return new Error('GitHub could not find "' + path + '". Verify the repository path exists and try again.');
+            }
+            if (status === 409) {
+                return new Error('GitHub reported a file conflict. Refresh the page and retry the upload.');
+            }
+            if (status === 422) {
+                return new Error(combined || 'GitHub could not save the file. Check the filename and PAT permissions.');
+            }
+            return new Error('GitHub request failed (' + status + '): ' + (combined || 'Unknown error'));
+        }
+
+        function normalizeGalleryData(data) {
+            const gallery = (data && typeof data === 'object' && !Array.isArray(data)) ? { ...data } : {};
+            gallery.images = Array.isArray(gallery.images)
+                ? gallery.images.filter(item => item && typeof item === 'object')
+                : [];
+            return gallery;
+        }
+
+        async function readGalleryFile() {
+            const existing = await githubAPI(GALLERY_PATH);
+            if (!existing || !existing.content) {
+                return { sha: null, gallery: normalizeGalleryData(null) };
+            }
+            try {
+                return {
+                    sha: existing.sha || null,
+                    gallery: normalizeGalleryData(JSON.parse(base64ToUtf8(existing.content)))
+                };
+            } catch (_) {
+                throw new Error('The gallery metadata file is invalid. Fix admin/gallery.json and try again.');
+            }
+        }
+
+        async function writeGalleryFile(gallery, sha, message) {
+            const body = {
+                message: message,
+                content: utf8ToBase64(JSON.stringify(normalizeGalleryData(gallery), null, 2))
+            };
+            if (sha) body.sha = sha;
+            await githubAPI(GALLERY_PATH, 'PUT', body);
+        }
 
         function savePAT() {
             const pat = document.getElementById('githubPATInput').value.trim();
             if (!pat) { showToast('Please enter your GitHub PAT.', 'error'); return; }
-            localStorage.setItem('gh_pat_f528', pat);
+            setGitHubPAT(pat);
             document.getElementById('patSetupPanel').style.display = 'none';
             document.getElementById('githubPATInput').value = '';
             showToast('GitHub PAT saved! You can now upload photos.', 'success');
@@ -456,7 +561,8 @@
         function updatePAT() {
             const pat = document.getElementById('updatePATInput').value.trim();
             if (!pat) { showToast('Please enter a new GitHub PAT.', 'error'); return; }
-            localStorage.setItem('gh_pat_f528', pat);
+            setGitHubPAT(pat);
+            document.getElementById('patSetupPanel').style.display = 'none';
             document.getElementById('updatePATInput').value = '';
             showToast('GitHub PAT updated!', 'success');
         }
@@ -465,20 +571,25 @@
             method = method || 'GET';
             const token = getGitHubPAT();
             const headers = {
-                'Accept': 'application/vnd.github.v3+json',
-                'Content-Type': 'application/json'
+                'Accept': 'application/vnd.github+json',
+                'X-GitHub-Api-Version': '2022-11-28'
             };
-            if (token) headers['Authorization'] = 'Bearer ' + token;
+            if (body !== undefined && body !== null) headers['Content-Type'] = 'application/json';
+            if (token) headers['Authorization'] = 'token ' + token;
             const opts = { method: method, headers: headers };
             if (body !== undefined && body !== null) opts.body = JSON.stringify(body);
-            const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + path;
+            const safePath = String(path).split('/').map(encodeURIComponent).join('/');
+            const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + safePath;
             const res = await fetch(url, opts);
             if (res.status === 404 && method === 'GET') return null;
+            let payload = null;
+            try {
+                payload = await res.json();
+            } catch (_) {}
             if (!res.ok) {
-                const txt = await res.text();
-                throw new Error('GitHub API ' + res.status + ': ' + txt);
+                throw parseGitHubError(res.status, payload, path, method);
             }
-            return res.json();
+            return payload;
         }
 
         let selectedFiles = [];
@@ -533,9 +644,9 @@
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const r = new FileReader();
-                r.onload  = e => resolve(e.target.result);
-                r.onerror = reject;
-                r.readAsDataURL(file);
+                r.onload = () => resolve(arrayBufferToBase64(r.result));
+                r.onerror = () => reject(new Error('Could not read "' + file.name + '" in this browser.'));
+                r.readAsArrayBuffer(file);
             });
         }
 
@@ -543,42 +654,40 @@
             if (file.size > MAX_UPLOAD_MB * 1024 * 1024) {
                 throw new Error(file.name + ' exceeds the ' + MAX_UPLOAD_MB + ' MB limit.');
             }
-            const b64full  = await fileToBase64(file);
-            const b64      = b64full.split(',')[1];
+            const b64 = await fileToBase64(file);
             const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
             const filename = Date.now() + '-' + safeName;
-            const filePath = 'images/' + filename;
+            const filePath = IMAGE_UPLOAD_DIR + '/' + filename;
 
-            await githubAPI(filePath, 'PUT', {
+            const uploadResult = await githubAPI(filePath, 'PUT', {
                 message: 'Upload portfolio photo: ' + file.name,
                 content: b64
             });
-            await addToGallery({
-                filename: filename,
-                name: file.name,
-                title: file.name.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' '),
-                date: new Date().toISOString().split('T')[0]
-            });
+            try {
+                await addToGallery({
+                    filename: filename,
+                    name: file.name,
+                    title: file.name.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' '),
+                    date: new Date().toISOString().split('T')[0]
+                });
+            } catch (err) {
+                try {
+                    const uploadedSha = uploadResult && uploadResult.content && uploadResult.content.sha;
+                    if (uploadedSha) {
+                        await githubAPI(filePath, 'DELETE', {
+                            message: 'Rollback failed gallery update for ' + file.name,
+                            sha: uploadedSha
+                        });
+                    }
+                } catch (_) {}
+                throw err;
+            }
         }
 
         async function addToGallery(imageInfo) {
-            let current = { images: [] };
-            let sha = null;
-            try {
-                const existing = await githubAPI('admin/gallery.json');
-                if (existing && existing.content) {
-                    sha = existing.sha;
-                    current = JSON.parse(atob(existing.content.replace(/\s/g, '')));
-                }
-            } catch(e) { }
-
-            current.images.unshift(imageInfo);
-            const body = {
-                message: 'Gallery: add ' + imageInfo.name,
-                content: btoa(JSON.stringify(current, null, 2))
-            };
-            if (sha) body.sha = sha;
-            await githubAPI('admin/gallery.json', 'PUT', body);
+            const state = await readGalleryFile();
+            state.gallery.images = [imageInfo].concat(state.gallery.images.filter(img => img.filename !== imageInfo.filename));
+            await writeGalleryFile(state.gallery, state.sha, 'Gallery: add ' + imageInfo.name);
         }
 
         async function deletePhoto(filename, cardEl) {
@@ -586,24 +695,19 @@
             if (!confirm('Delete "' + filename + '" from the gallery?')) return;
             if (!getGitHubPAT()) { showToast('GitHub PAT required to delete photos.', 'error'); return; }
             try {
-                const existing = await githubAPI('admin/gallery.json');
-                if (existing && existing.content) {
-                    const data = JSON.parse(atob(existing.content.replace(/\s/g, '')));
-                    data.images = data.images.filter(i => i.filename !== filename);
-                    await githubAPI('admin/gallery.json', 'PUT', {
-                        message: 'Gallery: remove ' + filename,
-                        content: btoa(JSON.stringify(data, null, 2)),
-                        sha: existing.sha
-                    });
+                const state = await readGalleryFile();
+                if (state.gallery.images.length) {
+                    state.gallery.images = state.gallery.images.filter(i => i.filename !== filename);
+                    await writeGalleryFile(state.gallery, state.sha, 'Gallery: remove ' + filename);
                 }
-                const fileData = await githubAPI('images/' + filename);
+                const fileData = await githubAPI(IMAGE_UPLOAD_DIR + '/' + filename);
                 if (fileData) {
-                    await githubAPI('images/' + filename, 'DELETE', {
+                    await githubAPI(IMAGE_UPLOAD_DIR + '/' + filename, 'DELETE', {
                         message: 'Remove portfolio photo: ' + filename,
                         sha: fileData.sha
                     });
                 }
-                cardEl.remove();
+                await loadGallery();
                 showToast('Photo deleted.', 'success');
             } catch(err) {
                 showToast('Delete failed: ' + err.message, 'error');
@@ -613,20 +717,17 @@
         async function loadGallery() {
             const el = document.getElementById('portfolioGallery');
             try {
-                const data = await githubAPI('admin/gallery.json');
-                if (data && data.content) {
-                    const gallery = JSON.parse(atob(data.content.replace(/\s/g, '')));
-                    if (gallery.images && gallery.images.length > 0) {
-                        renderGallery(gallery.images, el);
-                        return;
-                    }
+                const state = await readGalleryFile();
+                if (state.gallery.images.length > 0) {
+                    renderGallery(state.gallery.images, el);
+                    return;
                 }
             } catch(e) {
                 try {
                     const res = await fetch('./admin/gallery.json?v=' + Date.now());
                     if (res.ok) {
-                        const g = await res.json();
-                        if (g.images && g.images.length > 0) {
+                        const g = normalizeGalleryData(await res.json());
+                        if (g.images.length > 0) {
                             renderGallery(g.images, el);
                             return;
                         }
@@ -638,7 +739,7 @@
 
         function renderGallery(images, container) {
             container.innerHTML = images.map(img => {
-                const src   = 'images/' + img.filename;
+                const src   = IMAGE_UPLOAD_DIR + '/' + img.filename;
                 const title = (img.title || img.name).replace(/</g,'&lt;').replace(/>/g,'&gt;');
                 const fn    = img.filename.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
                 return '<div class="gallery-card" data-filename="' + img.filename + '">'
