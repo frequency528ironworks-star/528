@@ -468,7 +468,7 @@
 
         function arrayBufferToBase64(buffer) {
             const bytes = new Uint8Array(buffer);
-            // 0x8000 is a conservative chunk size that stays below common browser apply()/stack limits.
+            // 0x8000 keeps each apply() call around 32 KB of arguments, which stays within common browser limits.
             const chunkSize = 0x8000;
             const chunks = [];
             for (let i = 0; i < bytes.length; i += chunkSize) {
@@ -481,7 +481,9 @@
             if (window.TextEncoder) {
                 return arrayBufferToBase64(new TextEncoder().encode(value));
             }
-            return btoa(unescape(encodeURIComponent(value)));
+            return btoa(encodeURIComponent(value).replace(/%([0-9A-F]{2})/g, (_, hex) => {
+                return String.fromCharCode(parseInt(hex, 16));
+            }));
         }
 
         function base64ToUtf8(value) {
@@ -491,7 +493,9 @@
                 const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0));
                 return new TextDecoder().decode(bytes);
             }
-            return decodeURIComponent(escape(atob(clean)));
+            return decodeURIComponent(Array.from(atob(clean), ch => {
+                return '%' + ch.charCodeAt(0).toString(16).padStart(2, '0');
+            }).join(''));
         }
 
         function parseGitHubError(status, payload, path, method) {
@@ -499,7 +503,7 @@
             const details = Array.isArray(payload && payload.errors)
                 ? payload.errors.map(err => err.message || err.code || JSON.stringify(err)).join(' ')
                 : '';
-            const combined = [message, details].filter(Boolean).join(' ').trim();
+            const combined = [message, details].filter(Boolean).join('; ').trim();
 
             if (status === 401) {
                 return new Error('GitHub rejected the token. Save a valid PAT with repository Contents read/write access and try again.');
@@ -692,7 +696,7 @@
 
         async function addToGallery(imageInfo) {
             const state = await readGalleryFile();
-            // Remove existing metadata for the same generated filename so a retried upload does not duplicate entries.
+            // Remove existing metadata for the same timestamp-prefixed filename so a retried upload does not duplicate entries.
             const existingImages = state.gallery.images.filter(img => img.filename !== imageInfo.filename);
             state.gallery.images = [imageInfo].concat(existingImages);
             await writeGalleryFile(state.gallery, state.sha, 'Gallery: add ' + imageInfo.name);
