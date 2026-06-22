@@ -464,7 +464,7 @@
 
         function arrayBufferToBase64(buffer) {
             const bytes = new Uint8Array(buffer);
-            // Chunk large arrays so String.fromCharCode does not exceed browser call stack limits.
+            // 0x8000 keeps each apply() call well below common browser argument and call stack limits.
             const chunkSize = 0x8000;
             let binary = '';
             for (let i = 0; i < bytes.length; i += chunkSize) {
@@ -563,7 +563,6 @@
             const pat = document.getElementById('updatePATInput').value.trim();
             if (!pat) { showToast('Please enter a new GitHub PAT.', 'error'); return; }
             setGitHubPAT(pat);
-            document.getElementById('patSetupPanel').style.display = 'none';
             document.getElementById('updatePATInput').value = '';
             showToast('GitHub PAT updated!', 'success');
         }
@@ -579,8 +578,8 @@
             if (token) headers['Authorization'] = 'Bearer ' + token;
             const opts = { method: method, headers: headers };
             if (body !== undefined && body !== null) opts.body = JSON.stringify(body);
-            const safePath = String(path).split('/').map(encodeURIComponent).join('/');
-            const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + safePath;
+            const encodedPath = String(path).split('/').map(encodeURIComponent).join('/');
+            const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + encodedPath;
             const res = await fetch(url, opts);
             if (res.status === 404 && method === 'GET') return null;
             let payload = null;
