@@ -13,7 +13,7 @@
         *{ box-sizing:border-box; margin:0; padding:0; font-family:'Inter',sans-serif; }
         body{ background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; padding-top:88px; }
         a{ color:inherit; }
-        .fixed-header{ position:fixed; top:0; left:0; width:100%; min-height:88px; background:rgba(0,0,0,.98); border-bottom:1px solid rgba(212,175,55,.45); display:flex; align-items:center; justify-content:space-between; padding:10px 4%; z-index:9999; box-shadow:0 6px 18px rgba(0,0,0,.6); }
+        .fixed-header{ position:fixed; top:0; left:0; width:100%; min-height:88px; background:rgba(0,0,0,.98); border-bottom:1px solid rgba(212,175,55,.45); display:flex; align-items:center; justify-content:space-between; padding:18px 4%; z-index:1000; }
         .header-nav-left,.header-contact-right{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
         .header-nav-left a{ color:#b8b8b8; text-decoration:none; font-size:.8rem; font-weight:600; text-transform:uppercase; letter-spacing:1.2px; }
         .header-nav-left a:hover{ color:var(--gold-2); }
@@ -52,11 +52,11 @@
         }
         @keyframes logoPulse{ 0%,100%{ transform:scale(.965); opacity:.9; } 50%{ transform:scale(1.05); opacity:1; } }
         @keyframes shimmer{ 0%{ background-position:200% 0; } 100%{ background-position:-200% 0; } }
-        @keyframes vibrate{ 0%,100%{ transform:scale(.975) translateX(0); } 20%{ transform:scale(1.01) translateX(-1px); } 40%{ transform:scale(1.045) translateX(1px); } 60%{ transform:scale(1.01) translateX(-1px); } 80%{ transform:scale(1.03) translateX(1px); } }
+        @keyframes vibrate{ 0%,100%{ transform:scale(.975) translateX(0); } 20%{ transform:scale(1.01) translateX(-1px); } 40%{ transform:scale(1.045) translateX(1px); } 60%{ transform:scale(1.01) translateX(-1px); } 80%{ transform:scale(1.025) translateX(1px); } }
         .tagline{ text-align:center; color:#8f8f8f; font-size:.88rem; margin-top:10px; letter-spacing:.2px; }
 
         .freeform-canvas{ width:100%; max-width:1100px; margin:0 auto; padding:12px 4% 40px; }
-        .workspace-block,.video-block{ background:linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,0)), var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; margin-bottom:18px; }
+        .workspace-block,.video-block{ background:linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,0)), var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; margin-bottom:16px; box-shadow:0 16px 40px rgba(0,0,0,.32); }
         .block-header{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
         .block-title{ font-size:1.28rem; font-weight:800; color:#fff; letter-spacing:-.3px; }
         .block-title span{ color:var(--gold); }
@@ -70,12 +70,12 @@
         .input-group label{ font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.55px; color:#bebebe; }
         input,textarea{ width:100%; background:var(--panel-2); border:1px solid #303030; padding:11px 13px; border-radius:10px; color:#fff; font-size:.94rem; }
         input:focus,textarea:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 2px rgba(212,175,55,.12); }
-        .ai-submit-btn{ background:linear-gradient(135deg, #f1d37a 0%, #d4af37 50%, #9f6f08 100%); color:#0a0a0a; padding:12px 16px; font-size:.88rem; align-self:flex-start; box-shadow:0 8px 18px rgba(0,0,0,.45); }
+        .ai-submit-btn{ background:linear-gradient(135deg, #f1d37a 0%, #d4af37 50%, #9f6f08 100%); color:#0a0a0a; padding:12px 16px; font-size:.88rem; align-self:flex-start; box-shadow:0 8px 18px rgba(212,175,55,.22); }
         .ai-submit-btn:hover{ opacity:.97; }
         .gallery-matrix{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:14px; }
         .gallery-card{ background:var(--panel-2); border:1px solid #232323; border-radius:14px; overflow:hidden; transition:transform .22s ease, border-color .22s ease; }
         .gallery-card:hover{ transform:translateY(-4px); border-color:var(--gold); }
-        .gallery-media-placeholder{ width:100%; height:160px; background:linear-gradient(45deg, #1d1d1d 20%, #262626 50%, #1d1d1d 80%); display:flex; align-items:center; justify-content:center; color:#666; font-size:.84rem; }
+        .gallery-media-placeholder{ width:100%; height:160px; background:linear-gradient(45deg, #1d1d1d 20%, #262626 50%, #1d1d1d 80%); display:flex; align-items:center; justify-content:center; color:#666; font-size:.92rem; }
         .gallery-info{ padding:15px; }
         .gallery-info h4{ color:#fff; font-size:.99rem; margin-bottom:5px; }
         .gallery-info p{ color:#8a8a8a; font-size:.85rem; }
@@ -137,8 +137,9 @@
         .admin-modal-actions{ display:flex; gap:10px; margin-top:4px; }
         .admin-modal-actions button{ flex:1; }
         .admin-login-error{ color:#f87171; font-size:.82rem; min-height:1.1em; margin-top:6px; text-align:center; }
-        .btn-cancel{ background:#1a1a1a; color:#aaa; border:1px solid #333; border-radius:10px; padding:11px 14px; font-size:.88rem; cursor:pointer; text-transform:uppercase; letter-spacing:.5px; font-weight:700; }
+        .btn-cancel{ background:#1a1a1a; color:#aaa; border:1px solid #333; border-radius:10px; padding:11px 14px; font-size:.88rem; cursor:pointer; text-transform:uppercase; letter-spacing:.5px; font-weight:800; }
         .btn-cancel:hover{ background:#252525; }
+        .admin-modal{ margin-bottom:18px; padding:16px; border:1px solid rgba(212,175,55,.35); border-radius:12px; background:#0e0e0e; }
 
         .portfolio-img-wrap{ position:relative; width:100%; height:200px; overflow:hidden; border-bottom:1px solid #232323; }
         .portfolio-img-wrap img{ width:100%; height:100%; object-fit:cover; transition:transform .3s ease; }
@@ -176,7 +177,7 @@
         .admin-tools-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; padding-top:16px; border-top:1px solid #1e1e1e; }
         .admin-signed-in-badge{ color:#4ade80; font-size:.8rem; font-weight:700; display:flex; align-items:center; gap:5px; }
 
-        .toast{ position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:#1a1a1a; color:#e8e8e8; border:1px solid #333; padding:12px 22px; border-radius:12px; font-size:.85rem; z-index:10000000; opacity:0; transition:all .28s ease; }
+        .toast{ position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:#1a1a1a; color:#e8e8e8; border:1px solid #333; padding:12px 22px; border-radius:12px; opacity:0; transition:transform .25s ease, opacity .25s ease; z-index:999999; }
         .toast.show{ transform:translateX(-50%) translateY(0); opacity:1; }
         .toast.toast-success{ border-color:rgba(74,222,128,.5); color:#4ade80; }
         .toast.toast-error{ border-color:rgba(248,113,113,.5); color:#f87171; }
@@ -221,9 +222,9 @@
                 </div>
                 <div class="input-group"><label for="home-address">Installation / Home Property Address</label><input type="text" id="home-address" placeholder="123 Main Street, City, State, Zip Code" required></div>
                 <div class="input-group"><label for="property-photo">Upload Photo of Your Property</label><input type="file" id="property-photo" accept="image/*"></div>
-                <div class="input-group"><label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label><textarea id="design-ideas" rows="3" placeholder="Tell us what you want built, style ideas, and any special details..." required></textarea></div>
+                <div class="input-group"><label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label><textarea id="design-ideas" rows="3" placeholder="Tell us what you want built, your style, colors, and any special details."></textarea></div>
                 <button type="submit" class="ai-submit-btn">Transmit Concept to Ironworks</button>
-       <div class="admin-config-row">
+            </form>
         </section>
 
         <section id="portfolio" class="workspace-block">
@@ -273,6 +274,14 @@
                 <button class="btn-small" onclick="signOut()">Sign Out</button>
             </div>
             <div class="admin-inner">
+
+                <div id="admin-panel" class="admin-modal">
+                    <h2 style="color:var(--gold-2); font-weight:700; font-size:.92rem; margin-bottom:8px;">Admin Configuration</h2>
+                    <div class="admin-config-row">
+                        <label for="portfolio-upload">Update Portfolio:</label>
+                        <input type="file" id="portfolio-upload" name="portfolio_upload">
+                    </div>
+                </div>
 
                 <div id="patSetupPanel" style="display:none; margin-bottom:18px; padding:16px; border:1px solid rgba(212,175,55,.35); border-radius:12px; background:#0e0e0e;">
                     <p style="color:var(--gold-2); font-weight:700; font-size:.92rem; margin-bottom:8px;">&#9881; One-Time Setup Required</p>
@@ -325,7 +334,7 @@
 
     </main>
 
-    <footer><p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p><p style="color:#444;font-size:0.75rem;margin-top:8px;">Crafted with precision by Frequency 528 Ironworks</p></footer>
+    <footer><p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p><p style="color:#444;font-size:0.75rem;margin-top:8px;">Designed for luxury metalwork concepts, client visualizations, and portfolio presentation.</p></footer>
 
     <div id="adminModal" class="admin-modal-overlay" role="dialog" aria-modal="true" aria-label="Admin Sign In">
         <div class="admin-modal-box">
@@ -347,7 +356,7 @@
     <script>
         let audioStarted = false;
         let dingTimer = null;
-        function playDing(){ const AudioCtx=window.AudioContext||window.webkitAudioContext; if(!AudioCtx) return; const ctx=new AudioCtx(); const now=ctx.currentTime; const freqs=[528,664,792]; freqs.forEach((f,i)=>{ const o=ctx.createOscillator(); const g=ctx.createGain(); o.type='sine'; o.frequency.value=f; g.gain.setValueAtTime(0,now+i*.02); g.gain.linearRampToValueAtTime(.06,now+i*.02+.02); g.gain.exponentialRampToValueAtTime(.001,now+i*.02+.35); o.connect(g); g.connect(ctx.destination); o.start(now+i*.02); o.stop(now+i*.02+.36); }); }
+        function playDing(){ const AudioCtx=window.AudioContext||window.webkitAudioContext; if(!AudioCtx) return; const ctx=new AudioCtx(); const now=ctx.currentTime; const freqs=[528,664,792]; const gain=ctx.createGain(); gain.gain.setValueAtTime(0.0001, now); gain.gain.exponentialRampToValueAtTime(0.04, now+0.01); gain.gain.exponentialRampToValueAtTime(0.0001, now+0.4); freqs.forEach((f,i)=>{ const o=ctx.createOscillator(); const g=ctx.createGain(); o.type='sine'; o.frequency.setValueAtTime(f, now); g.gain.setValueAtTime(0.0001, now); g.gain.exponentialRampToValueAtTime(i===0?0.025:0.012, now+0.01); g.gain.exponentialRampToValueAtTime(0.0001, now+0.35); o.start(now); o.stop(now+0.4); }); gain.connect(ctx.destination); }
         function startDingCycle(){ if(dingTimer) return; playDing(); dingTimer=setInterval(playDing,35000); }
         function unlockAudio(){ if(audioStarted) return; audioStarted=true; startDingCycle(); window.removeEventListener('pointerdown', unlockAudio); window.removeEventListener('touchstart', unlockAudio); window.removeEventListener('keydown', unlockAudio); }
         window.addEventListener('pointerdown', unlockAudio, { once:true });
