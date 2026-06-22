@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IT NOT JUST IRON...ITS FREQUENCY 528 IRON</title>
+    <title>Frequency 528 Ironworks | Custom Metalwork &amp; Gates</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Cinzel:wght@700;800;900&display=swap" rel="stylesheet">
@@ -187,9 +187,9 @@
         <nav class="header-nav-left" aria-label="Primary">
             <a href="#ai-portal">AI Portal</a>
             <a href="#portfolio">Portfolio</a>
-            <a href="#how-to">How To</a>
+            <a href="#how-to">How It Works</a>
             <a href="#reviews">Reviews</a>
-            <a href="#admin" onclick="handleAdminNavClick(event)">Admin</a>
+            <a href="#admin" id="adminNavLink">Admin</a>
         </nav>
         <div class="header-contact-right">
             <div>Shane Cavender: <span>404-807-5409</span></div>
@@ -200,30 +200,46 @@
 
     <section class="logo-hero">
         <div class="main-logo-text" id="heroLogo">
-            <span class="logo-line line-1">IT'S NOT JUST IRON ITS ...</span>
-            <span class="logo-line line-2">"FREQUENCY 528"</span>
-            <span class="logo-line line-3">IRON</span>
+            <span class="logo-line line-1">IT&#8217;S NOT JUST IRON &#8212;</span>
+            <span class="logo-line line-2">FREQUENCY 528</span>
+            <span class="logo-line line-3">IRONWORKS</span>
         </div>
-        <div class="logo-tagline">You Dream It... I Build It!</div>
+        <div class="logo-tagline">You Dream It &#8212; We Build It.</div>
     </section>
 
     <main class="freeform-canvas">
+
         <section id="ai-portal" class="workspace-block" style="max-width:720px;margin-left:auto;margin-right:auto;">
             <div class="block-header">
                 <h2 class="block-title">AI Client Concept <span>Visualizer</span></h2>
-                <button class="edit-btn" id="adminSignInBtn" type="button" onclick="openAdminModal()">Edit / Sign In</button>
+                <button class="edit-btn" id="adminSignInBtn" type="button">Edit / Sign In</button>
             </div>
             <p class="block-subtitle">Share your idea, upload your property photo, and give us the details so we can help plan an overlay and custom concept for your project.</p>
-            <form class="ai-portal-grid" onsubmit="event.preventDefault(); alert('Your concept has been submitted.');">
+            <form class="ai-portal-grid" id="conceptForm">
                 <div class="form-row-split">
-                    <div class="input-group"><label for="client-name">Your Full Name</label><input type="text" id="client-name" placeholder="John Doe" required></div>
-                    <div class="input-group"><label for="client-phone">Direct Mobile Number</label><input type="tel" id="client-phone" placeholder="(555) 555-5555" required></div>
+                    <div class="input-group">
+                        <label for="client-name">Your Full Name</label>
+                        <input type="text" id="client-name" placeholder="John Doe" required autocomplete="name">
+                    </div>
+                    <div class="input-group">
+                        <label for="client-phone">Direct Mobile Number</label>
+                        <input type="tel" id="client-phone" placeholder="(555) 555-5555" required autocomplete="tel">
+                    </div>
                 </div>
-                <div class="input-group"><label for="home-address">Installation / Home Property Address</label><input type="text" id="home-address" placeholder="123 Main Street, City, State, Zip Code" required></div>
-                <div class="input-group"><label for="property-photo">Upload Photo of Your Property</label><input type="file" id="property-photo" accept="image/*"></div>
-                <div class="input-group"><label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label><textarea id="design-ideas" rows="3" placeholder="Tell us what you want built, style ideas, and any special details..." required></textarea></div>
+                <div class="input-group">
+                    <label for="home-address">Installation / Home Property Address</label>
+                    <input type="text" id="home-address" placeholder="123 Main Street, City, State, Zip Code" required autocomplete="street-address">
+                </div>
+                <div class="input-group">
+                    <label for="property-photo">Upload Photo of Your Property</label>
+                    <input type="file" id="property-photo" accept="image/*">
+                </div>
+                <div class="input-group">
+                    <label for="design-ideas">Describe Your Ironwork Vision / Concept Ideas</label>
+                    <textarea id="design-ideas" rows="3" placeholder="Tell us what you want built, style ideas, and any special details..." required></textarea>
+                </div>
                 <button type="submit" class="ai-submit-btn">Transmit Concept to Ironworks</button>
-       <div class="admin-config-row">
+            </form>
         </section>
 
         <section id="portfolio" class="workspace-block">
@@ -238,30 +254,50 @@
         </section>
 
         <section id="how-to" class="workspace-block">
-            <div class="block-header"><h2 class="block-title">How It <span>Works</span></h2></div>
+            <div class="block-header">
+                <h2 class="block-title">How It <span>Works</span></h2>
+            </div>
             <div class="how-steps">
-                <div class="how-step"><div class="how-step-num">01</div><h4>Share Your Vision</h4><p>Fill out the AI Concept Visualizer above with your property photo and project ideas.</p></div>
-                <div class="how-step"><div class="how-step-num">02</div><h4>Get Your Quote</h4><p>Shane will review your concept and contact you directly with pricing and timeline options.</p></div>
-                <div class="how-step"><div class="how-step-num">03</div><h4>Custom Build</h4><p>Your ironwork is hand-crafted and installed on-site with precision and care.</p></div>
-                <div class="how-step"><div class="how-step-num">04</div><h4>Love It Forever</h4><p>Premium metalwork built to last decades. Every piece is a signature creation.</p></div>
+                <div class="how-step">
+                    <div class="how-step-num">01</div>
+                    <h4>Share Your Vision</h4>
+                    <p>Fill out the AI Concept Visualizer above with your property photo and project ideas.</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-step-num">02</div>
+                    <h4>Get Your Quote</h4>
+                    <p>Shane will review your concept and contact you directly with pricing and timeline options.</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-step-num">03</div>
+                    <h4>Custom Build</h4>
+                    <p>Your ironwork is hand-crafted and installed on-site with precision and care.</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-step-num">04</div>
+                    <h4>Love It Forever</h4>
+                    <p>Premium metalwork built to last decades. Every piece is a signature creation.</p>
+                </div>
             </div>
         </section>
 
         <section id="reviews" class="workspace-block">
-            <div class="block-header"><h2 class="block-title">Client <span>Reviews</span></h2></div>
+            <div class="block-header">
+                <h2 class="block-title">Client <span>Reviews</span></h2>
+            </div>
             <div class="feedback-input-area">
                 <p class="block-subtitle" style="margin-bottom:12px;">Leave a review for Frequency 528 Ironworks:</p>
-                <div id="starRating" class="star-row" aria-label="Star rating">
-                    <span class="star" data-val="1" onclick="setStars(1)">&#9733;</span>
-                    <span class="star" data-val="2" onclick="setStars(2)">&#9733;</span>
-                    <span class="star" data-val="3" onclick="setStars(3)">&#9733;</span>
-                    <span class="star" data-val="4" onclick="setStars(4)">&#9733;</span>
-                    <span class="star" data-val="5" onclick="setStars(5)">&#9733;</span>
+                <div id="starRating" class="star-row" aria-label="Star rating" role="group">
+                    <span class="star" data-val="1" role="radio" aria-label="1 star" tabindex="0">&#9733;</span>
+                    <span class="star" data-val="2" role="radio" aria-label="2 stars" tabindex="0">&#9733;</span>
+                    <span class="star" data-val="3" role="radio" aria-label="3 stars" tabindex="0">&#9733;</span>
+                    <span class="star" data-val="4" role="radio" aria-label="4 stars" tabindex="0">&#9733;</span>
+                    <span class="star" data-val="5" role="radio" aria-label="5 stars" tabindex="0">&#9733;</span>
                 </div>
                 <div class="ai-portal-grid">
-                    <input type="text" id="reviewName" placeholder="Your Name" style="max-width:320px;">
+                    <input type="text" id="reviewName" placeholder="Your Name" style="max-width:320px;" autocomplete="name">
                     <textarea id="reviewText" rows="2" placeholder="Share your experience..."></textarea>
-                    <button class="ai-submit-btn" style="max-width:220px;" onclick="submitReview()">Post Review</button>
+                    <button class="ai-submit-btn" id="reviewSubmitBtn" style="max-width:220px;" type="button">Post Review</button>
                 </div>
             </div>
             <div class="reviews-stream" id="reviewsStream"></div>
@@ -270,7 +306,7 @@
         <section id="adminUploadSection" class="workspace-block admin-section">
             <div class="block-header">
                 <h2 class="block-title">Admin <span>Upload</span></h2>
-                <button class="btn-small" onclick="signOut()">Sign Out</button>
+                <button class="btn-small" id="signOutBtn" type="button">Sign Out</button>
             </div>
             <div class="admin-inner">
 
@@ -278,44 +314,45 @@
                     <p style="color:var(--gold-2); font-weight:700; font-size:.92rem; margin-bottom:8px;">&#9881; One-Time Setup Required</p>
                     <p style="color:#888; font-size:.84rem; margin-bottom:14px;">
                         Enter a GitHub Personal Access Token so photos can be saved to the website.<br>
-                        See <strong style="color:#bbb;">SETUP_GUIDE.md</strong> in the repo for how to create one (only takes 2 minutes).
+                        See <strong style="color:#bbb;">SETUP_GUIDE.md</strong> in the repo for how to create one (only takes 2 minutes).<br>
+                        <em style="color:#666;">Your token is stored only in this browser. Never enter it on a shared or public device.</em>
                     </p>
                     <div class="admin-config-row">
                         <div>
                             <label for="githubPATInput">GitHub Personal Access Token</label>
-                            <input type="password" id="githubPATInput" placeholder="github_pat_...">
+                            <input type="password" id="githubPATInput" placeholder="github_pat_..." autocomplete="off">
                         </div>
-                        <button class="btn-small" onclick="savePAT()">Save</button>
+                        <button class="btn-small" id="savePATBtn" type="button">Save</button>
                     </div>
                 </div>
 
-                <div class="drop-zone" id="dropZone" onclick="document.getElementById('photoFileInput').click()">
+                <div class="drop-zone" id="dropZone">
                     <div class="drop-zone-icon">&#128247;</div>
                     <p><strong>Click to choose photos</strong> or drag and drop here</p>
                     <p style="font-size:.78rem; margin-top:4px; color:#555;">JPG, PNG, WEBP, GIF &mdash; up to 10&nbsp;MB each</p>
-                    <input type="file" id="photoFileInput" accept="image/*" multiple style="display:none;" onchange="handleFileSelect(this.files)">
+                    <input type="file" id="photoFileInput" accept="image/*" multiple style="display:none;">
                 </div>
 
                 <div class="upload-progress-bar" id="uploadProgressBar">
                     <div class="upload-progress-fill" id="uploadProgressFill"></div>
                 </div>
                 <div id="selectedFilesInfo" style="color:#888; font-size:.84rem; margin-bottom:10px;"></div>
-                <button class="ai-submit-btn" id="uploadBtn" onclick="uploadPhotos()" style="display:none;">Upload Photos</button>
+                <button class="ai-submit-btn" id="uploadBtn" style="display:none;" type="button">Upload Photos</button>
 
                 <div class="admin-tools-row">
                     <div style="flex:1; min-width:200px;">
                         <label style="font-size:.78rem;color:#aaa;font-weight:700;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px;">Change Admin Password</label>
                         <div style="display:grid; gap:8px;">
-                            <input type="password" id="newPasswordInput" placeholder="New password (min 8 chars)">
-                            <input type="password" id="confirmPasswordInput" placeholder="Confirm new password">
-                            <button class="btn-small" onclick="changeAdminPassword()" style="align-self:start;">Update Password</button>
+                            <input type="password" id="newPasswordInput" placeholder="New password (min 8 chars)" autocomplete="new-password">
+                            <input type="password" id="confirmPasswordInput" placeholder="Confirm new password" autocomplete="new-password">
+                            <button class="btn-small" id="changePasswordBtn" style="align-self:start;" type="button">Update Password</button>
                         </div>
                     </div>
                     <div style="flex:1; min-width:200px;">
                         <label style="font-size:.78rem;color:#aaa;font-weight:700;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px;">Update GitHub PAT</label>
                         <div style="display:grid; gap:8px;">
-                            <input type="password" id="updatePATInput" placeholder="New GitHub PAT">
-                            <button class="btn-small" onclick="updatePAT()" style="align-self:start;">Update PAT</button>
+                            <input type="password" id="updatePATInput" placeholder="New GitHub PAT" autocomplete="off">
+                            <button class="btn-small" id="updatePATBtn" style="align-self:start;" type="button">Update PAT</button>
                         </div>
                     </div>
                 </div>
@@ -325,18 +362,21 @@
 
     </main>
 
-    <footer><p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Metalworks Layout Node System.</p><p style="color:#444;font-size:0.75rem;margin-top:8px;">Crafted with precision by Frequency 528 Ironworks</p></footer>
+    <footer>
+        <p>&copy; 2026 <a href="http://frequency528ironworks.com">frequency528ironworks.com</a> | Premium Custom Metalwork.</p>
+        <p style="color:#444;font-size:0.75rem;margin-top:8px;">Crafted with precision by Frequency 528 Ironworks</p>
+    </footer>
 
     <div id="adminModal" class="admin-modal-overlay" role="dialog" aria-modal="true" aria-label="Admin Sign In">
         <div class="admin-modal-box">
             <h3>&#128274; Admin Sign In</h3>
             <p>Enter your admin password to access upload controls.</p>
-            <form onsubmit="handleAdminSignIn(event)">
+            <form id="adminLoginForm">
                 <input type="password" id="adminPasswordInput" placeholder="Admin Password" autocomplete="current-password">
                 <div id="adminLoginError" class="admin-login-error"></div>
                 <div class="admin-modal-actions">
                     <button type="submit" class="ai-submit-btn">Sign In</button>
-                    <button type="button" class="btn-cancel" onclick="closeAdminModal()">Cancel</button>
+                    <button type="button" id="cancelAdminBtn" class="btn-cancel">Cancel</button>
                 </div>
             </form>
         </div>
@@ -345,22 +385,58 @@
     <div id="toast" class="toast"></div>
 
     <script>
+        // --- Audio: 528 Hz resonance tone on first user interaction ---
         let audioStarted = false;
         let dingTimer = null;
-        function playDing(){ const AudioCtx=window.AudioContext||window.webkitAudioContext; if(!AudioCtx) return; const ctx=new AudioCtx(); const now=ctx.currentTime; const freqs=[528,664,792]; freqs.forEach((f,i)=>{ const o=ctx.createOscillator(); const g=ctx.createGain(); o.type='sine'; o.frequency.value=f; g.gain.setValueAtTime(0,now+i*.02); g.gain.linearRampToValueAtTime(.06,now+i*.02+.02); g.gain.exponentialRampToValueAtTime(.001,now+i*.02+.35); o.connect(g); g.connect(ctx.destination); o.start(now+i*.02); o.stop(now+i*.02+.36); }); }
-        function startDingCycle(){ if(dingTimer) return; playDing(); dingTimer=setInterval(playDing,35000); }
-        function unlockAudio(){ if(audioStarted) return; audioStarted=true; startDingCycle(); window.removeEventListener('pointerdown', unlockAudio); window.removeEventListener('touchstart', unlockAudio); window.removeEventListener('keydown', unlockAudio); }
-        window.addEventListener('pointerdown', unlockAudio, { once:true });
-        window.addEventListener('touchstart', unlockAudio, { once:true });
-        window.addEventListener('keydown', unlockAudio, { once:true });
+        function playDing() {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return;
+            const ctx = new AudioCtx();
+            const now = ctx.currentTime;
+            [528, 664, 792].forEach(function(f, i) {
+                const o = ctx.createOscillator();
+                const g = ctx.createGain();
+                o.type = 'sine';
+                o.frequency.value = f;
+                g.gain.setValueAtTime(0, now + i * 0.02);
+                g.gain.linearRampToValueAtTime(0.06, now + i * 0.02 + 0.02);
+                g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.02 + 0.35);
+                o.connect(g);
+                g.connect(ctx.destination);
+                o.start(now + i * 0.02);
+                o.stop(now + i * 0.02 + 0.36);
+            });
+        }
+        function startDingCycle() { if (dingTimer) return; playDing(); dingTimer = setInterval(playDing, 35000); }
+        function unlockAudio() {
+            if (audioStarted) return;
+            audioStarted = true;
+            startDingCycle();
+        }
+        ['pointerdown', 'touchstart', 'keydown'].forEach(function(ev) {
+            window.addEventListener(ev, unlockAudio, { once: true });
+        });
 
+        // --- Admin auth ---
+        // DEFAULT_ADMIN_HASH is SHA-256 of the default password "frequency528".
+        // After first sign-in, update it via Change Password below.
+        // The current hash (or a new one you set) is stored in localStorage.
         const DEFAULT_ADMIN_HASH = '9decce85c2e8b37303ac32090da7364c250dd32c788bf71d7777aee456429619';
         const MAX_UPLOAD_MB = 10;
         let adminAuthenticated = false;
 
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         async function sha256(str) {
             const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+            return Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
         }
 
         function getAdminHash() {
@@ -370,8 +446,9 @@
         function openAdminModal() {
             if (adminAuthenticated) { scrollToAdmin(); return; }
             document.getElementById('adminModal').classList.add('open');
-            setTimeout(() => document.getElementById('adminPasswordInput').focus(), 50);
+            setTimeout(function() { document.getElementById('adminPasswordInput').focus(); }, 50);
         }
+
         function closeAdminModal() {
             document.getElementById('adminModal').classList.remove('open');
             document.getElementById('adminPasswordInput').value = '';
@@ -379,7 +456,7 @@
         }
 
         async function handleAdminSignIn(e) {
-            e && e.preventDefault();
+            e.preventDefault();
             const pw = document.getElementById('adminPasswordInput').value;
             if (!pw) return;
             const hash = await sha256(pw);
@@ -408,7 +485,7 @@
         }
 
         function scrollToAdmin() {
-            document.getElementById('adminUploadSection').scrollIntoView({ behavior:'smooth', block:'start' });
+            document.getElementById('adminUploadSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function signOut() {
@@ -423,16 +500,15 @@
             showToast('Signed out', 'info');
         }
 
-        function handleAdminNavClick(e) {
-            if (!adminAuthenticated) {
-                e.preventDefault();
-                openAdminModal();
-            }
-        }
-
+        // --- GitHub API ---
         const REPO_OWNER = 'frequency528ironworks-star';
         const REPO_NAME  = '528';
 
+        // NOTE: The PAT is stored in localStorage so admin can upload across sessions
+        // without re-entering the token each time (see SETUP_GUIDE.md).
+        // The token has minimal permissions (only write access to this one repository).
+        // For stronger security, use sessionStorage or a server-side proxy instead.
+        // Never enter it on a shared or public device.
         function getGitHubPAT() { return localStorage.getItem('gh_pat_f528'); }
 
         function savePAT() {
@@ -472,6 +548,7 @@
             return res.json();
         }
 
+        // --- File upload ---
         let selectedFiles = [];
 
         function handleFileSelect(files) {
@@ -479,7 +556,7 @@
             const info = document.getElementById('selectedFilesInfo');
             const btn  = document.getElementById('uploadBtn');
             if (!selectedFiles.length) { info.textContent = ''; btn.style.display = 'none'; return; }
-            info.textContent = selectedFiles.length + ' file(s) selected: ' + selectedFiles.map(f => f.name).join(', ');
+            info.textContent = selectedFiles.length + ' file(s) selected: ' + selectedFiles.map(function(f) { return f.name; }).join(', ');
             btn.style.display = 'block';
         }
 
@@ -517,14 +594,14 @@
             } finally {
                 btn.disabled = false;
                 btn.textContent = 'Upload Photos';
-                setTimeout(() => { bar.style.display = 'none'; fill.style.width = '0%'; }, 1200);
+                setTimeout(function() { bar.style.display = 'none'; fill.style.width = '0%'; }, 1200);
             }
         }
 
         function fileToBase64(file) {
-            return new Promise((resolve, reject) => {
+            return new Promise(function(resolve, reject) {
                 const r = new FileReader();
-                r.onload  = e => resolve(e.target.result);
+                r.onload  = function(e) { resolve(e.target.result); };
                 r.onerror = reject;
                 r.readAsDataURL(file);
             });
@@ -561,7 +638,7 @@
                     sha = existing.sha;
                     current = JSON.parse(atob(existing.content.replace(/\s/g, '')));
                 }
-            } catch(e) { }
+            } catch (e) { /* gallery.json may not exist yet */ }
 
             current.images.unshift(imageInfo);
             const body = {
@@ -580,7 +657,7 @@
                 const existing = await githubAPI('admin/gallery.json');
                 if (existing && existing.content) {
                     const data = JSON.parse(atob(existing.content.replace(/\s/g, '')));
-                    data.images = data.images.filter(i => i.filename !== filename);
+                    data.images = data.images.filter(function(i) { return i.filename !== filename; });
                     await githubAPI('admin/gallery.json', 'PUT', {
                         message: 'Gallery: remove ' + filename,
                         content: btoa(JSON.stringify(data, null, 2)),
@@ -596,11 +673,12 @@
                 }
                 cardEl.remove();
                 showToast('Photo deleted.', 'success');
-            } catch(err) {
+            } catch (err) {
                 showToast('Delete failed: ' + err.message, 'error');
             }
         }
 
+        // --- Gallery ---
         async function loadGallery() {
             const el = document.getElementById('portfolioGallery');
             try {
@@ -612,7 +690,7 @@
                         return;
                     }
                 }
-            } catch(e) {
+            } catch (e) {
                 try {
                     const res = await fetch('./admin/gallery.json?v=' + Date.now());
                     if (res.ok) {
@@ -622,50 +700,83 @@
                             return;
                         }
                     }
-                } catch(_) {}
+                } catch (_) {}
             }
             el.innerHTML = '<p class="gallery-empty">Portfolio photos coming soon &mdash; check back after our next job!</p>';
         }
 
         function renderGallery(images, container) {
-            container.innerHTML = images.map(img => {
-                const src   = 'images/' + img.filename;
-                const title = (img.title || img.name).replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                const fn    = img.filename.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-                return '<div class="gallery-card" data-filename="' + img.filename + '">'
-                    + '<div class="portfolio-img-wrap">'
-                    + '<img src="' + src + '" alt="' + title + '" loading="lazy"'
-                    + ' onerror="this.parentElement.style.background=\'#1a1a1a\';this.style.display=\'none\';">'
-                    + '<button class="admin-delete-btn"'
-                    + ' onclick="deletePhoto(\'' + fn + '\',this.closest(\'.gallery-card\'))">'
-                    + '&#x2715; Delete</button>'
-                    + '</div>'
-                    + '<div class="gallery-info"><h4>' + title + '</h4>'
-                    + '<p>' + (img.date || '') + '</p></div>'
-                    + '</div>';
-            }).join('');
+            container.innerHTML = '';
+            images.forEach(function(img) {
+                const fn    = img.filename;
+                const title = img.title || img.name || '';
+
+                const card = document.createElement('div');
+                card.className = 'gallery-card';
+
+                const wrap = document.createElement('div');
+                wrap.className = 'portfolio-img-wrap';
+
+                const image = document.createElement('img');
+                image.src = 'images/' + fn;
+                image.alt = title;
+                image.loading = 'lazy';
+                image.addEventListener('error', function() {
+                    wrap.style.background = '#1a1a1a';
+                    image.style.display = 'none';
+                });
+
+                const delBtn = document.createElement('button');
+                delBtn.className = 'admin-delete-btn';
+                delBtn.textContent = '\u2715 Delete';
+                delBtn.type = 'button';
+                delBtn.addEventListener('click', function() { deletePhoto(fn, card); });
+
+                wrap.appendChild(image);
+                wrap.appendChild(delBtn);
+
+                const info = document.createElement('div');
+                info.className = 'gallery-info';
+
+                const h4 = document.createElement('h4');
+                h4.textContent = title;
+
+                const p = document.createElement('p');
+                p.textContent = img.date || '';
+
+                info.appendChild(h4);
+                info.appendChild(p);
+                card.appendChild(wrap);
+                card.appendChild(info);
+                container.appendChild(card);
+            });
         }
 
-        (() => {
-            const dz = document.getElementById('dropZone');
+        // --- Drop zone ---
+        (function() {
+            const dz  = document.getElementById('dropZone');
+            const inp = document.getElementById('photoFileInput');
             if (!dz) return;
-            dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag-over'); });
-            dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
-            dz.addEventListener('drop', e => {
+            dz.addEventListener('click', function() { inp.click(); });
+            dz.addEventListener('dragover', function(e) { e.preventDefault(); dz.classList.add('drag-over'); });
+            dz.addEventListener('dragleave', function() { dz.classList.remove('drag-over'); });
+            dz.addEventListener('drop', function(e) {
                 e.preventDefault();
                 dz.classList.remove('drag-over');
                 handleFileSelect(e.dataTransfer.files);
             });
         })();
 
+        // --- Star rating ---
         let selectedStars = 0;
         function setStars(val) {
             selectedStars = val;
-            document.querySelectorAll('.star').forEach(s => {
+            document.querySelectorAll('.star').forEach(function(s) {
                 s.classList.toggle('active', parseInt(s.dataset.val) <= val);
             });
         }
 
+        // --- Reviews ---
         const storedReviews = JSON.parse(localStorage.getItem('f528_reviews') || '[]');
 
         function renderReviews() {
@@ -674,13 +785,13 @@
                 stream.innerHTML = '<p style="color:#555;font-size:.9rem;">No reviews yet &mdash; be the first!</p>';
                 return;
             }
-            stream.innerHTML = storedReviews.slice().reverse().map(r => {
+            stream.innerHTML = storedReviews.slice().reverse().map(function(r) {
                 const stars = '&#9733;'.repeat(r.stars) + '&#9734;'.repeat(5 - r.stars);
                 return '<div class="review-post">'
                     + '<div class="review-meta">'
-                    + '<span class="review-author">' + r.name + '</span>'
+                    + '<span class="review-author">' + escapeHtml(r.name) + '</span>'
                     + '<span class="review-stars">' + stars + '</span>'
-                    + '</div><p class="review-body">' + r.text + '</p></div>';
+                    + '</div><p class="review-body">' + escapeHtml(r.text) + '</p></div>';
             }).join('');
         }
 
@@ -688,8 +799,8 @@
             const name = document.getElementById('reviewName').value.trim();
             const text = document.getElementById('reviewText').value.trim();
             if (!name || !text) { showToast('Please enter your name and review.', 'error'); return; }
-            if (!selectedStars)  { showToast('Please select a star rating.', 'error'); return; }
-            storedReviews.push({ name, text, stars: selectedStars, date: new Date().toLocaleDateString() });
+            if (!selectedStars) { showToast('Please select a star rating.', 'error'); return; }
+            storedReviews.push({ name: name, text: text, stars: selectedStars, date: new Date().toLocaleDateString() });
             localStorage.setItem('f528_reviews', JSON.stringify(storedReviews));
             document.getElementById('reviewName').value = '';
             document.getElementById('reviewText').value = '';
@@ -717,14 +828,61 @@
             t.textContent = msg;
             t.className = 'toast toast-' + type + ' show';
             clearTimeout(t._timer);
-            t._timer = setTimeout(() => t.classList.remove('show'), 3500);
+            t._timer = setTimeout(function() { t.classList.remove('show'); }, 3500);
         }
 
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdminModal(); });
-        document.getElementById('adminModal').addEventListener('click', e => {
+        // --- Wire up all event listeners ---
+        document.getElementById('adminSignInBtn').addEventListener('click', openAdminModal);
+
+        document.getElementById('adminNavLink').addEventListener('click', function(e) {
+            if (!adminAuthenticated) { e.preventDefault(); openAdminModal(); }
+        });
+
+        document.getElementById('adminLoginForm').addEventListener('submit', handleAdminSignIn);
+
+        document.getElementById('cancelAdminBtn').addEventListener('click', closeAdminModal);
+
+        document.getElementById('signOutBtn').addEventListener('click', signOut);
+
+        document.getElementById('savePATBtn').addEventListener('click', savePAT);
+
+        document.getElementById('uploadBtn').addEventListener('click', uploadPhotos);
+
+        document.getElementById('photoFileInput').addEventListener('change', function() {
+            handleFileSelect(this.files);
+        });
+
+        document.getElementById('changePasswordBtn').addEventListener('click', changeAdminPassword);
+
+        document.getElementById('updatePATBtn').addEventListener('click', updatePAT);
+
+        document.getElementById('reviewSubmitBtn').addEventListener('click', submitReview);
+
+        document.getElementById('starRating').addEventListener('click', function(e) {
+            const star = e.target.closest('.star');
+            if (star) setStars(parseInt(star.dataset.val));
+        });
+
+        document.getElementById('starRating').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const star = e.target.closest('.star');
+                if (star) { e.preventDefault(); setStars(parseInt(star.dataset.val)); }
+            }
+        });
+
+        document.getElementById('conceptForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Your concept has been submitted! Shane will be in touch soon.', 'success');
+            e.target.reset();
+        });
+
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAdminModal(); });
+
+        document.getElementById('adminModal').addEventListener('click', function(e) {
             if (e.target === document.getElementById('adminModal')) closeAdminModal();
         });
 
+        // --- Init ---
         renderReviews();
         loadGallery();
     </script>
