@@ -464,6 +464,7 @@
 
         function arrayBufferToBase64(buffer) {
             const bytes = new Uint8Array(buffer);
+            // Chunk large arrays so String.fromCharCode does not exceed browser call stack limits.
             const chunkSize = 0x8000;
             let binary = '';
             for (let i = 0; i < bytes.length; i += chunkSize) {
@@ -575,7 +576,7 @@
                 'X-GitHub-Api-Version': '2022-11-28'
             };
             if (body !== undefined && body !== null) headers['Content-Type'] = 'application/json';
-            if (token) headers['Authorization'] = 'token ' + token;
+            if (token) headers['Authorization'] = 'Bearer ' + token;
             const opts = { method: method, headers: headers };
             if (body !== undefined && body !== null) opts.body = JSON.stringify(body);
             const safePath = String(path).split('/').map(encodeURIComponent).join('/');
@@ -686,7 +687,8 @@
 
         async function addToGallery(imageInfo) {
             const state = await readGalleryFile();
-            state.gallery.images = [imageInfo].concat(state.gallery.images.filter(img => img.filename !== imageInfo.filename));
+            const existingImages = state.gallery.images.filter(img => img.filename !== imageInfo.filename);
+            state.gallery.images = [imageInfo].concat(existingImages);
             await writeGalleryFile(state.gallery, state.sha, 'Gallery: add ' + imageInfo.name);
         }
 
@@ -707,7 +709,11 @@
                         sha: fileData.sha
                     });
                 }
-                await loadGallery();
+                if (cardEl) cardEl.remove();
+                const galleryEl = document.getElementById('portfolioGallery');
+                if (!galleryEl.querySelector('.gallery-card')) {
+                    renderEmptyGallery(galleryEl);
+                }
                 showToast('Photo deleted.', 'success');
             } catch(err) {
                 showToast('Delete failed: ' + err.message, 'error');
@@ -734,7 +740,11 @@
                     }
                 } catch(_) {}
             }
-            el.innerHTML = '<p class="gallery-empty">Portfolio photos coming soon &mdash; check back after our next job!</p>';
+            renderEmptyGallery(el);
+        }
+
+        function renderEmptyGallery(container) {
+            container.innerHTML = '<p class="gallery-empty">Portfolio photos coming soon &mdash; check back after our next job!</p>';
         }
 
         function renderGallery(images, container) {
