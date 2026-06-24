@@ -1,111 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ITS NOT JUST IRON ...ITS "FREQUENCY 528" IRON</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Cinzel:wght@700;800;900&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREQUENCY 528 IRON</title>
     <style>
-        :root{ --bg:#070707; --panel:#101010; --panel-2:#161616; --line:#232323; --gold:#d4af37; --gold-2:#f1d37a; --text:#e8e8e8; }
-        *{ box-sizing:border-box; margin:0; padding:0; font-family:'Inter',sans-serif; }
-        body{ background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; padding-top:88px; }
-        a{ color:inherit; }
-        .fixed-header{ position:fixed; top:0; left:0; width:100%; min-height:88px; background:rgba(0,0,0,.98); border-bottom:1px solid rgba(212,175,55,.45); display:flex; align-items:center; justify-content:space-between; padding:18px 4%; z-index:1000; }
-        .header-nav-left,.header-contact-right{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
-        .header-nav-left a{ color:#b8b8b8; text-decoration:none; font-size:.8rem; font-weight:600; text-transform:uppercase; letter-spacing:1.2px; }
-        .header-nav-left a:hover{ color:var(--gold-2); }
-        .header-contact-right{ flex-direction:column; align-items:flex-end; gap:2px; text-align:right; font-size:.77rem; line-height:1.35; color:#fff; }
-        .header-contact-right span{ color:var(--gold-2); }
-        .header-contact-right a{ color:#b8b8b8; text-decoration:none; margin-top:4px; font-size:.74rem; }
-        .header-contact-right a:hover{ color:#fff; }
-
-        .logo-hero{ padding:48px 4% 14px; text-align:center; }
-        .main-logo-text{
-            display:inline-block; max-width:min(1200px, 96vw); text-align:center; line-height:.84;
-            font-family:'Cinzel',serif; font-weight:900; text-transform:uppercase; letter-spacing:-.6px;
-            font-size:clamp(2.6rem, 7.2vw, 7.6rem);
-            color:transparent; background:linear-gradient(135deg, #fff7d6 0%, #f1d37a 28%, #d4af37 52%, #a8740c 100%);
-            -webkit-background-clip:text; background-clip:text;
-            text-shadow:0 0 12px rgba(241,211,122,.2), 0 0 34px rgba(212,175,55,.3), 0 2px 0 rgba(255,255,255,.18);
-            filter:drop-shadow(0 10px 18px rgba(0,0,0,.85));
-            animation:logoPulse 4.8s ease-in-out infinite, shimmer 7s linear infinite, vibrate 1.5s ease-in-out infinite;
-            background-size:200% 100%;
-            transform-origin:center center;
-        }
-        .main-logo-text .logo-line{ display:block; text-align:center; }
-        .main-logo-text .line-1{ font-size:.42em; letter-spacing:.08em; }
-        .main-logo-text .line-2{ font-size:.88em; letter-spacing:.12em; margin-top:.08em; }
-        .main-logo-text .line-3{ font-size:.56em; letter-spacing:.32em; margin-top:.06em; }
-        .logo-tagline{
-            display:inline-block;
-            margin-top:18px;
-            padding-top:10px;
-            font-size:.76rem;
-            letter-spacing:2.5px;
-            text-transform:uppercase;
-            color:#c8b27a;
-            border-top:1px solid rgba(241,211,122,.72);
-            text-shadow:0 0 10px rgba(212,175,55,.22);
-        }
-        @keyframes logoPulse{ 0%,100%{ transform:scale(.965); opacity:.9; } 50%{ transform:scale(1.05); opacity:1; } }
-        @keyframes shimmer{ 0%{ background-position:200% 0; } 100%{ background-position:-200% 0; } }
-        @keyframes vibrate{ 0%,100%{ transform:scale(.975) translateX(0); } 20%{ transform:scale(1.01) translateX(-1px); } 40%{ transform:scale(1.045) translateX(1px); } 60%{ transform:scale(1.01) translateX(-1px); } 80%{ transform:scale(1.025) translateX(1px); } }
-        .tagline{ text-align:center; color:#8f8f8f; font-size:.88rem; margin-top:10px; letter-spacing:.2px; }
-
-        .freeform-canvas{ width:100%; max-width:1100px; margin:0 auto; padding:12px 4% 40px; }
-        .workspace-block,.video-block{ background:linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,0)), var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; margin-bottom:16px; box-shadow:0 16px 40px rgba(0,0,0,.32); }
-        .block-header{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
-        .block-title{ font-size:1.28rem; font-weight:800; color:#fff; letter-spacing:-.3px; }
-        .block-title span{ color:var(--gold); }
-        .block-subtitle{ color:#909090; font-size:.93rem; max-width:720px; margin-bottom:16px; }
-        .edit-btn,.admin-btn,.ai-submit-btn{ border:none; border-radius:10px; cursor:pointer; text-transform:uppercase; letter-spacing:.5px; font-weight:800; }
-        .edit-btn,.admin-btn{ background:#171717; color:var(--gold); border:1px solid rgba(212,175,55,.8); padding:8px 14px; font-size:.71rem; }
-        .edit-btn:hover,.admin-btn:hover{ background:var(--gold); color:#000; }
-        .ai-portal-grid{ display:grid; gap:12px; }
-        .form-row-split{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; }
-        .input-group{ display:flex; flex-direction:column; gap:7px; }
-        .input-group label{ font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:#bebebe; }
-        input,textarea{ width:100%; background:var(--panel-2); border:1px solid #303030; padding:11px 13px; border-radius:10px; color:#fff; font-size:.94rem; }
-        input:focus,textarea:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 2px rgba(212,175,55,.12); }
-        .ai-submit-btn{ background:linear-gradient(135deg, #f1d37a 0%, #d4af37 50%, #9f6f08 100%); color:#0a0a0a; padding:12px 16px; font-size:.88rem; align-self:flex-start; box-shadow:0 8px 18px rgba(212,175,55,.22); }
-        .ai-submit-btn:hover{ opacity:.97; }
-        .gallery-matrix{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:14px; }
-        .gallery-card{ background:var(--panel-2); border:1px solid #232323; border-radius:14px; overflow:hidden; transition:transform .22s ease, border-color .22s ease; }
-        .gallery-card:hover{ transform:translateY(-4px); border-color:var(--gold); }
-        .video-wrapper{ width:100%; background:var(--panel-2); border:1px solid #333; border-radius:14px; overflow:hidden; box-shadow:0 14px 36px rgba(0,0,0,.55); margin-top:12px; }
-        .feedback-input-area{ border-bottom:1px solid #242424; padding-bottom:18px; margin-bottom:18px; }
-        .reviews-stream{ display:flex; flex-direction:column; gap:14px; }
-        .review-post{ background:var(--panel-2); border-left:3px solid var(--gold); padding:16px; border-radius:0 12px 12px 0; }
-        .review-meta{ display:flex; justify-content:space-between; gap:10px; margin-bottom:8px; font-size:.84rem; }
-        .review-author{ font-weight:700; color:#fff; }
-        .review-stars{ color:var(--gold); }
-        .review-body{ color:#aaa; font-size:.93rem; }
-        footer{ border-top:1px solid #202020; padding:24px 4%; text-align:center; background:#000; color:#686868; font-size:.83rem; }
-        footer a{ color:var(--gold); text-decoration:none; }
-
-        @media (max-width: 900px){
-            body{ padding-top:0; }
-            .fixed-header{ position:static; min-height:auto; flex-direction:column; align-items:center; text-align:center; padding:8px 12px; gap:4px; }
-            .header-nav-left,.header-contact-right{ justify-content:center; align-items:center; text-align:center; }
-            .header-contact-right{ font-size:.66rem; line-height:1.15; gap:1px; }
-            .header-contact-right span, .header-contact-right a{ font-size:.66rem; }
-            .header-contact-right a{ margin-top:1px; }
-            .logo-hero{ padding:12px 4% 10px; }
-            .main-logo-text{ font-size:clamp(2.2rem, 11vw, 4.9rem); }
-            .workspace-block,.video-block{ padding:16px; }
-            .block-header{ flex-direction:column; align-items:flex-start; }
-            .ai-submit-btn{ width:100%; text-align:center; }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
         }
 
-        .admin-modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,.82); z-index:9999999; display:none; align-items:center; justify-content:center; padding:16px; }
-        .admin-modal-overlay.open{ display:flex; }
-        .admin-modal-box{ background:#0e0e0e; border:1px solid rgba(212,175,55,.7); border-radius:18px; padding:32px 28px; width:100%; max-width:380px; box-shadow:0 24px 60px rgba(0,0,0,.9); }
-        .admin-modal-box h3{ font-family:'Cinzel',serif; color:var(--gold-2); font-size:1.18rem; margin-bottom:6px; text-align:center; }
-        .admin-modal-box p{ color:#888; font-size:.82rem; text-align:center; margin-bottom:20px; }
-        .admin-modal-box input[type=password]{ margin-bottom:10px; }
-        .admin-modal-actions{ display:flex; gap:10px; margin-top:4px; }
-        .admin-modal-actions button{ flex:1; }
-        .admin-login-error{ color:#f87171; font-size:.
+        .container {
+            max-width: 1000px;
+            padding: 40px 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 0;
+            background: linear-gradient(to bottom, #ffffff 0%, #a6a6a6 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-number {
+            font-size: 5rem;
+            font-weight: 900;
+            display: block;
+            margin: 10px 0;
+            background: linear-gradient(135deg, #ffd700 0%, #b8860b 50%, #e6b800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 0px 15px rgba(0, 191, 255, 0.6));
+            animation: pulse-frequency 3s infinite ease-in-out;
+        }
+
+        .brand-sub {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            color: #ffffff;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        @keyframes pulse-frequency {
+            0% { transform: scale(1); filter: drop-shadow(0px 0px 15px rgba(0, 191, 255, 0.5)); }
+            50% { transform: scale(1.03); filter: drop-shadow(0px 0px 25px rgba(0, 191, 255, 0.8)); }
+            100% { transform: scale(1); filter: drop-shadow(0px 0px 15px rgba(0, 191, 255, 0.5)); }
+        }
+
+        .tagline {
+            font-style: italic;
+            font-size: 1.6rem;
+            color: #cccccc;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #a0a0a0;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* --- AI HELPER TOOL STYLE --- */
+        .ai-zone {
+            background: #0a0a0a;
+            border: 1px dashed #333;
+            padding: 40px 20px;
+            margin: 40px 0;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .ai-zone:hover {
+            border-color: #00bff5;
+        }
+        .ai-input {
+            width: 80%;
+            max-width: 500px;
+            background: #111;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 12px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        .upload-btn {
+            background: #222;
+            color: #aaa;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .upload-btn:hover {
+            color: #fff;
+            border-color: #ffd700;
+        }
+
+        .cta-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        /* --- GALLERY STYLE --- */
+        .gallery-section {
+            margin-top: 80px;
+            width: 100%;
+        }
+        .gallery-title {
+            font-size: 2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            background: #111;
+            border: 1px solid #222;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover img {
+            opacity: 1;
+        }
+        .gallery-label {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.8);
+            padding: 5px 15px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-left: 2px solid #ffd700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>FREQUENCY</h1>
+        <div class="brand-number">528</div>
+        <div class="brand-sub">IRON</div>
+
+        <p class="tagline">"You dream it. We build it."</p>
+        <p class="description">
+            Bring your vision to life. Share a photograph or blueprint of your space below, and our AI design assistant will generate a blueprint concept mockup for our master craftsmen.
+        </p>
+
+        <div class="ai-zone" id="ai-tool">
+            <h2 style="letter-spacing: 2px; color: #ffd700; margin-top:0;">AI DESIGN HELPER</h2>
+            <p style="color: #888; font-size: 0.95rem;">Step 1: Upload a photo or structural blueprint of your home/yard</p>
+            <label class="upload-btn">
+                Choose Image/Blueprint File
+                <input type="file" style="display: none;">
+            </label>
+            <p style="color: #888; font-size: 0.95rem;">Step 2: Describe your custom wrought iron vision</p>
+            <input type="text" class="ai-input" placeholder="e.g., Heavy iron greenhouse with gothic arches..."><br>
+            <button class="cta-btn">Generate Concept Blueprint</button>
+        </div>
+
+        <div class="gallery-section">
+            <h2 class="gallery-title">Craftsmanship Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300/111111/ffffff?text=Heavy+Iron+Greenhouse" alt="Greenhouse">
+                    <div class="gallery-label">Bespoke Greenhouses</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300/111111/ffffff?text=Wrought+Iron+Gates" alt="Gates">
+                    <div class="gallery-label">Custom Yard Gates</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300/111111/ffffff?text=Classic+Mailboxes" alt="Mailbox">
+                    <div class="gallery-label">Artisan Mailboxes</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
