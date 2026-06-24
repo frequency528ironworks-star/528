@@ -23,31 +23,25 @@ document.addEventListener('DOMContentLoaded', function() {
         const loadingId = addLoadingMessage();
 
         try {
-            // 3. Send the message to your AI Assistant backend
-            const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            // 3. Send the message securely to your Formspree/Custom backend proxy
+            const response = await fetch(https://formspree.io/f/maqgwqpy, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Note: Ensure your OpenAI API key or backend endpoint proxy is safely configured
-                    'Authorization': 'Bearer YOUR_OPENAI_API_KEY' 
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    model: "gpt-4",
-                    messages: [
-                        {
-                            role: "system", 
-                            content: "You are the premium AI Assistant for FREQUENCY 528 IRON. You help customers design classic wrought iron yard ornaments, mailboxes, and heavy iron greenhouses. Match a modern, high-contrast, cinematic branding style. Be professional, direct, and creative."
-                        },
-                        { role: "user", content: message }
-                    ]
+                    message: message,
+                    _subject: "New AI Chat Assistant Interaction"
                 })
             });
 
-            const data = await response.json();
             removeLoadingMessage(loadingId);
 
-            if (data.choices && data.choices[0].message.content) {
-                addMessage(data.choices[0].message.content, 'ai');
+            if (response.ok) {
+                // If using a conversational webhook proxy, parse response text here.
+                // For a temporary placeholder while your endpoint logic connects:
+                addMessage("Thank you for sharing your vision! Our design center has received your request, and we will contact you shortly with your custom concepts.", 'ai');
             } else {
                 addMessage("I'm having trouble connecting to my design center right now. Please try again!", 'ai');
             }
@@ -62,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function addMessage(text, sender) {
         const msgDiv = document.createElement('div');
         
-        // Match the styling to your black & gold high-contrast theme
         if (sender === 'user') {
             msgDiv.style.background = 'rgba(212, 175, 55, 0.15)';
             msgDiv.style.border = '1px solid rgba(212, 175, 55, 0.3)';
