@@ -737,6 +737,22 @@
         renderReviews();
         loadGallery();
     </script>
+   <div id="ai-chat-container" style="position: fixed; bottom: 20px; right: 20px; width: 350px; background: #101010; border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 8px; z-index: 10000; font-family: 'Inter', sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+    <div style="background: #070707; padding: 12px; border-bottom: 1px solid #232323; border-top-left-radius: 7px; border-top-right-radius: 7px; color: #f1d37a; font-weight: bold; font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 1px;">
+        FREQUENCY 528 AI ASSISTANT
+    </div>
+    
+    <div id="chatMessages" style="height: 300px; padding: 15px; overflow-y: auto; color: #e8e8e8; font-size: 0.85rem; display: flex; flex-direction: column; gap: 10px;">
+        <div style="background: #161616; padding: 8px 12px; border-radius: 6px; align-self: flex-start; max-width: 85%; border-left: 2px solid #d4af37;">
+            Hello! How can I help you bring your ironwork vision to life today?
+        </div>
+    </div>
+    
+    <div style="padding: 10px; border-top: 1px solid #232323; display: flex; gap: 8px; background: #070707; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;">
+        <input type="text" id="userInput" placeholder="Describe your vision..." style="flex: 1; background: #161616; border: 1px solid #232323; color: #e8e8e8; padding: 8px 12px; border-radius: 4px; font-size: 0.85rem; outline: none;">
+        <button id="sendBtn" style="background: #d4af37; color: #070707; border: none; padding: 8px 14px; border-radius: 4px; font-weight: bold; font-size: 0.85rem; cursor: pointer;">Send</button>
+    </div>
+</div> 
 <script src="ai-design.js"></script>
 </body>
 </html>
