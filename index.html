@@ -5,113 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FREQUENCY 528 IRON</title>
     <style>
-        /* Deep, premium industrial dark theme covering the full viewport */
-        html, body {
+        /* Reset & Base Styles */
+        * {
             margin: 0;
             padding: 0;
-            width: 100%;
-            min-height: 100vh;
-            background-color: #000000;
-            color: #d1d1d6;
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             box-sizing: border-box;
         }
 
-        /* Rugged, centered panel to anchor the layout */
-        .forge-panel {
-            max-width: 1200px;
-            width: 90%;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        /* LINE 1: ITS NOT JUST IRON ...ITS (Heavy Chrome Red Gradient) */
-        .line-lead {
-            font-size: 3.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            margin: 0 0 10px 0;
-            display: block;
-            background: linear-gradient(to bottom, #ff1a1a 0%, #990000 70%, #2b0000 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.95));
-        }
-
-        /* LINE 2: 'FREQUENCY 528' (Heavy Brass Finish with Deep Shadow Depth) */
-        .line-core {
-            font-size: 7.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin: 5px 0;
-            display: block;
-            background: linear-gradient(135deg, #ffd700 0%, #b8860b 40%, #8b6508 70%, #ffd700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 0px 25px rgba(184, 134, 11, 0.4)) drop-shadow(6px 8px 15px rgba(0, 0, 0, 0.95));
-            animation: heavy-pulse 4s infinite ease-in-out;
-        }
-
-        /* LINE 3: IRON (Polished Industrial Chrome/Grey Gradient) */
-        .line-tail {
-            font-size: 5.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 20px;
-            margin: 10px 0 0 0;
-            display: block;
-            background: linear-gradient(to bottom, #ffffff 0%, #8c8c8c 50%, #333333 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.95));
-        }
-
-        /* Clean, high-end metallic breathing movement */
-        @keyframes heavy-pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); filter: drop-shadow(0px 0px 35px rgba(184, 134, 11, 0.6)) drop-shadow(6px 8px 15px rgba(0, 0, 0, 0.95)); }
-            100% { transform: scale(1); }
-        }
-
-        /* Solid Steel Call To Action Button */
-        .cta-forge {
-            display: inline-block;
-            background: #ffffff;
-            color: #000000;
-            padding: 18px 45px;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-decoration: none;
-            margin-top: 60px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .cta-forge:hover {
-            background-color: #b8860b;
+        body {
+            background-color: #000000;
             color: #ffffff;
-            box-shadow: 0 0 20px rgba(184, 134, 11, 0.6);
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            letter-spacing: 2px;
+        }
+
+        .hero-container {
+            text-align: center;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Top Line: Crimson/Muted Red Industrial Font */
+        .hero-sub-glow {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            color: #ff2a2a;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin: 0 0 15px 0;
+            text-shadow: 0 0 15px rgba(255, 42, 42, 0.4);
+        }
+
+        /* Middle Line: Glowing Brass / Deep Gold Gradient */
+        .hero-brand-gold {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-size: 6.5rem;
+            text-transform: uppercase;
+            margin: 0;
+            background: linear-gradient(180deg, #ffe066 0%, #f5b000 40%, #a67c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 25px rgba(245, 176, 0, 0.6));
+            line-height: 1.1;
+        }
+
+        /* Bottom Line: Polished Chrome Gradient */
+        .hero-brand-chrome {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-size: 6rem;
+            text-transform: uppercase;
+            margin: 10px 0 50px 0;
+            background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 45%, #888888 50%, #d5d5d5 55%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.9));
+            line-height: 1;
+        }
+
+        /* Sleek Premium Industrial Button */
+        .hero-btn {
+            display: inline-block;
+            padding: 16px 45px;
+            background: linear-gradient(180deg, #222222 0%, #111111 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            border: 1px solid #444444;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 2px;
+        }
+
+        .hero-btn:hover {
+            border-color: #f5b000;
+            color: #f5b000;
+            box-shadow: 0 0 20px rgba(245, 176, 0, 0.3);
             transform: translateY(-2px);
+        }
+
+        /* Responsive Breakpoints for Mobile/Tablets */
+        @media (max-width: 768px) {
+            .hero-sub-glow { 
+                font-size: 1.6rem; 
+                margin-bottom: 10px;
+            }
+            .hero-brand-gold { 
+                font-size: 3.8rem; 
+            }
+            .hero-brand-chrome { 
+                font-size: 3.5rem; 
+                margin-bottom: 35px;
+            }
+            .hero-btn { 
+                padding: 14px 30px; 
+                font-size: 0.8rem; 
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="forge-panel">
-        <span class="line-lead">ITS NOT JUST IRON ...ITS</span>
-        <span class="line-core">'FREQUENCY 528'</span>
-        <span class="line-tail">IRON</span>
-        
-        <a href="#contact" class="cta-forge">Explore the Craftsmanship</a>
-    </div>
+    <section class="hero-section">
+        <div class="hero-container">
+            <h2 class="hero-sub-glow">IT'S NOT JUST IRON... IT'S</h2>
+            <h1 class="hero-brand-gold">'FREQUENCY 528'</h1>
+            <h1 class="hero-brand-chrome">IRON</h1>
+            
+            <a href="#explore" class="hero-btn">EXPLORE THE CRAFTSMANSHIP</a>
+        </div>
+    </section>
 
 </body>
 </html>
