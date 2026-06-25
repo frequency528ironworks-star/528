@@ -5,19 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FREQUENCY 528 IRON</title>
     <style>
-        /* Deep, premium industrial dark theme with subtle metallic texture */
+        /* Deep, premium industrial dark theme covering the full viewport */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             min-height: 100vh;
-            background-color: #0a0a0a;
-            /* Subtle raw steel/diamond plate industrial texture simulation */
-            background-image: 
-                linear-gradient(rgba(0, 0, 0, 0.93), rgba(0, 0, 0, 0.97)),
-                radial-gradient(circle at 50% 50%, #1a1a1a 10%, transparent 11%),
-                radial-gradient(circle at 0% 0%, #1a1a1a 10%, transparent 11%);
-            background-size: 100% 100%, 20px 20px, 20px 20px;
+            background-color: #000000;
             color: #d1d1d6;
             font-family: 'Impact', 'Arial Black', sans-serif;
             display: flex;
@@ -26,107 +20,85 @@
             box-sizing: border-box;
         }
 
-        /* Rugged forge plaque container to make the text feel anchored and expensive */
+        /* Rugged, centered panel to anchor the layout */
         .forge-panel {
-            max-width: 1100px;
+            max-width: 1200px;
             width: 90%;
-            padding: 60px 40px;
-            background: linear-gradient(145deg, #121212, #080808);
-            border: 4px solid #262626;
-            box-shadow: 
-                inset 0 0 30px rgba(0, 0, 0, 0.9),
-                0 30px 60px rgba(0, 0, 0, 0.8),
-                0 0 0 1px rgba(255, 255, 255, 0.05);
+            padding: 40px 20px;
             text-align: center;
-            position: relative;
         }
 
-        /* Industrial rivet accents on the corners of the panel */
-        .forge-panel::before, .forge-panel::after {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: #444;
-            border-radius: 50%;
-            box-shadow: inset -1px -1px 2px #000, 1px 1px 2px #888;
-        }
-        .forge-panel::before { top: 15px; left: 15px; }
-        .forge-panel::after { top: 15px; right: 15px; }
-
-        /* LINE 1: ITS NOT JUST IRON ...ITS (Heavy Chrome Red) */
+        /* LINE 1: ITS NOT JUST IRON ...ITS (Heavy Chrome Red Gradient) */
         .line-lead {
-            font-size: 3.2rem;
+            font-size: 3.8rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 6px;
-            margin: 0 0 15px 0;
+            margin: 0 0 10px 0;
             display: block;
-            background: linear-gradient(to bottom, #ff1a1a 0%, #990000 50%, #330000 100%);
+            background: linear-gradient(to bottom, #ff1a1a 0%, #990000 70%, #2b0000 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.9));
+            filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.95));
         }
 
-        /* LINE 2: 'FREQUENCY 528' (Deep Brass Finish with Heavy Weighted Shadow) */
+        /* LINE 2: 'FREQUENCY 528' (Heavy Brass Finish with Deep Shadow Depth) */
         .line-core {
-            font-size: 6.5rem;
+            font-size: 7.5rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 4px;
-            margin: 10px 0;
+            margin: 5px 0;
             display: block;
             background: linear-gradient(135deg, #ffd700 0%, #b8860b 40%, #8b6508 70%, #ffd700 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* Heavy, deep backing shadow combined with a solid brass aura */
-            filter: drop-shadow(0px 0px 20px rgba(184, 134, 11, 0.4)) drop-shadow(6px 8px 12px rgba(0, 0, 0, 0.95));
+            filter: drop-shadow(0px 0px 25px rgba(184, 134, 11, 0.4)) drop-shadow(6px 8px 15px rgba(0, 0, 0, 0.95));
             animation: heavy-pulse 4s infinite ease-in-out;
         }
 
-        /* LINE 3: IRON (Polished Industrial Grey/Chrome) */
+        /* LINE 3: IRON (Polished Industrial Chrome/Grey Gradient) */
         .line-tail {
-            font-size: 5rem;
+            font-size: 5.5rem;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 16px;
-            margin: 15px 0 0 0;
+            letter-spacing: 20px;
+            margin: 10px 0 0 0;
             display: block;
-            background: linear-gradient(to bottom, #ffffff 0%, #8c8c8c 50%, #404040 100%);
+            background: linear-gradient(to bottom, #ffffff 0%, #8c8c8c 50%, #333333 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.95));
         }
 
-        /* Smooth, heavy metallic breathing movement */
+        /* Clean, high-end metallic breathing movement */
         @keyframes heavy-pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.015); filter: drop-shadow(0px 0px 30px rgba(184, 134, 11, 0.6)) drop-shadow(6px 8px 12px rgba(0, 0, 0, 0.95)); }
+            50% { transform: scale(1.02); filter: drop-shadow(0px 0px 35px rgba(184, 134, 11, 0.6)) drop-shadow(6px 8px 15px rgba(0, 0, 0, 0.95)); }
             100% { transform: scale(1); }
         }
 
-        /* Heavy Steel CTA Button */
+        /* Solid Steel Call To Action Button */
         .cta-forge {
             display: inline-block;
-            background: linear-gradient(to bottom, #333, #1a1a1a);
-            color: #ffffff;
-            border: 2px solid #444;
-            padding: 18px 40px;
+            background: #ffffff;
+            color: #000000;
+            padding: 18px 45px;
             font-family: 'Segoe UI', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 3px;
             text-decoration: none;
-            margin-top: 50px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            margin-top: 60px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             transition: all 0.3s ease;
         }
 
         .cta-forge:hover {
-            border-color: #b8860b;
-            color: #ffd700;
-            box-shadow: 0 0 15px rgba(184, 134, 11, 0.4);
+            background-color: #b8860b;
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.6);
             transform: translateY(-2px);
         }
     </style>
