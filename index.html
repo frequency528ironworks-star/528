@@ -6,8 +6,9 @@
     <title>FREQUENCY 528 IRON</title>
     <style>
         body {
-            background-color: #000000;
-            color: #ffffff;
+            /* Sheer black background (semi-transparent deep black over solid black) */
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), #000000; 
+            color: #a6a6a6; /* Deep industrial grey base text */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
@@ -25,203 +26,92 @@
             box-sizing: border-box;
         }
 
+        /* Main Headline - Chrome Red shifting into Silver Grey */
         h1 {
-            font-size: 3.5rem;
+            font-size: 4.5rem; 
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
             margin-bottom: 0;
-            background: linear-gradient(to bottom, #ffffff 0%, #a6a6a6 50%, #ffffff 100%);
+            background: linear-gradient(to bottom, #ff1a1a 0%, #a6a6a6 50%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.9));
         }
 
+        /* The 528 Brand Number - Brassy Glow with Shadow Font */
         .brand-number {
-            font-size: 5rem;
+            font-size: 7rem; 
             font-weight: 900;
             display: block;
-            margin: 10px 0;
-            background: linear-gradient(135deg, #ffd700 0%, #b8860b 50%, #e6b800 100%);
+            margin: 5px 0;
+            background: linear-gradient(135deg, #e6b800 0%, #b8860b 50%, #ffd700 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 0px 15px rgba(0, 191, 255, 0.6));
+            filter: drop-shadow(0px 0px 20px rgba(218, 165, 32, 0.6)) drop-shadow(4px 4px 15px rgba(0, 0, 0, 0.9));
             animation: pulse-frequency 3s infinite ease-in-out;
         }
 
+        /* IRON Subtitle - Chrome Silver & Grey */
         .brand-sub {
-            font-size: 2rem;
-            letter-spacing: 8px;
-            color: #ffffff;
+            font-size: 2.8rem; 
+            letter-spacing: 12px;
             font-weight: 700;
             margin-top: 0;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #d9d9d9, #8c8c8c, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.8));
         }
 
+        /* Pulsing Frequency Animation - Shifted from blue to brassy gold glow */
         @keyframes pulse-frequency {
-            0% { transform: scale(1); filter: drop-shadow(0px 0px 15px rgba(0, 191, 255, 0.5)); }
-            50% { transform: scale(1.03); filter: drop-shadow(0px 0px 25px rgba(0, 191, 255, 0.8)); }
-            100% { transform: scale(1); filter: drop-shadow(0px 0px 15px rgba(0, 191, 255, 0.5)); }
+            0% { 
+                transform: scale(1); 
+                filter: drop-shadow(0px 0px 15px rgba(218, 165, 32, 0.5)) drop-shadow(4px 4px 15px rgba(0, 0, 0, 0.9)); 
+            }
+            50% { 
+                transform: scale(1.03); 
+                filter: drop-shadow(0px 0px 25px rgba(218, 165, 32, 0.8)) drop-shadow(4px 4px 15px rgba(0, 0, 0, 0.9)); 
+            }
+            100% { 
+                transform: scale(1); 
+                filter: drop-shadow(0px 0px 15px rgba(218, 165, 32, 0.5)) drop-shadow(4px 4px 15px rgba(0, 0, 0, 0.9)); 
+            }
         }
 
-        .tagline {
-            font-style: italic;
-            font-size: 1.6rem;
-            color: #cccccc;
-        }
-
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #a0a0a0;
-            max-width: 700px;
-            margin: 0 auto 40px auto;
-        }
-
-        /* --- AI HELPER TOOL STYLE --- */
-        .ai-zone {
-            background: #0a0a0a;
-            border: 1px dashed #333;
-            padding: 40px 20px;
-            margin: 40px 0;
-            border-radius: 4px;
-            transition: border-color 0.3s;
-        }
-        .ai-zone:hover {
-            border-color: #00bff5;
-        }
-        .ai-input {
-            width: 80%;
-            max-width: 500px;
-            background: #111;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 12px;
-            font-size: 1rem;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
-        .upload-btn {
-            background: #222;
-            color: #aaa;
-            border: 1px solid #444;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin-bottom: 20px;
+        .cta-button {
             display: inline-block;
-        }
-        .upload-btn:hover {
-            color: #fff;
-            border-color: #ffd700;
-        }
-
-        .cta-btn {
-            background: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            padding: 15px 35px;
-            font-size: 1rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-        .cta-btn:hover {
             background-color: #ffffff;
             color: #000000;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
-        /* --- GALLERY STYLE --- */
-        .gallery-section {
-            margin-top: 80px;
-            width: 100%;
-        }
-        .gallery-title {
-            font-size: 2rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .gallery-item {
-            background: #111;
-            border: 1px solid #222;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-        .gallery-item:hover img {
-            opacity: 1;
-        }
-        .gallery-label {
-            position: absolute;
-            bottom: 15px;
-            left: 15px;
-            background: rgba(0,0,0,0.8);
-            padding: 5px 15px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            border-left: 2px solid #ffd700;
+        .cta-button:hover {
+            background-color: #e6b800; /* Turns brassy gold on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(218, 165, 32, 0.4);
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>FREQUENCY</h1>
-        <div class="brand-number">528</div>
+        <h1>ITS NOT JUST IRON ...ITS</h1>
+        <span class="brand-number">528</span>
         <div class="brand-sub">IRON</div>
-
-        <p class="tagline">"You dream it. We build it."</p>
-        <p class="description">
-            Bring your vision to life. Share a photograph or blueprint of your space below, and our AI design assistant will generate a blueprint concept mockup for our master craftsmen.
-        </p>
-
-        <div class="ai-zone" id="ai-tool">
-            <h2 style="letter-spacing: 2px; color: #ffd700; margin-top:0;">AI DESIGN HELPER</h2>
-            <p style="color: #888; font-size: 0.95rem;">Step 1: Upload a photo or structural blueprint of your home/yard</p>
-            <label class="upload-btn">
-                Choose Image/Blueprint File
-                <input type="file" style="display: none;">
-            </label>
-            <p style="color: #888; font-size: 0.95rem;">Step 2: Describe your custom wrought iron vision</p>
-            <input type="text" class="ai-input" placeholder="e.g., Heavy iron greenhouse with gothic arches..."><br>
-            <button class="cta-btn">Generate Concept Blueprint</button>
-        </div>
-
-        <div class="gallery-section">
-            <h2 class="gallery-title">Craftsmanship Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x300/111111/ffffff?text=Heavy+Iron+Greenhouse" alt="Greenhouse">
-                    <div class="gallery-label">Bespoke Greenhouses</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x300/111111/ffffff?text=Wrought+Iron+Gates" alt="Gates">
-                    <div class="gallery-label">Custom Yard Gates</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x300/111111/ffffff?text=Classic+Mailboxes" alt="Mailbox">
-                    <div class="gallery-label">Artisan Mailboxes</div>
-                </div>
-            </div>
-        </div>
-
+        
+        <a href="#contact" class="cta-button">Explore the Craft</a>
     </div>
 
 </body>
